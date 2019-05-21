@@ -13,7 +13,7 @@
     <GenerateSerializableTypes>true</GenerateSerializableTypes>
     <Serializer>Auto</Serializer>
     <UseSerializerForFaults>true</UseSerializerForFaults>
-    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferenceAllAssemblies>false</ReferenceAllAssemblies>
     <ReferencedAssemblies />
     <ReferencedDataContractTypes />
     <ServiceContractMappings />
@@ -22,10 +22,11 @@
     <MetadataSource Address="http://193.10.202.78/Annons/Service1.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="f1c4f52d-eadb-4b8a-94af-c884f1643564" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?xsd=xsd1" />
-    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="fb0481a4-80c2-496b-9d66-ba1d19c38dec" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service13.xsd" MetadataType="Schema" ID="bd7998e1-6f8b-4263-a94f-5155ef27d2b5" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?xsd=xsd3" />
     <MetadataFile FileName="Service11.xsd" MetadataType="Schema" ID="53525605-be55-4875-bcac-6efc6c5cd42f" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?xsd=xsd2" />
     <MetadataFile FileName="Service1.disco" MetadataType="Disco" ID="208bd38e-1157-4db5-8ac0-4999458eb00a" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?disco" />
+    <MetadataFile FileName="Service1.wsdl" MetadataType="Wsdl" ID="fb0481a4-80c2-496b-9d66-ba1d19c38dec" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?wsdl" />
+    <MetadataFile FileName="Service1.xsd" MetadataType="Schema" ID="f1c4f52d-eadb-4b8a-94af-c884f1643564" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?xsd=xsd1" />
     <MetadataFile FileName="Service12.xsd" MetadataType="Schema" ID="b06bac65-e6a0-4eaa-8a22-6495664435a9" SourceId="1" SourceUrl="http://193.10.202.78/Annons/Service1.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>

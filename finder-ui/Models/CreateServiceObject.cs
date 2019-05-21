@@ -9,11 +9,12 @@ namespace finder_ui.Models
     public class CreateServiceObject
     { 
 
-        public CreateServiceObject(List<ServiceStatusType> statuses, List<SubCategory> subCategories, List<ServiceType> serviceTypes)
+        public CreateServiceObject(List<ServiceStatusType> statuses, List<SubCategory> subCategories, List<ServiceType> serviceTypes, List<Category> categories)
         {
             StatusList = statuses;
             SubCategoryList = subCategories;
             ServiceTypeList = serviceTypes;
+            CategoryList = categories;
         }
 
         public CreateServiceObject(int type, int creatorId, int serviceStatusId, string picture, string title, string description, double price, DateTime? startDate, DateTime? endDate, bool timeNeeded, int subCategoryId)
@@ -45,5 +46,6 @@ namespace finder_ui.Models
         public List<ServiceStatusType> StatusList { get; set; }
         public List<SubCategory> SubCategoryList { get; set; }
         public List<ServiceType> ServiceTypeList { get; set; }
+        public List<Category> CategoryList { get; set; }
     }
 }

@@ -12,8 +12,33 @@
       <xsd:import schemaLocation="http://193.10.202.78/Annons/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
       <xsd:import schemaLocation="http://193.10.202.78/Annons/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import schemaLocation="http://193.10.202.78/Annons/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AnnonsService" />
+      <xsd:import schemaLocation="http://193.10.202.78/Annons/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="IService1_CreateContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:CreateContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_CreateContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CreateContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangeContractStatus_InputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeContractStatus" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ChangeContractStatus_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ChangeContractStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DeleteContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DeleteContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_GetTypes_InputMessage">
     <wsdl:part name="parameters" element="tns:GetTypes" />
   </wsdl:message>
@@ -129,6 +154,22 @@
     <wsdl:part name="parameters" element="tns:DeleteServiceResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
+    <wsdl:operation name="CreateContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateContract" message="tns:IService1_CreateContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateContractResponse" message="tns:IService1_CreateContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ChangeContractStatus">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangeContractStatus" message="tns:IService1_ChangeContractStatus_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ChangeContractStatusResponse" message="tns:IService1_ChangeContractStatus_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteContract" message="tns:IService1_DeleteContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteContractResponse" message="tns:IService1_DeleteContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetContract" message="tns:IService1_GetContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetContractResponse" message="tns:IService1_GetContract_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetTypes">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetTypes" message="tns:IService1_GetTypes_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetTypesResponse" message="tns:IService1_GetTypes_OutputMessage" />
@@ -209,6 +250,42 @@
   <wsdl:binding name="WSHttpBinding_IService1" type="tns:IService1">
     <wsp:PolicyReference URI="#WSHttpBinding_IService1_policy" />
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="CreateContract">
+      <soap12:operation soapAction="http://tempuri.org/IService1/CreateContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ChangeContractStatus">
+      <soap12:operation soapAction="http://tempuri.org/IService1/ChangeContractStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeleteContract">
+      <soap12:operation soapAction="http://tempuri.org/IService1/DeleteContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContract">
+      <soap12:operation soapAction="http://tempuri.org/IService1/GetContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetTypes">
       <soap12:operation soapAction="http://tempuri.org/IService1/GetTypes" style="document" />
       <wsdl:input>

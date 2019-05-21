@@ -15,6 +15,131 @@ namespace finder_ui.Group3ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="Contract", Namespace="http://schemas.datacontract.org/2004/07/AnnonsService")]
+    [System.SerializableAttribute()]
+    public partial class Contract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CounterpartIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int CounterpartStatusField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ServiceIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ServiceOwnerIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int ServiceOwnerStatusField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CounterpartId {
+            get {
+                return this.CounterpartIdField;
+            }
+            set {
+                if ((this.CounterpartIdField.Equals(value) != true)) {
+                    this.CounterpartIdField = value;
+                    this.RaisePropertyChanged("CounterpartId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int CounterpartStatus {
+            get {
+                return this.CounterpartStatusField;
+            }
+            set {
+                if ((this.CounterpartStatusField.Equals(value) != true)) {
+                    this.CounterpartStatusField = value;
+                    this.RaisePropertyChanged("CounterpartStatus");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ServiceId {
+            get {
+                return this.ServiceIdField;
+            }
+            set {
+                if ((this.ServiceIdField.Equals(value) != true)) {
+                    this.ServiceIdField = value;
+                    this.RaisePropertyChanged("ServiceId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ServiceOwnerId {
+            get {
+                return this.ServiceOwnerIdField;
+            }
+            set {
+                if ((this.ServiceOwnerIdField.Equals(value) != true)) {
+                    this.ServiceOwnerIdField = value;
+                    this.RaisePropertyChanged("ServiceOwnerId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int ServiceOwnerStatus {
+            get {
+                return this.ServiceOwnerStatusField;
+            }
+            set {
+                if ((this.ServiceOwnerStatusField.Equals(value) != true)) {
+                    this.ServiceOwnerStatusField = value;
+                    this.RaisePropertyChanged("ServiceOwnerStatus");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ServiceType", Namespace="http://schemas.datacontract.org/2004/07/AnnonsService")]
     [System.SerializableAttribute()]
     public partial class ServiceType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -314,16 +439,16 @@ namespace finder_ui.Group3ServiceReference {
         private finder_ui.Group3ServiceReference.PriceRange PriceField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private finder_ui.Group3ServiceReference.ServiceStatus ServiceStatusField;
+        private int ServiceStatusIdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private finder_ui.Group3ServiceReference.ServiceType[] ServiceTypesField;
+        private int[] ServiceTypeIdsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private finder_ui.Group3ServiceReference.DateRange StartDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private finder_ui.Group3ServiceReference.SubCategory[] SubCategoriesField;
+        private int[] SubCategoryIdsField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string TitleField;
@@ -404,27 +529,27 @@ namespace finder_ui.Group3ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public finder_ui.Group3ServiceReference.ServiceStatus ServiceStatus {
+        public int ServiceStatusId {
             get {
-                return this.ServiceStatusField;
+                return this.ServiceStatusIdField;
             }
             set {
-                if ((object.ReferenceEquals(this.ServiceStatusField, value) != true)) {
-                    this.ServiceStatusField = value;
-                    this.RaisePropertyChanged("ServiceStatus");
+                if ((this.ServiceStatusIdField.Equals(value) != true)) {
+                    this.ServiceStatusIdField = value;
+                    this.RaisePropertyChanged("ServiceStatusId");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public finder_ui.Group3ServiceReference.ServiceType[] ServiceTypes {
+        public int[] ServiceTypeIds {
             get {
-                return this.ServiceTypesField;
+                return this.ServiceTypeIdsField;
             }
             set {
-                if ((object.ReferenceEquals(this.ServiceTypesField, value) != true)) {
-                    this.ServiceTypesField = value;
-                    this.RaisePropertyChanged("ServiceTypes");
+                if ((object.ReferenceEquals(this.ServiceTypeIdsField, value) != true)) {
+                    this.ServiceTypeIdsField = value;
+                    this.RaisePropertyChanged("ServiceTypeIds");
                 }
             }
         }
@@ -443,14 +568,14 @@ namespace finder_ui.Group3ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public finder_ui.Group3ServiceReference.SubCategory[] SubCategories {
+        public int[] SubCategoryIds {
             get {
-                return this.SubCategoriesField;
+                return this.SubCategoryIdsField;
             }
             set {
-                if ((object.ReferenceEquals(this.SubCategoriesField, value) != true)) {
-                    this.SubCategoriesField = value;
-                    this.RaisePropertyChanged("SubCategories");
+                if ((object.ReferenceEquals(this.SubCategoryIdsField, value) != true)) {
+                    this.SubCategoryIdsField = value;
+                    this.RaisePropertyChanged("SubCategoryIds");
                 }
             }
         }
@@ -586,115 +711,6 @@ namespace finder_ui.Group3ServiceReference {
                 if ((this.MinField.Equals(value) != true)) {
                     this.MinField = value;
                     this.RaisePropertyChanged("Min");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceStatus", Namespace="http://schemas.datacontract.org/2004/07/AnnonsService")]
-    [System.SerializableAttribute()]
-    public partial class ServiceStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FromDateField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private finder_ui.Group3ServiceReference.ServiceStatusType ServiceStatusTypeField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StatusTypeIDField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.Nullable<System.DateTime> ToDateField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FromDate {
-            get {
-                return this.FromDateField;
-            }
-            set {
-                if ((this.FromDateField.Equals(value) != true)) {
-                    this.FromDateField = value;
-                    this.RaisePropertyChanged("FromDate");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Id {
-            get {
-                return this.IdField;
-            }
-            set {
-                if ((this.IdField.Equals(value) != true)) {
-                    this.IdField = value;
-                    this.RaisePropertyChanged("Id");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public finder_ui.Group3ServiceReference.ServiceStatusType ServiceStatusType {
-            get {
-                return this.ServiceStatusTypeField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.ServiceStatusTypeField, value) != true)) {
-                    this.ServiceStatusTypeField = value;
-                    this.RaisePropertyChanged("ServiceStatusType");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int StatusTypeID {
-            get {
-                return this.StatusTypeIDField;
-            }
-            set {
-                if ((this.StatusTypeIDField.Equals(value) != true)) {
-                    this.StatusTypeIDField = value;
-                    this.RaisePropertyChanged("StatusTypeID");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.Nullable<System.DateTime> ToDate {
-            get {
-                return this.ToDateField;
-            }
-            set {
-                if ((this.ToDateField.Equals(value) != true)) {
-                    this.ToDateField = value;
-                    this.RaisePropertyChanged("ToDate");
                 }
             }
         }
@@ -1089,24 +1105,27 @@ namespace finder_ui.Group3ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="Contract", Namespace="http://schemas.datacontract.org/2004/07/AnnonsService")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ServiceStatus", Namespace="http://schemas.datacontract.org/2004/07/AnnonsService")]
     [System.SerializableAttribute()]
-    public partial class Contract : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+    public partial class ServiceStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
         
         [System.NonSerializedAttribute()]
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int AcceptingUserIDField;
+        private System.DateTime FromDateField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int ServiceIDField;
+        private finder_ui.Group3ServiceReference.ServiceStatusType ServiceStatusTypeField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int StatusField;
+        private int StatusTypeIDField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> ToDateField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -1119,14 +1138,14 @@ namespace finder_ui.Group3ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int AcceptingUserID {
+        public System.DateTime FromDate {
             get {
-                return this.AcceptingUserIDField;
+                return this.FromDateField;
             }
             set {
-                if ((this.AcceptingUserIDField.Equals(value) != true)) {
-                    this.AcceptingUserIDField = value;
-                    this.RaisePropertyChanged("AcceptingUserID");
+                if ((this.FromDateField.Equals(value) != true)) {
+                    this.FromDateField = value;
+                    this.RaisePropertyChanged("FromDate");
                 }
             }
         }
@@ -1145,27 +1164,40 @@ namespace finder_ui.Group3ServiceReference {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int ServiceID {
+        public finder_ui.Group3ServiceReference.ServiceStatusType ServiceStatusType {
             get {
-                return this.ServiceIDField;
+                return this.ServiceStatusTypeField;
             }
             set {
-                if ((this.ServiceIDField.Equals(value) != true)) {
-                    this.ServiceIDField = value;
-                    this.RaisePropertyChanged("ServiceID");
+                if ((object.ReferenceEquals(this.ServiceStatusTypeField, value) != true)) {
+                    this.ServiceStatusTypeField = value;
+                    this.RaisePropertyChanged("ServiceStatusType");
                 }
             }
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int Status {
+        public int StatusTypeID {
             get {
-                return this.StatusField;
+                return this.StatusTypeIDField;
             }
             set {
-                if ((this.StatusField.Equals(value) != true)) {
-                    this.StatusField = value;
-                    this.RaisePropertyChanged("Status");
+                if ((this.StatusTypeIDField.Equals(value) != true)) {
+                    this.StatusTypeIDField = value;
+                    this.RaisePropertyChanged("StatusTypeID");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> ToDate {
+            get {
+                return this.ToDateField;
+            }
+            set {
+                if ((this.ToDateField.Equals(value) != true)) {
+                    this.ToDateField = value;
+                    this.RaisePropertyChanged("ToDate");
                 }
             }
         }
@@ -1183,6 +1215,30 @@ namespace finder_ui.Group3ServiceReference {
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="Group3ServiceReference.IService1")]
     public interface IService1 {
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateContract", ReplyAction="http://tempuri.org/IService1/CreateContractResponse")]
+        bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateContract", ReplyAction="http://tempuri.org/IService1/CreateContractResponse")]
+        System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangeContractStatus", ReplyAction="http://tempuri.org/IService1/ChangeContractStatusResponse")]
+        bool ChangeContractStatus(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangeContractStatus", ReplyAction="http://tempuri.org/IService1/ChangeContractStatusResponse")]
+        System.Threading.Tasks.Task<bool> ChangeContractStatusAsync(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteContract", ReplyAction="http://tempuri.org/IService1/DeleteContractResponse")]
+        bool DeleteContract(int serviceId, int counterpartId, int serviceOwnerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteContract", ReplyAction="http://tempuri.org/IService1/DeleteContractResponse")]
+        System.Threading.Tasks.Task<bool> DeleteContractAsync(int serviceId, int counterpartId, int serviceOwnerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetContract", ReplyAction="http://tempuri.org/IService1/GetContractResponse")]
+        finder_ui.Group3ServiceReference.Contract GetContract(int serviceId, int counterpartId, int serviceOwnerId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetContract", ReplyAction="http://tempuri.org/IService1/GetContractResponse")]
+        System.Threading.Tasks.Task<finder_ui.Group3ServiceReference.Contract> GetContractAsync(int serviceId, int counterpartId, int serviceOwnerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetTypes", ReplyAction="http://tempuri.org/IService1/GetTypesResponse")]
         finder_ui.Group3ServiceReference.ServiceType[] GetTypes();
@@ -1324,6 +1380,38 @@ namespace finder_ui.Group3ServiceReference {
         
         public Service1Client(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId) {
+            return base.Channel.CreateContract(serviceId, counterpartId, serviceOwnerId, contractCreatorId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId) {
+            return base.Channel.CreateContractAsync(serviceId, counterpartId, serviceOwnerId, contractCreatorId);
+        }
+        
+        public bool ChangeContractStatus(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus) {
+            return base.Channel.ChangeContractStatus(serviceId, counterpartId, serviceOwnerId, serviceOwnerStatus, counterpartStatus);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ChangeContractStatusAsync(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus) {
+            return base.Channel.ChangeContractStatusAsync(serviceId, counterpartId, serviceOwnerId, serviceOwnerStatus, counterpartStatus);
+        }
+        
+        public bool DeleteContract(int serviceId, int counterpartId, int serviceOwnerId) {
+            return base.Channel.DeleteContract(serviceId, counterpartId, serviceOwnerId);
+        }
+        
+        public System.Threading.Tasks.Task<bool> DeleteContractAsync(int serviceId, int counterpartId, int serviceOwnerId) {
+            return base.Channel.DeleteContractAsync(serviceId, counterpartId, serviceOwnerId);
+        }
+        
+        public finder_ui.Group3ServiceReference.Contract GetContract(int serviceId, int counterpartId, int serviceOwnerId) {
+            return base.Channel.GetContract(serviceId, counterpartId, serviceOwnerId);
+        }
+        
+        public System.Threading.Tasks.Task<finder_ui.Group3ServiceReference.Contract> GetContractAsync(int serviceId, int counterpartId, int serviceOwnerId) {
+            return base.Channel.GetContractAsync(serviceId, counterpartId, serviceOwnerId);
         }
         
         public finder_ui.Group3ServiceReference.ServiceType[] GetTypes() {

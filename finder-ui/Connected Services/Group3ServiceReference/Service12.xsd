@@ -1,6 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import schemaLocation="http://193.10.202.78/Annons/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/AnnonsService" />
+  <xs:element name="CreateContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element minOccurs="0" name="counterpartId" type="xs:int" />
+        <xs:element minOccurs="0" name="serviceOwnerId" type="xs:int" />
+        <xs:element minOccurs="0" name="contractCreatorId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="CreateContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="CreateContractResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeContractStatus">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element minOccurs="0" name="counterpartId" type="xs:int" />
+        <xs:element minOccurs="0" name="serviceOwnerId" type="xs:int" />
+        <xs:element minOccurs="0" name="serviceOwnerStatus" nillable="true" type="xs:int" />
+        <xs:element minOccurs="0" name="counterpartStatus" nillable="true" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeContractStatusResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChangeContractStatusResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element minOccurs="0" name="counterpartId" type="xs:int" />
+        <xs:element minOccurs="0" name="serviceOwnerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DeleteContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="DeleteContractResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContract">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="serviceId" type="xs:int" />
+        <xs:element minOccurs="0" name="counterpartId" type="xs:int" />
+        <xs:element minOccurs="0" name="serviceOwnerId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetContractResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetContractResult" nillable="true" type="q1:Contract" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="GetTypes">
     <xs:complexType>
       <xs:sequence />
@@ -9,7 +76,7 @@
   <xs:element name="GetTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetTypesResult" nillable="true" type="q1:ArrayOfServiceType" />
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetTypesResult" nillable="true" type="q2:ArrayOfServiceType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -21,7 +88,7 @@
   <xs:element name="GetServiceStatusTypesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetServiceStatusTypesResult" nillable="true" type="q2:ArrayOfServiceStatusType" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetServiceStatusTypesResult" nillable="true" type="q3:ArrayOfServiceStatusType" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -33,7 +100,7 @@
   <xs:element name="GetSubCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetSubCategoriesResult" nillable="true" type="q3:ArrayOfSubCategory" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetSubCategoriesResult" nillable="true" type="q4:ArrayOfSubCategory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -45,7 +112,7 @@
   <xs:element name="GetCategoriesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q4:ArrayOfCategory" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetCategoriesResult" nillable="true" type="q5:ArrayOfCategory" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -140,14 +207,14 @@
   <xs:element name="AdvancedSearch">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="searchService" nillable="true" type="q5:SearchService" />
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="searchService" nillable="true" type="q6:SearchService" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AdvancedSearchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="AdvancedSearchResult" nillable="true" type="q6:ArrayOfService" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="AdvancedSearchResult" nillable="true" type="q7:ArrayOfService" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -159,7 +226,7 @@
   <xs:element name="LoadServicesResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="LoadServicesResult" nillable="true" type="q7:ArrayOfService" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="LoadServicesResult" nillable="true" type="q8:ArrayOfService" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -173,7 +240,7 @@
   <xs:element name="SearchResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="SearchResult" nillable="true" type="q8:ArrayOfService" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="SearchResult" nillable="true" type="q9:ArrayOfService" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -185,7 +252,7 @@
   <xs:element name="GetAllServiceDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetAllServiceDataResult" nillable="true" type="q9:ArrayOfService" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetAllServiceDataResult" nillable="true" type="q10:ArrayOfService" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -199,7 +266,7 @@
   <xs:element name="GetServiceByIdResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetServiceByIdResult" nillable="true" type="q10:Service" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetServiceByIdResult" nillable="true" type="q11:Service" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -211,7 +278,7 @@
   <xs:element name="GetAllContractDataResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetAllContractDataResult" nillable="true" type="q11:ArrayOfContract" />
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/AnnonsService" minOccurs="0" name="GetAllContractDataResult" nillable="true" type="q12:ArrayOfContract" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

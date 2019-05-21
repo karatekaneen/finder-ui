@@ -1,0 +1,47 @@
+﻿@model finder_ui.Models.EditProfileViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<h2>Min Profil</h2>
+
+<button onclick="location.href='@Url.Action("EditProfile", "UserProfile")';return false;">Redigera Profil</button>
+
+<table class="table">
+    <tr>
+        <th>Användarnamn</th>
+        <td>@Html.DisplayFor(m => Model.UserName) Användarnamn</td>
+    <tr>
+    <tr>
+        <th>Förnamn</th>
+        <td>@Html.DisplayFor(m => Model.UserFirstName) asd</td>
+    </tr>
+    <tr>
+        <th>Efternamn</th>
+        <td>@Html.DisplayFor(m => Model.UserSurname) asd</td>
+    </tr>
+    <tr>
+        <th>Personnummer</th>
+        <td>@Html.DisplayFor(m => Model.UserPersonalCodeNumber) asd</td>
+    </tr>
+    <tr>
+        <th>Adress</th>
+        <td>@Html.DisplayFor(m => Model.UserAddress) asd</td>
+    </tr>
+    <tr>
+        <th>Stad</th>
+        <td>@Html.DisplayFor(m => Model.UserCity) asd</td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td>@Html.DisplayFor(m => Model.UserEmail) asd</td>
+    </tr>
+    <tr>
+        <th>Bild</th>
+        <td>@Html.DisplayFor(m => Model.UserProfilePicture) asd</td>
+    </tr>
+</table>
+
+<button onclick="location.href='@Url.Action("Index", "UserProfile")';return false;">Mina Annonser</button>

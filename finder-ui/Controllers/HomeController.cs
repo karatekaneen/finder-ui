@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using static finder_ui.SessionHandler.CustomAuthorization;
 
 namespace finder_ui.Controllers
 {
@@ -20,6 +21,7 @@ namespace finder_ui.Controllers
             return View();
         }
 
+        [CustomAuthorization]
         public ActionResult Contact()
         {
             ViewBag.Message = "Your contact page.";
