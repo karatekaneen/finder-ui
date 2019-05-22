@@ -24,7 +24,7 @@ namespace finder_ui.Controllers
             {
                 UserServiceObject activeService = new UserServiceObject();
                 activeService.IncomingService = item;
-                activeService.IncomingUser = userClient.GetUserByUserId(70);
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
                 serviceList.Add(activeService);
             }
             
