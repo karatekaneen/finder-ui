@@ -1,46 +1,44 @@
 ﻿
 /* Set padding to keep content from hitting the edges */
 .body-content {
-     
-   
 }
 
 .header {
     overflow: hidden;
     background-color: white;
-    padding: 20px ;
+    padding: 20px;
     height: 120px;
 }
-    /* Style the header links */
-    .header-bottom a {
-        float: left;
-        color: black;
-        text-align: center;
-        padding: 12px;
-        text-decoration: none;
-        font-size: 18px;
-        line-height: 25px;
-        border-radius: 4px;
-    }
+/* Style the header links */
+.header-bottom a {
+    float: left;
+    color: black;
+    text-align: center;
+    padding: 12px;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+}
 
-        /* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
-        .header a.logo {
-            font-size: 50px;
-            font-weight: bold;
-            color: limegreen;
-        }
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+    font-size: 50px;
+    font-weight: bold;
+    color: limegreen;
+}
 
-        /* Change the background color on mouse-over */
-        .header-bottom a:hover {
-            background-color: limegreen;
-            color: black;
-        }
+/* Change the background color on mouse-over */
+.header-bottom a:hover {
+    background-color: limegreen;
+    color: black;
+}
 
 
 /* Float the link section to the right */
 .header-bottom {
-    margin-left:35%;
-    height:50px;
+    margin-left: 35%;
+    height: 50px;
 }
 
 /* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
@@ -60,15 +58,14 @@
     height: 2px;
     background-color: dimgray;
     overflow: hidden;
-    
 }
+
 #company_logo {
     width: 200px;
     height: 200px;
     background-image: url(Images/finderlogo.png);
     float: left;
     text-align: center;
-   
 }
 
 .header input[type=text] {
@@ -84,14 +81,13 @@
     background-color: limegreen;
     color: white;
     font-weight: bold;
-
-    height:50px;
-    
+    height: 50px;
 }
+
 .dropdown {
     position: relative;
     display: inline-block;
-    float:right;
+    float: right;
 }
 
 .dropdown-content {
@@ -102,34 +98,76 @@
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     padding: 12px 16px;
     z-index: 1;
-    height:80px;
+    height: 80px;
 }
+
 .dropdown:hover .dropdown-content {
     display: block;
 }
+
 .button {
-    background-color: limegreen; 
+    background-color: limegreen;
     border: none;
     color: white;
     padding: 15px 15px;
     text-align: center;
     text-decoration: none;
-   
     font-size: 14px;
     margin: 2px 2px;
     cursor: pointer;
 }
-    /*Footer*/
-    .footer {
+/*Footer*/
+.footer {
     background-color: black;
     height: 90px;
     width: auto;
     overflow: auto;
 }
 
-.footer .logo1
-{
+    .footer .logo1 {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* CSS specifik för service-kort*/
+.service-card {
+    border-width: 4px;
+    border-color: #aaaaaa;
+    margin-bottom: 10px;
+}
+.service-card-image {
     display: block;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 100%;
+    max-height: 300px;
+    width: auto;
+    height: auto;
+    margin: auto;
+}
+.service-card-image-wrapper {
+    width: 100%;
+    height: 100%;
+    background-color: #aaaaaa;
+}
+.service-card-title {
+    font-size: 1.17em;
+    margin-top: 1.33em;
+    margin-bottom: 1.33em;
+    margin-left: 0;
+    margin-right: 0;
+    font-weight: bold;
+    /* TO implement */
+}
+
+    .service-card-description {
+        /* to implement */
+    }
+
+.service-categories{
+    display: block;
+    width: 100%;
+}
+.service-card-time-description {
+   font-size: 14px;
+   line-height: 20px;
 }
