@@ -69,10 +69,9 @@ namespace finder_ui.Controllers
                 List<Group3ServiceReference.SubCategory> subCategories = client.GetSubCategories().ToList();
                 List<Group3ServiceReference.ServiceType> serviceTypes = client.GetTypes().ToList();
                 List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
-               
-                int.TryParse(Session["UserId"].ToString(), out int userid);
-                
 
+                int.TryParse(Session["UserId"].ToString(), out int userid);
+ 
 
                 CreateServiceObject createServiceObject = new CreateServiceObject(
                     type,
@@ -104,7 +103,7 @@ namespace finder_ui.Controllers
             }
             catch
             {
-                return RedirectToAction("Error");
+              return RedirectToAction("Error");
             }
         }
 

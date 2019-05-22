@@ -4,7 +4,7 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Rediger</h2>
+<h2>Redigera</h2>
 
 
 @using (Html.BeginForm())
@@ -100,15 +100,15 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Spara" class="btn btn-default" />
+                <input type="submit" value="Spara" class="button" />
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Gå tillbaka", "Index")
-</div>
+    <div>
+        <a class="button" href="~/Service/Index">Gå tillbaka</a>
+    </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
