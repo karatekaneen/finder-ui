@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<finder_ui.Models.UserServiceObject>
 
 @{
-    ViewBag.Title = "Alla annonser";
+    ViewBag.Title = @Session["UserId"];
 }
 <h2>Index</h2>
 <div>
@@ -78,10 +78,18 @@
                         Skapad den @Html.FormatValue(item.IncomingService.CreatedTime, "{0:dd MMMM}")
                         kl: @Html.FormatValue(item.IncomingService.CreatedTime, "{0:hh:mm}")
                     </p>
-                    <p>
-                        @Html.ActionLink("Redigera", "Edit", new { id = item.IncomingService.Id }) |
-                        @Html.ActionLink("Radera", "Delete", new { id = item.IncomingService.Id })
-                    </p>
+                    @if (@Session["UserId"] != null)
+                    {
+                        <text>
+                        @if (@Session["UserId"].ToString() == item.IncomingUser.Id.ToString())
+                        {
+                        <p>
+                            @Html.ActionLink("Redigera", "Edit", new { id = item.IncomingService.Id }) |
+                            @Html.ActionLink("Radera", "Delete", new { id = item.IncomingService.Id })
+                        </p>
+                        }
+                        </text>
+                    }   
                 </div>
             </div>
         </div>
