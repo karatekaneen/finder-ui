@@ -1,9 +1,4 @@
-﻿
-/* Set padding to keep content from hitting the edges */
-.body-content {
-}
-
-.header {
+﻿.header {
     overflow: hidden;
     background-color: white;
     padding: 20px;
@@ -86,8 +81,8 @@
 
 .dropdown {
     position: relative;
-    display: inline-block;
-    float: right;
+    display: block;
+    float:right;
 }
 
 .dropdown-content {
@@ -170,4 +165,29 @@
 .service-card-time-description {
    font-size: 14px;
    line-height: 20px;
+}
+.footer .logo1
+{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+select {
+    padding: 8px;
+    text-align: center;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+
+
+a {
+    color: limegreen;
+}
+
+a:hover {
+    color: green;
+    text-decoration: none;
 }
