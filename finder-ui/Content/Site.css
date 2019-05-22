@@ -126,6 +126,9 @@
     }
 
     /* CSS specifik för service-kort*/
+.service-list-wrapper{
+    padding-top: 30px;
+}
 .service-card {
     border-width: 4px;
     border-color: #aaaaaa;
