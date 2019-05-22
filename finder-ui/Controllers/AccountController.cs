@@ -50,7 +50,7 @@ namespace finder_ui.Controllers
                 };
 
                 var user = client.CreateUser(newUser);
-
+               // user.ToString();
                 if (user != null)
                 {
                     Session["AuthorizedAsUser"] = "true";
@@ -61,8 +61,7 @@ namespace finder_ui.Controllers
             if (Session["AuthorizedAsUser"] == "true")
             {
                 return View("UpdateProfile");
-            }
-            else
+            } else
             {
                 return View("Index");
             }

@@ -12,11 +12,23 @@ namespace finder_ui.Controllers
     public class ServiceController : Controller
     {
         Group3ServiceReference.Service1Client client = new Group3ServiceReference.Service1Client();
+        UserProfileServiceReference.UserProfileServiceClient userClient = new UserProfileServiceReference.UserProfileServiceClient();
 
         // GET: Service
         public ActionResult Index()
         {
-            return View(client.GetAllServiceData());
+            var indexService = client.GetAllServiceData();
+            int.TryParse(Session["UserId"].ToString(), out int userid);
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in indexService)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(70);
+                serviceList.Add(activeService);
+            }
+            
+            return View(serviceList);
         }
 
         // GET: Service/Details/5
@@ -41,7 +53,6 @@ namespace finder_ui.Controllers
         [HttpPost]
         public ActionResult Create(
             int type,
-            int creatorId,
             int serviceStatusId,
             string picture,
             string title,
@@ -58,9 +69,10 @@ namespace finder_ui.Controllers
                 List<Group3ServiceReference.SubCategory> subCategories = client.GetSubCategories().ToList();
                 List<Group3ServiceReference.ServiceType> serviceTypes = client.GetTypes().ToList();
                 List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
-
+               
                 int.TryParse(Session["UserId"].ToString(), out int userid);
- 
+                
+
 
                 CreateServiceObject createServiceObject = new CreateServiceObject(
                     type,
