@@ -18,7 +18,7 @@ namespace finder_ui.Controllers
         public ActionResult Index()
         {
             var indexService = client.GetAllServiceData();
-            int.TryParse(Session["UserId"].ToString(), out int userid);
+           // int.TryParse(Session["UserId"].ToString(), out int userid);
             List<UserServiceObject> serviceList = new List<UserServiceObject>();
             foreach (var item in indexService)
             {
