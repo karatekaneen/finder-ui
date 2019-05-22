@@ -3,97 +3,93 @@
 @{
     ViewBag.Title = "Alla annonser";
 }
-
 <h2>Index</h2>
+<div>
+    <a class="button" href="~/Service/Create">Skapa ny annons</a>
+    <br />
+</div>
+<div class="container-fluid service-list-wrapper">
 
-<p>
-    @Html.ActionLink("Skapa ny annons", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Titel
-        </th>
-        <th>
-            Underkategori
-        </th>
-        <th>
-            Kategori
-        </th>
-        <th>
-            Skapad
-        </th>
-        <th>
-            Använarnamn (id för tillfället)
-        </th>
-        <th>
-            Beskrivning
-        </th>
-        <th>
-            Startdatum
-        </th>
-        <th>
-            Slutdatum
-        </th>
-        <th>
-            Bild
-        </th>
-        <th>
-            Pris
-        </th>
-        <th>
-            Status
-        </th>
+    <div class="row flex-wrap">
+        @foreach (var item in Model)
+        {
+        <div class="col-sm-12 col-md-4">
+            <div class="card service-card">
+                <div class="service-card-image-wrapper">
+                    <img src="@Html.DisplayFor(modelItem => item.Picture)"
+                         class="card-img-top service-card-image"
+                         alt="Service description image">
+                </div>
 
-        <th>
-            Annonstyp
-        </th>
-        <th></th>
-    </tr>
+                <div class="card-header">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubCategory.Titel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SubCategory.ParentCategory.Titel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatorID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.StartDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EndDate)
-        </td>
-        <td>
-            <img src="@Html.DisplayFor(modelItem => item.Picture)" height="100" width="100"/>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceStatus.ServiceStatusType.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ServiceType.Name)
-        </td>
-        <td>
-            @Html.ActionLink("Redigera", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Radera", "Delete", new { id = item.Id })
-        </td>
-    </tr>
+                    <span class="service-card-title">
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </span>
+                    <span class="service-card-title service-card-price">
+                        @Html.DisplayFor(modelItem => item.Price)kr
+                    </span>
+                    @if (item.ServiceType.Name == "Erbjuden")
+        {
+            <span class="badge badge-primary">Erbjuden</span>
 }
+                    @if (item.ServiceType.Name == "Önskad")
+        {
+            <span class="badge badge-success">Önskad</span>
+}
+                    <div class="service-categories">
+                        <span class="breadcrumb-item active" aria-current="page">
+                            @Html.DisplayFor(modelItem => item.SubCategory.ParentCategory.Titel)
+                        </span>
+                        <span class="breadcrumb-item active" aria-current="page">
+                            @Html.DisplayFor(modelItem => item.SubCategory.Titel)
+                        </span>
 
-</table>
+                    </div>
+
+                </div>
+                <div class="card-body">
+                    <p class="service-card-description">
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </p>
+
+                    <p>
+                        @Html.DisplayFor(modelItem => item.ServiceStatus.ServiceStatusType.Name)
+                    </p>
+
+                    <p>
+                        @Html.DisplayFor(modelItem => item.CreatorID)
+                    </p>
+                    @if (item.TimeNeeded)
+    {
+                <div class="service-card-time-description">
+                    <div class="service-card-time-unit">
+                        <b>Från</b>: @Html.FormatValue(item.StartDate, "{0:dd MMMM}")
+                        kl: @Html.FormatValue(item.StartDate, "{0:hh:mm}")
+                    </div>
+                    <div class="service-card-time-unit">
+                        <b>Till</b>: @Html.FormatValue(item.EndDate, "{0:dd MMMM}")
+                        kl: @Html.FormatValue(item.EndDate, "{0:hh:mm}")
+                    </div>
+                </div>
+}
+                </div>
+                <div class="card-footer">
+                    <p>
+                        Skapad den @Html.FormatValue(item.CreatedTime, "{0:dd MMMM}")
+                        kl: @Html.FormatValue(item.CreatedTime, "{0:hh:mm}")
+                    </p>
+                    <p>
+                        @Html.ActionLink("Redigera", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Radera", "Delete", new { id = item.Id })
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        }
+    </div>
+
+
+
+</div>

@@ -60,7 +60,7 @@ namespace finder_ui.Controllers
 
             if (Session["AuthorizedAsUser"] == "true")
             {
-                return View("UpdateProfile");
+                return View("UpdateUserProfile");
             }
             else
             {

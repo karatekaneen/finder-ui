@@ -97,9 +97,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Radera" class="btn btn-default" /> |
-            @Html.ActionLink("Gå tillbaka", "Index")
-        </div>
+    <div class="form-actions no-color">
+        <input type="submit" value="Radera" class="btn btn-default" /> |
+        <a class="button" href="~/Service/Index">Gå tillbaka</a>
+    </div>
     }
 </div>
