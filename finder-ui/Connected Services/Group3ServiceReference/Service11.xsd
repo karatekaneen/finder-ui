@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/AnnonsService" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/AnnonsService" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://193.10.202.78/Annons/Service1.svc?xsd=xsd3" namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:complexType name="Contract">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CounterpartId" type="xs:int" />
+      <xs:element minOccurs="0" name="CounterpartStatus" type="xs:int" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceId" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceOwnerId" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceOwnerStatus" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Contract" nillable="true" type="tns:Contract" />
+  <xs:complexType name="ArrayOfServiceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceType" nillable="true" type="tns:ServiceType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceType" nillable="true" type="tns:ArrayOfServiceType" />
+  <xs:complexType name="ServiceType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceType" nillable="true" type="tns:ServiceType" />
+  <xs:complexType name="ArrayOfServiceStatusType">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ServiceStatusType" nillable="true" type="tns:ServiceStatusType" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfServiceStatusType" nillable="true" type="tns:ArrayOfServiceStatusType" />
+  <xs:complexType name="ServiceStatusType">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceStatusType" nillable="true" type="tns:ServiceStatusType" />
+  <xs:complexType name="ArrayOfSubCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SubCategory" nillable="true" type="tns:SubCategory" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSubCategory" nillable="true" type="tns:ArrayOfSubCategory" />
+  <xs:complexType name="SubCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Parent" type="xs:int" />
+      <xs:element minOccurs="0" name="ParentCategory" nillable="true" type="tns:Category" />
+      <xs:element minOccurs="0" name="Titel" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SubCategory" nillable="true" type="tns:SubCategory" />
+  <xs:complexType name="Category">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Titel" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Category" nillable="true" type="tns:Category" />
+  <xs:complexType name="ArrayOfCategory">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Category" nillable="true" type="tns:Category" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCategory" nillable="true" type="tns:ArrayOfCategory" />
+  <xs:complexType name="SearchService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedTime" nillable="true" type="tns:DateRange" />
+      <xs:element minOccurs="0" name="CreatorID" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="tns:DateRange" />
+      <xs:element minOccurs="0" name="Price" nillable="true" type="tns:PriceRange" />
+      <xs:element minOccurs="0" name="ServiceStatusId" type="xs:int" />
+      <xs:element xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ServiceTypeIds" nillable="true" type="q1:ArrayOfint" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="tns:DateRange" />
+      <xs:element xmlns:q2="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="SubCategoryIds" nillable="true" type="q2:ArrayOfint" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SearchService" nillable="true" type="tns:SearchService" />
+  <xs:complexType name="DateRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="End" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Start" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DateRange" nillable="true" type="tns:DateRange" />
+  <xs:complexType name="PriceRange">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Max" type="xs:double" />
+      <xs:element minOccurs="0" name="Min" type="xs:double" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="PriceRange" nillable="true" type="tns:PriceRange" />
+  <xs:complexType name="ArrayOfService">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Service" nillable="true" type="tns:Service" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfService" nillable="true" type="tns:ArrayOfService" />
+  <xs:complexType name="Service">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreatedTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatorID" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="EndDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Modified" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Picture" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Price" type="xs:double" />
+      <xs:element minOccurs="0" name="ServiceModifications" nillable="true" type="tns:ServiceModifications" />
+      <xs:element minOccurs="0" name="ServiceStatus" nillable="true" type="tns:ServiceStatus" />
+      <xs:element minOccurs="0" name="ServiceStatusID" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceType" nillable="true" type="tns:ServiceType" />
+      <xs:element minOccurs="0" name="StartDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="SubCategory" nillable="true" type="tns:SubCategory" />
+      <xs:element minOccurs="0" name="TimeNeeded" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Type" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Service" nillable="true" type="tns:Service" />
+  <xs:complexType name="ServiceModifications">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ActionTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="UserID" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceModifications" nillable="true" type="tns:ServiceModifications" />
+  <xs:complexType name="ServiceStatus">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FromDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="ServiceStatusType" nillable="true" type="tns:ServiceStatusType" />
+      <xs:element minOccurs="0" name="StatusTypeID" type="xs:int" />
+      <xs:element minOccurs="0" name="ToDate" nillable="true" type="xs:dateTime" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ServiceStatus" nillable="true" type="tns:ServiceStatus" />
+  <xs:complexType name="ArrayOfContract">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Contract" nillable="true" type="tns:Contract" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfContract" nillable="true" type="tns:ArrayOfContract" />
+</xs:schema>

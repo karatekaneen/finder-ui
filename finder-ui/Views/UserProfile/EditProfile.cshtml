@@ -1,0 +1,44 @@
+﻿@model finder_ui.Models.EditProfileViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+            @using (Html.BeginForm("EditProfileInformation", "UserProfile", FormMethod.Post))
+            {
+                <div class="form-group">
+                    <label for="userEmail">Email</label>
+                    @Html.HiddenFor(vm => vm.UserId)
+                    @Html.TextBoxFor(vm => vm.UserEmail, new { @class = "form-control text-center", @placeholder = "Asdasd@hotmail.com" })
+                </div>
+                <div class="form-group">
+                    <label for="userCity">Stad</label>
+                    @Html.TextBoxFor(vm => vm.UserCity, new { @class = "form-control text-center", @placeholder = "Stad" })
+
+                </div>
+                <div class="form-group">
+                    <label for="userAddress">Adress</label>
+                    @Html.TextBoxFor(vm => vm.UserAddress, new { @class = "form-control text-center", @placeholder = "Adress" })
+
+                </div>
+                <div class="form-group">
+                    <label for="userZipCode">Postnummer</label>
+                    @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "12345" })
+
+                </div>
+                <div class="form-group">
+                    <label for="userPhoneNumber">Telefonnummer</label>
+                    @Html.TextBoxFor(vm => vm.UserPhoneNumber, new { @class = "form-control text-center", @placeholder = "Telefonnummer" })
+
+                </div>
+                <div class="form-group">
+                    <label for="userProfilePicture">Profilbild</label>
+                    @Html.TextBoxFor(vm => vm.UserProfilePicture, new { @class = "form-control text-center", @placeholder = "Profilbild", @type = "file" })
+
+                </div>
+
+                <button type="submit">Spara</button>
+                <button onclick="location.href='@Url.Action("Index", "UserProfile")';return false;">Avbryt</button>
+            }
+        </div>
+    </div>
+</div>

@@ -1,0 +1,40 @@
+﻿@model finder_ui.Models.CreateAccountViewModel
+
+<div class="container">
+    <div class="row">
+        <div class="col align-self-center">
+            @using (Html.BeginForm("CreateAccount", "Account", FormMethod.Post))
+            {
+            <div class="form-group">
+
+                <label for="userFirstName">Förnamn</label>
+                @Html.HiddenFor(vm => vm.id)
+                @Html.ValidationMessageFor(vm => vm.firstname)
+                @Html.TextBoxFor(vm => vm.firstname, new { @class = "form-control text-center", @placeholder = "Förnamn" })
+            </div>
+                <div class="form-group">
+                    <label for="userLastName">Efternamn</label>
+                   
+                    @Html.TextBoxFor(vm => vm.surname, new { @class = "form-control text-center", @placeholder = "Efternamn" })
+                </div>
+                <div class="form-group">
+                    <label for="userEmail">E-Post adress</label>
+                    @Html.TextBoxFor(vm => vm.email, new { @class = "form-control text-center", @placeholder = "Epost" })
+
+                </div>
+                <div class="form-group">
+                    <label for="userName">Användarnamn</label>
+                    @Html.TextBoxFor(vm => vm.username, new { @class = "form-control text-center", @placeholder = "Användarnamn" })
+
+                </div>
+                <div class="form-group">
+                    <label for="userPassword">Lösenord</label>
+                    @Html.TextBoxFor(vm => vm.password, new { @class = "form-control text-center", @placeholder = "Lösenord" })
+
+                </div>
+                <button type="submit" class="btn btn-primary">Skapa Konto</button>
+            }
+        </div>
+
+    </div>
+</div>
