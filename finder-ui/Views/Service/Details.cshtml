@@ -6,7 +6,6 @@
 
 
     <div class="container-fluid service-list-wrapper">
-
         <div class="row flex-wrap">
             <div class="col-sm-12 col-md-10 offset-md-1">
                 <div class="card service-card">
@@ -79,7 +78,7 @@
                             Annonsör:
                             @Html.DisplayFor(modelItem => modelItem.IncomingUser.Username)
                             Skapad den @Html.FormatValue(Model.IncomingService.CreatedTime, "{0:dd MMMM}")
-                            kl: @Html.FormatValue(Model.IncomingService.CreatedTime, "{0:hh:mm}")
+                            http://localhost:64521/Service/Details/7   kl: @Html.FormatValue(Model.IncomingService.CreatedTime, "{0:hh:mm}")
 
                         </p>
 
@@ -87,8 +86,8 @@
 
                 </div>
                 <div align="center">
-                    <a class="button" href="~/Service/Index">Gå tillbaka</a>
+                    <a href="~/Service/Index">< Gå tillbaka</a>
                 </div>
             </div>
-            
-        </div>
+        </div>   
+    </div>
