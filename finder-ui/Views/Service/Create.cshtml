@@ -20,12 +20,14 @@
        data-trigger="hover"
        title="Popover Header"
        data-content="Some content inside the popover">
-        <span class="glyphicon glyphicon-question-sign">?</span>
+       <span class="glyphicon glyphicon-question-sign">?</span>
     </a>
 
     <script>
         $(document).ready(function () {
             $('[data-toggle="popover"]').popover();
+            console.log(popover);
+            console.log(Popover);
         });
     </script>
 
