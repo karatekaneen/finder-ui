@@ -34,14 +34,7 @@ namespace finder_ui.Controllers
         // GET: Service/Details/5
         public ActionResult Details(int id)
         {
-            Group3ServiceReference.Service service = client.GetServiceById(id);
-
-            UserServiceObject userServiceObject = new UserServiceObject();
-            userServiceObject.IncomingService = service;
-            userServiceObject.IncomingUser = userClient.GetUserByUserId(service.CreatorID);
-          
-
-            return View(userServiceObject);            
+            return View();
         }
 
         // GET: Service/Create
@@ -78,6 +71,7 @@ namespace finder_ui.Controllers
                 List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
 
                 int.TryParse(Session["UserId"].ToString(), out int userid);
+ 
 
                 CreateServiceObject createServiceObject = new CreateServiceObject(
                     type,
@@ -92,8 +86,6 @@ namespace finder_ui.Controllers
                     timeNeeded,
                     subCategoryId);
 
-                createServiceObject.ServiceStatusId = 2;
-
                 client.CreateService(
                     createServiceObject.Type,
                     createServiceObject.CreatorId,
@@ -106,7 +98,7 @@ namespace finder_ui.Controllers
                     createServiceObject.EndDate,
                     createServiceObject.TimeNeeded,
                     createServiceObject.SubCategoryId);
-                
+
                 return RedirectToAction("Index");
             }
             catch
@@ -122,7 +114,6 @@ namespace finder_ui.Controllers
             Group3ServiceReference.Service service = client.GetServiceById(id);
             List<Group3ServiceReference.ServiceStatusType> statuses = client.GetServiceStatusTypes().ToList();
             List<Group3ServiceReference.SubCategory> subCategories = client.GetSubCategories().ToList();
-            List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
             List<Group3ServiceReference.ServiceType> serviceTypes = client.GetTypes().ToList();
     
             EditServiceObject editService = new EditServiceObject(
@@ -139,7 +130,6 @@ namespace finder_ui.Controllers
                 service.SubCategory.Id,
                 statuses,
                 subCategories,
-                categories,
                 serviceTypes
                 );
 
@@ -192,15 +182,11 @@ namespace finder_ui.Controllers
             try
             {
                 int.TryParse(Session["UserId"].ToString(), out int userid);
-                Group3ServiceReference.Service service = client.GetServiceById(id);
-
-                UserServiceObject userServiceObject = new UserServiceObject();
-                userServiceObject.IncomingService = service;
-                userServiceObject.IncomingUser = userClient.GetUserByUserId(service.CreatorID);
+                var service = client.GetServiceById(id);
 
                 if (service.CreatorID == userid)
                 {
-                    return View(userServiceObject);
+                    return View(service);
                 }
                 else
                 {
@@ -235,6 +221,21 @@ namespace finder_ui.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string searchString)
+        {
+            var services = client.Search(searchString);
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in services)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                serviceList.Add(activeService);
+            }
+            return View(serviceList);
         }
 
 
