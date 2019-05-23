@@ -71,7 +71,6 @@ namespace finder_ui.Controllers
                 List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
 
                 int.TryParse(Session["UserId"].ToString(), out int userid);
- 
 
                 CreateServiceObject createServiceObject = new CreateServiceObject(
                     type,
@@ -85,6 +84,8 @@ namespace finder_ui.Controllers
                     endDate,
                     timeNeeded,
                     subCategoryId);
+
+                createServiceObject.ServiceStatusId = 2;
 
                 client.CreateService(
                     createServiceObject.Type,
@@ -114,6 +115,7 @@ namespace finder_ui.Controllers
             Group3ServiceReference.Service service = client.GetServiceById(id);
             List<Group3ServiceReference.ServiceStatusType> statuses = client.GetServiceStatusTypes().ToList();
             List<Group3ServiceReference.SubCategory> subCategories = client.GetSubCategories().ToList();
+            List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
             List<Group3ServiceReference.ServiceType> serviceTypes = client.GetTypes().ToList();
     
             EditServiceObject editService = new EditServiceObject(
@@ -130,6 +132,7 @@ namespace finder_ui.Controllers
                 service.SubCategory.Id,
                 statuses,
                 subCategories,
+                categories,
                 serviceTypes
                 );
 
