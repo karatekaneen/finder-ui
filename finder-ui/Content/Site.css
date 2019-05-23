@@ -189,13 +189,17 @@
 }
 
 select {
-    padding: 8px;
+    padding: 5px;
     text-align: center;
     border-radius: 4px;
     cursor: pointer;
 }
 
-
+.help_btn {
+    color: black;
+    font-weight:300;
+    font-size: 20px;
+}
 
 
 a {
@@ -205,4 +209,10 @@ a {
 a:hover {
     color: green;
     text-decoration: none;
+}
+
+.bold_green {
+    color: limegreen;
+    font-size: 17px;
+    font-weight: 500;
 }
