@@ -157,17 +157,29 @@
     /* TO implement */
 }
 
-    .service-card-description {
-        /* to implement */
-    }
+.service-card-description {
+    line-height: 20px;
+    font-size: 15px;
+}
+.service-card-description-title{
+    font-size: 14px;
+    font-style: italic;
+    font-weight:700;
+}
 
-.service-categories{
+.service-card-description-text{
+    
+}
+
+.service-categories {
     display: block;
     width: 100%;
 }
 .service-card-time-description {
    font-size: 14px;
    line-height: 20px;
+   margin-top: 20px;
+   margin-bottom: 20px;
 }
 .footer .logo1
 {
