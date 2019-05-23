@@ -32,13 +32,13 @@
                         @Html.DisplayFor(modelItem => item.IncomingService.Price)kr
                     </span>
                     @if (item.IncomingService.ServiceType.Name == "Erbjuden")
-        {
-            <span class="badge badge-primary">Erbjuden</span>
-}
+                    {
+                        <span class="badge badge-primary">Erbjuden</span>
+                    }
                     @if (item.IncomingService.ServiceType.Name == "Önskad")
-        {
-            <span class="badge badge-success">Önskad</span>
-}
+                    {
+                        <span class="badge badge-success">Önskad</span>
+                    }
                     <div class="service-categories">
                         <span class="breadcrumb-item active" aria-current="page">
                             @Html.DisplayFor(modelItem => item.IncomingService.SubCategory.ParentCategory.Titel)
@@ -51,16 +51,14 @@
 
                 </div>
                 <div class="card-body">
-                    <p class="service-card-description">
-                        @Html.DisplayFor(modelItem => item.IncomingService.Description)
-                    </p>
-
-                    <p>
-                        @Html.DisplayFor(modelItem => item.IncomingService.ServiceStatus.ServiceStatusType.Name)
-                    </p>
-
-                    <p>
-                        @Html.DisplayFor(modelItem => item.IncomingUser.Username)</p>
+                    <div class="service-card-description">
+                        <div class="service-card-description-title">
+                            Beskrivning
+                        </div>
+                        <div class="service-card-description-text">
+                            @Html.DisplayFor(modelItem => item.IncomingService.Description)
+                        </div>
+                    </div>
                     @if (item.IncomingService.TimeNeeded)
     {
                 <div class="service-card-time-description">
@@ -74,6 +72,10 @@
                     </div>
                 </div>
 }
+                    <div class="service-card-creator-wrapper">
+                       <span class="service-card-description-title">Av: </span>
+                       <span>@Html.DisplayFor(modelItem => item.IncomingUser.Username)</span> <!-- TODO Gör den här till en länk till användarprofil. -->
+                    </div>
                 </div>
                 <div class="card-footer">
                     <p>
