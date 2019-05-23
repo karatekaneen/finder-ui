@@ -115,7 +115,8 @@ namespace finder_ui.Controllers
             List<Group3ServiceReference.ServiceStatusType> statuses = client.GetServiceStatusTypes().ToList();
             List<Group3ServiceReference.SubCategory> subCategories = client.GetSubCategories().ToList();
             List<Group3ServiceReference.ServiceType> serviceTypes = client.GetTypes().ToList();
-    
+            List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
+
             EditServiceObject editService = new EditServiceObject(
                 service.Id,
                 service.ServiceType.Id,
@@ -130,6 +131,7 @@ namespace finder_ui.Controllers
                 service.SubCategory.Id,
                 statuses,
                 subCategories,
+                categories,
                 serviceTypes
                 );
 

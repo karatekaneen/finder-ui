@@ -8,6 +8,8 @@ namespace finder_ui.Models
 {
     public class EditServiceObject
     {
+        
+
         public EditServiceObject(int id, int type, int serviceStatusId, string picture, string title, string description, double price, DateTime? startDate, DateTime? endDate, bool timeNeeded, int subCategoryId)
         {
             Id = id;
@@ -22,6 +24,13 @@ namespace finder_ui.Models
             TimeNeeded = timeNeeded;
             SubCategoryId = subCategoryId;
         }
+
+       /* public EditServiceObject(int id, int type, int serviceStatusId, string picture, string title, string description, double price, DateTime? startDate, DateTime? endDate, bool timeNeeded, int subCategoryId, List<ServiceStatusType> statuses, List<SubCategory> subCategories, List<ServiceType> serviceTypes) : this(id, type, serviceStatusId, picture, title, description, price, startDate, endDate, timeNeeded, subCategoryId)
+        {
+            this.statuses = statuses;
+            this.subCategories = subCategories;
+            this.serviceTypes = serviceTypes;
+        }*/
 
         public EditServiceObject(int id, int type, int serviceStatusId, string picture, string title, string description, double price, DateTime? startDate, DateTime? endDate, bool timeNeeded, int subCategoryId, List<ServiceStatusType> statuses, List<SubCategory> subCategories, List<Category> categories, List<ServiceType> serviceTypes) : this(id, type, serviceStatusId, picture, title, description, price, startDate, endDate, timeNeeded, subCategoryId)
         {
