@@ -34,7 +34,14 @@ namespace finder_ui.Controllers
         // GET: Service/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Group3ServiceReference.Service service = client.GetServiceById(id);
+
+            UserServiceObject userServiceObject = new UserServiceObject();
+            userServiceObject.IncomingService = service;
+            userServiceObject.IncomingUser = userClient.GetUserByUserId(service.CreatorID);
+          
+
+            return View(userServiceObject);            
         }
 
         // GET: Service/Create
@@ -98,7 +105,7 @@ namespace finder_ui.Controllers
                     createServiceObject.EndDate,
                     createServiceObject.TimeNeeded,
                     createServiceObject.SubCategoryId);
-
+                
                 return RedirectToAction("Index");
             }
             catch
@@ -182,11 +189,15 @@ namespace finder_ui.Controllers
             try
             {
                 int.TryParse(Session["UserId"].ToString(), out int userid);
-                var service = client.GetServiceById(id);
+                Group3ServiceReference.Service service = client.GetServiceById(id);
+
+                UserServiceObject userServiceObject = new UserServiceObject();
+                userServiceObject.IncomingService = service;
+                userServiceObject.IncomingUser = userClient.GetUserByUserId(service.CreatorID);
 
                 if (service.CreatorID == userid)
                 {
-                    return View(service);
+                    return View(userServiceObject);
                 }
                 else
                 {

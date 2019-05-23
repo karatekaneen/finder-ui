@@ -8,6 +8,7 @@
     <a class="button" href="~/Service/Create">Skapa ny annons</a>
     <br />
 </div>
+
 <div class="container-fluid service-list-wrapper">
 
     <div class="row flex-wrap">
@@ -24,7 +25,8 @@
                 <div class="card-header">
 
                     <span class="service-card-title">
-                        @Html.DisplayFor(modelItem => item.IncomingService.Title)
+                        @Html.ActionLink(item.IncomingService.Title, "Details", new { id = item.IncomingService.Id })
+                        
                     </span>
                     <span class="service-card-title service-card-price">
                         @Html.DisplayFor(modelItem => item.IncomingService.Price)kr
