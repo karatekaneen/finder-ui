@@ -1,0 +1,132 @@
+﻿@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
+
+.reviews {
+    max-width: 600px;
+    margin: auto;
+    background: limegreen;
+}
+
+.block {
+    background-color: whitesmoke;
+    margin: 15px;
+    padding: 15px;
+}
+
+.form {
+    position: relative;
+    z-index: 1;
+    background: limegreen;
+    max-width: 600px;
+    margin: 0 auto 100px;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+}
+
+    .form input {
+        font-family: "Roboto", sans-serif;
+        outline: 0;
+        background: #f2f2f2;
+        width: 100%;
+        border: 0;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+    }
+
+    .form textarea {
+        width: 600px;
+        height: 270px;
+        text-align: left;
+        background: #f2f2f2;
+        resize: none;
+    }
+
+input[type="submit"] {
+    /* background: #0f72a5;*/
+    background: #0000e6;
+    color: #d6f5d6;
+}
+
+
+.form input:hover, .form input:active, .form input:focus {
+    background: #d6f5d6;
+    color: black;
+}
+
+.form textarea:hover, .form textarea:active, .form textarea:focus {
+    background: #d6f5d6;
+    color: black;
+}
+
+fieldset, label {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 20px;
+}
+
+h1 {
+    font-size: 1.5em;
+    margin: 10px;
+}
+
+/****** Style Star Rating Widget *****/
+
+.rating {
+    border: none;
+    float: left;
+}
+
+    .rating > input {
+        display: none;
+    }
+
+    .rating > label:before {
+        margin: 5px;
+        font-size: 1.25em;
+        font-family: FontAwesome;
+        display: inline-block;
+        content: "\f005";
+    }
+
+    .rating > .half:before {
+        content: "\f089";
+        position: absolute;
+    }
+
+    .rating > label {
+        color: #ddd;
+        float: right;
+    }
+
+    /***** CSS Magic to Highlight Stars on Hover *****/
+
+    .rating > input:checked ~ label, /* show gold star when clicked */
+    .rating:not(:checked) > label:hover, /* hover current star */
+    .rating:not(:checked) > label:hover ~ label {
+        color: #FFD700;
+    }
+        /* hover previous stars in list */
+
+        .rating > input:checked + label:hover, /* hover current star when changing rating */
+        .rating > input:checked ~ label:hover,
+        .rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+        .rating > input:checked ~ label:hover ~ label {
+            color: #FFED85;
+        }
+
+.starsDiv {
+    float: left;
+    position: relative;
+    left: 38%;
+}
+
+.rubrik {
+    color: #d6f5d6;
+    font-size: 20px;
+    text-shadow: inherit;
+}
