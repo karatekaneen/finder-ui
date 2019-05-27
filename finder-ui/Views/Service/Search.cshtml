@@ -22,7 +22,7 @@
                     <div class="card-header">
 
                         <span class="service-card-title">
-                            @Html.DisplayFor(modelItem => item.IncomingService.Title)
+                            @Html.ActionLink(item.IncomingService.Title, "Details", new { id = item.IncomingService.Id })
                         </span>
                         <span class="service-card-title service-card-price">
                             @Html.DisplayFor(modelItem => item.IncomingService.Price)kr
