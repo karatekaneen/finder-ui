@@ -15,6 +15,7 @@ namespace finder_ui.Controllers
         [HttpGet]
         public ActionResult ShowReviewsByServiceId(int id)
         {
+            //hej
             ViewBag.serviceid = id;
 
             List<ReviewServiceReference.ReviewData> reviewList = client.GetReviewsByServiceId(id).ToList();
