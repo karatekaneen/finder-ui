@@ -97,7 +97,12 @@ namespace finder_ui.Controllers
 
                 int.TryParse(Session["UserId"].ToString(), out int userid);
  
-
+                if (picture == "")
+                {
+                    picture = "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image10.jpg";
+                }
+                    
+                
                 CreateServiceObject createServiceObject = new CreateServiceObject(
                     type,
                     userid,
@@ -134,12 +139,42 @@ namespace finder_ui.Controllers
                 {
                     test = true;
                 }
+                
+          
                 return RedirectToAction("Index");
             }
             catch
             {
               return RedirectToAction("Error");
             }
+        }
+
+        [CustomAuthorization]
+        public ActionResult MyServices()
+        {
+            int.TryParse(Session["UserId"].ToString(), out int userid);
+
+            var indexService = client.AdvancedSearch(
+                new Group3ServiceReference.DateRange(),
+                new Group3ServiceReference.DateRange(),
+                new Group3ServiceReference.DateRange(),
+                userid,
+                null, // Titel
+                null,
+                new Group3ServiceReference.PriceRange(),
+                0,  // <--- Det här är status
+                new List<int>().ToArray(),
+                new List<int>().ToArray());
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in indexService)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                serviceList.Add(activeService);
+            }
+
+            return View(serviceList);
         }
 
         // GET: Service/Edit/5
@@ -230,6 +265,12 @@ namespace finder_ui.Controllers
                 {
                     return View(deleteService);
                 }
+
+                // TODO:
+                //else if (inloggad som admin){
+                //return View(service)
+                //}
+
                 else
                 {
                     return RedirectToAction("Error");
