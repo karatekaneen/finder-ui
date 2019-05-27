@@ -72,7 +72,12 @@ namespace finder_ui.Controllers
 
                 int.TryParse(Session["UserId"].ToString(), out int userid);
  
-
+                if (picture == "")
+                {
+                    picture = "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image10.jpg";
+                }
+                    
+                
                 CreateServiceObject createServiceObject = new CreateServiceObject(
                     type,
                     userid,
@@ -109,6 +114,8 @@ namespace finder_ui.Controllers
                 {
                     test = true;
                 }
+                
+          
                 return RedirectToAction("Index");
             }
             catch
