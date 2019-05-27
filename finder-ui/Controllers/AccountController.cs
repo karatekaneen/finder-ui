@@ -50,7 +50,7 @@ namespace finder_ui.Controllers
                 };
 
                 var user = client.CreateUser(newUser);
-
+               // user.ToString();
                 if (user != null)
                 {
                     Session["AuthorizedAsUser"] = "true";

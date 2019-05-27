@@ -5,12 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Include jQuery-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <link href="@Url.Content("~/Content/Finder.css")" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script>
+        const submitSearch = () => {
+            const form = document.getElementById('searchForm');
+            console.log(form);
+            if (form) {
+                form.submit();
+            }
+        }
+    </script>
 
 
     <!-- Include Date Picker -->
+    
 
     <title>@ViewBag.Title - Finder</title>
     <LINK REL="SHORTCUT ICON"
@@ -19,39 +29,65 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-    <div class="header">
-        <img alt="Finder" src="//i.imgur.com/YHlSO2T.png" style="max-width: 100% ;
+    <div class="container-fluid">
+        <div class="row">
+
+
+            <div class="col-12">
+                <div class="header row">
+                    <div class="col-md-9 col-sm-12">
+                        <img alt="Finder" src="//i.imgur.com/YHlSO2T.png" style="max-width: 100% ;
          min-height: 53px ; cursor:pointer" onclick="window.location = '/';" />
-        <input type="text" placeholder="  Search..">
-        <input type="submit" value="Search" />
+                    </div>
+                    <div class="col-md-3 col-sm-12 dropdown-wrapper">
+                        <div class="row">
+                            <div class="col-6">
+                                <a class="button btn-block" href="~/Service/Create">Ny annons</a>
+                            </div>
+                            <div class="col-6 dropdown">
 
-        <div class="dropdown">
+                                <img src="~/Content/Images/User.png" height="30">
+                                Username
+                                <div class="dropdown-content">
 
-            <span><img src="~/Content/Images/User.png" height="30">Username      </span>
-            <div class="dropdown-content">
+                                    <button class="button sign-out">Sign out</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                <button class="button sign-out">Sign out</button>
+
+
+                </div>
+                <div class="col-sm-12 ">
+                    <div class="input-group mb-3">
+                    @using (Html.BeginForm("Search", "Service", FormMethod.Post, new { id="searchForm" }))
+                    {
+                        <input type="text" class="form-control" id="searchString" name="searchString" placeholder=" Search.." aria-label="" aria-describedby="basic-addon1">
+                    }                    
+                <div class="input-group-append">         
+                   <button class="btn btn-outline-secondary" onclick="submitSearch()" type="button">Button</button>
+                </div>
+
+                </div>
+                </div>
+
             </div>
+            <div class="col-12">
+                <div class="line"> </div>
+                <div class="header-bottom">
+                    @Html.ActionLink("Home", "Index", "Service")
+                    @Html.ActionLink("Profile", "Index", "UserProfile")
+                    @Html.ActionLink("Messages", "", "//")
+                    @Html.ActionLink("Help", "//", "//")
 
-
+                </div>
+                <div class="line"> </div>
+            </div>
         </div>
     </div>
 
 
-
-
-
-    <br />
-    <div class="line"> </div>
-    <div class="header-bottom">
-
-        @Html.ActionLink("Home", "//", "//")
-        @Html.ActionLink("Profile", "//", "//")
-        @Html.ActionLink("Messages", "//", "//")
-        @Html.ActionLink("Help", "//", "//")
-
-    </div>
-    <div class="line"> </div>
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -1,0 +1,30 @@
+﻿@model List<finder_ui.ReviewServiceReference.ReviewData>
+<link href="~/Content/Review.css" rel="stylesheet" />
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+}
+
+<center><h2>Recensioner skivna om personen: <strong>@ViewBag.aboutuser</strong> </h2></center>
+
+<div class="reviews">
+
+    @foreach (var item in Model)
+    {
+        <br />
+        <div class="block">
+            <p>Recension av personen: @Html.DisplayFor(m => item.ByUserId)</p>
+            <p>Titel på recensionen: @Html.DisplayFor(m => item.Title)</p>
+            <p>Recensionsbeskrivning: @Html.DisplayFor(m => item.Text)</p>
+            <p>Rating av arbetet 1-5: @Html.DisplayFor(m => item.Rating)</p>
+        </div>
+
+    }
+    <br />
+</div>
+
+
+
+
+
