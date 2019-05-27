@@ -12,11 +12,23 @@ namespace finder_ui.Controllers
     public class ServiceController : Controller
     {
         Group3ServiceReference.Service1Client client = new Group3ServiceReference.Service1Client();
+        UserProfileServiceReference.UserProfileServiceClient userClient = new UserProfileServiceReference.UserProfileServiceClient();
 
         // GET: Service
         public ActionResult Index()
         {
-            return View(client.GetAllServiceData());
+            var indexService = client.GetAllServiceData();
+           // int.TryParse(Session["UserId"].ToString(), out int userid);
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in indexService)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                serviceList.Add(activeService);
+            }
+            
+            return View(serviceList);
         }
 
         // GET: Service/Details/5
@@ -41,7 +53,6 @@ namespace finder_ui.Controllers
         [HttpPost]
         public ActionResult Create(
             int type,
-            int creatorId,
             int serviceStatusId,
             string picture,
             string title,
@@ -92,7 +103,7 @@ namespace finder_ui.Controllers
             }
             catch
             {
-                return RedirectToAction("Error");
+              return RedirectToAction("Error");
             }
         }
 
@@ -104,7 +115,8 @@ namespace finder_ui.Controllers
             List<Group3ServiceReference.ServiceStatusType> statuses = client.GetServiceStatusTypes().ToList();
             List<Group3ServiceReference.SubCategory> subCategories = client.GetSubCategories().ToList();
             List<Group3ServiceReference.ServiceType> serviceTypes = client.GetTypes().ToList();
-    
+            List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
+
             EditServiceObject editService = new EditServiceObject(
                 service.Id,
                 service.ServiceType.Id,
@@ -119,6 +131,7 @@ namespace finder_ui.Controllers
                 service.SubCategory.Id,
                 statuses,
                 subCategories,
+                categories,
                 serviceTypes
                 );
 
@@ -210,6 +223,21 @@ namespace finder_ui.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string searchString)
+        {
+            var services = client.Search(searchString);
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in services)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                serviceList.Add(activeService);
+            }
+            return View(serviceList);
         }
 
 

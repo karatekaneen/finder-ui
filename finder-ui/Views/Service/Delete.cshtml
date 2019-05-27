@@ -1,105 +1,104 @@
-﻿@model finder_ui.Group3ServiceReference.Service
-
+﻿@model finder_ui.Models.UserServiceObject
 @{
     ViewBag.Title = "Delete";
 }
+<div class="form-actions no-color" align="center">
+    <h2>Radera</h2>
+    <h3>Är det säkert att du vill ta bort det här?</h3>
+</div>
 
-<h2>Radera</h2>
+<div class="container-fluid service-list-wrapper">
 
-<h3>Är det säkert att du vill ta bort det här?</h3>
-<div>
-    <h4>Annons</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Skapad
-        </dt>
+    <div class="row flex-wrap">
+        <div class="col-sm-12 col-md-10 offset-md-1">
+            <div class="card service-card">
+                <div class="service-card-image-wrapper">
+                    <img src="@Html.DisplayFor(modelItem => modelItem.IncomingService.Picture)"
+                         class="card-img-top service-card-image"
+                         alt="Service description image">
+                </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedTime)
-        </dd>
+                <div class="card-header">
 
-        <dt>
-            Titel
-        </dt>
+                    <span class="service-card-title">
+                        @Html.ActionLink(Model.IncomingService.Title, "Details", new { id = Model.IncomingService.Id })
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+                    </span>
+                    <span class="service-card-title service-card-price">
+                        @Html.DisplayFor(modelItem => modelItem.IncomingService.Price)kr
+                    </span>
+                    @if (Model.IncomingService.ServiceType.Name == "Erbjuden")
+                    {
+                        <span class="badge badge-primary">Erbjuden</span>
+                    }
+                    @if (Model.IncomingService.ServiceType.Name == "Önskad")
+                    {
+                        <span class="badge badge-success">Önskad</span>
+                    }
+                    <div class="service-categories">
+                        <span class="breadcrumb-item active" aria-current="page">
+                            @Html.DisplayFor(modelItem => modelItem.IncomingService.SubCategory.ParentCategory.Titel)
+                        </span>
+                        <span class="breadcrumb-item active" aria-current="page">
+                            @Html.DisplayFor(modelItem => modelItem.IncomingService.SubCategory.Titel)
+                        </span>
 
-        <dt>
-            Användarnamn (id)
-        </dt>
+                    </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatorID)
-        </dd>
-
-        <dt>
-            Beskrivning
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            Startdatum
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartDate)
-        </dd>
-
-        <dt>
-            Slutdatum
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.EndDate)
-        </dd>
-
-        <dt>
-            Bild
-        </dt>
-
-        <dd>
-            <img src="@Html.DisplayFor(model => model.Picture)" height="100" width="100" />
-        </dd>
-
-        <dt>
-            Pris
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-        <dt>
-            Status
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ServiceStatus.ServiceStatusType.Name)
-        </dd>
+                </div>
+                <div class="card-body">
+                    <p>
 
 
-        <dt>
-           Annonstyp
-        </dt>
+                    </p>
+                    <p class="service-card-description">
+                        <b>Beskrivning</b><br />
+                        @Html.DisplayFor(modelItem => modelItem.IncomingService.Description)
+                    </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.ServiceType.Name)
-        </dd>
+                    <p>
+                        <b>Status för annonsen</b><br />
+                        @Html.DisplayFor(modelItem => modelItem.IncomingService.ServiceStatus.ServiceStatusType.Name)
+                    </p>
 
-    </dl>
 
-    @using (Html.BeginForm()) {
+                    @if (Model.IncomingService.TimeNeeded)
+                    {
+                        <div class="service-card-time-description">
+                            <div class="service-card-time-unit">
+                                <b>Från</b>: @Html.FormatValue(Model.IncomingService.StartDate, "{0:dd MMMM}")
+                                kl: @Html.FormatValue(Model.IncomingService.StartDate, "{0:hh:mm}")
+                            </div>
+                            <div class="service-card-time-unit">
+                                <b>Till</b>: @Html.FormatValue(Model.IncomingService.EndDate, "{0:dd MMMM}")
+                                kl: @Html.FormatValue(Model.IncomingService.EndDate, "{0:hh:mm}")
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="card-footer">
+                    <p>
+                        Annonsör:
+                        @Html.DisplayFor(modelItem => modelItem.IncomingUser.Username)
+                        Skapad den @Html.FormatValue(Model.IncomingService.CreatedTime, "{0:dd MMMM}")
+                        kl: @Html.FormatValue(Model.IncomingService.CreatedTime, "{0:hh:mm}")
+                    </p>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Radera" class="btn btn-default" /> |
-            @Html.ActionLink("Gå tillbaka", "Index")
+        <div class="form-actions no-color" align="center">
+            <input type="submit" value="Radera" class="button"  /> 
+        </div>
+        <div>
+            <a href="~/Service/Index">< Gå tillbaka</a>
         </div>
     }
 </div>

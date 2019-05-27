@@ -4,129 +4,202 @@
     ViewBag.Title = "Create";
 }
 
+<script>
+    $(document).ready(function () {
+        $('[data-toggle="popover"]').popover();
+    });
+</script>
+
 <h2>Skapa annons</h2>
 
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>Din annons</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Type, "Annonstyp", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(x => Model.Type, new SelectList(Model.ServiceTypeList, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+
+    <div class="form-horizontal">
+        <h4>Din annons</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Söker du någon som kan utföra en tjänst åt dig (önskad) eller kan du utföra en tjänst åt någon annan (erbjuden)?">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Annonstyp</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => Model.Type, new SelectList(Model.ServiceTypeList, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Här anger du en titel som beskriver din annons">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Titel</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.ServiceStatusId)
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Här kan du klistra in en url till en bild som passar din annons">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Bild</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Picture, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Beskriv noga vad det är du önskar/erbjuder för tjänst.">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Beskrivning</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Ange ett pris för den önskade/erbjudna tjänsten">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Pris</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Ange startdatum för tjänsten om detta krävs">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Startdatum</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar">
+                        </span>
+                    </div>
+                    <input class="form-control" id="StartDate" name="StartDate" placeholder="YYYY/MM/DD hh:mm" type="text" />
+                </div>
+                @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Ange slutdatum för tjänsten om detta krävs">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Slutdatum</label>
+            <div class="col-md-10">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar">
+                        </span>
+                    </div>
+                    <input class="form-control" id="EndDate" name="EndDate" placeholder="YYYY/MM/DD hh:mm" type="text" />
+                </div>
+                @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Kan tjänsten utföras när som helst eller endast under exempelvis ett specifikt datum">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Måste tjänsten utföras under specifik tid?</label>
+            <div class="col-md-10">
+                Ja
+                @Html.RadioButtonFor(m => m.TimeNeeded, "true")
+                Nej
+                @Html.RadioButtonFor(m => m.TimeNeeded, "false")
+
+                @Html.ValidationMessageFor(model => model.TimeNeeded, "", new { @class = "text-danger" })
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Välj den kategori som bäst passar din annons">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Kategori</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => Model.CategoryList, new SelectList(Model.CategoryList, "Id", "Titel"), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CategoryList, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <a href="#"
+               data-toggle="popover"
+               data-trigger="hover"
+               class="help_btn"
+               data-content="Välj den underkategori som bäst passar din annons">
+                <span class="glyphicon glyphicon-question-sign">?</span>
+            </a>
+            <label class="bold_green">Underkategori</label>
+            <div class="col-md-10">
+                @Html.DropDownListFor(x => Model.SubCategoryId, new SelectList(Model.SubCategoryList, "Id", "Titel"), new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-8">
+                <input type="submit" value="Skapa annons" class="button" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.CreatorId, "Skapad av", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.CreatorId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CreatorId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ServiceStatusId, "Annonsstatus", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(x => Model.ServiceStatusId, new SelectList(Model.StatusList, "Id", "Name"), new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.ServiceStatusId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Picture, "Bild", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Picture, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Picture, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Title, "Titel", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Description, "Beskrivning", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Price, "Pris", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.StartDate, "Startdatum", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.EndDate, "Slutdatum", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TimeNeeded, "Krävs specifik tidpunkt?", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            Ja
-            @Html.RadioButtonFor(m => m.TimeNeeded, "true")
-            Nej
-            @Html.RadioButtonFor(m => m.TimeNeeded, "false")
-
-            @Html.ValidationMessageFor(model => model.TimeNeeded, "", new { @class = "text-danger" })
-
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.SubCategoryId, "Kategori", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(x => Model.CategoryList, new SelectList(Model.CategoryList, "Id", "Titel"), new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.CategoryList, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.SubCategoryId, "Underkategori", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownListFor(x => Model.SubCategoryId, new SelectList(Model.SubCategoryList, "Id", "Titel"), new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Skapa" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>
-    @Html.ActionLink("Gå tillbaka", "Index")
+    <a href="~/Service/Index">< Gå tillbaka</a>
 </div>
 
 @section Scripts {
