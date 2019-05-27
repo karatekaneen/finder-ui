@@ -21,12 +21,21 @@ namespace finder_ui.Controllers
             var indexService = client.GetAllServiceData();
            // int.TryParse(Session["UserId"].ToString(), out int userid);
             List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            
+
             foreach (var item in indexService)
             {
+                List<ReviewServiceReference.ReviewData> reviews = new List<ReviewServiceReference.ReviewData>();
+
+                var temp = reviewClient.GetReviewsByServiceId(item.Id).ToList();
+                if (temp.Count > 0)
+                {
+                    reviews = temp;
+                }
                 UserServiceObject activeService = new UserServiceObject();
                 activeService.IncomingService = item;
                 activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
-                activeService.IncomingReview = reviewClient.GetReviewsByAboutUserId(activeService.IncomingService.CreatorID).ToList();
+                activeService.IncomingReview = reviews;
                 serviceList.Add(activeService);
             }
             
@@ -38,10 +47,18 @@ namespace finder_ui.Controllers
         {
             var service = client.GetServiceById(id);
             var user = userClient.GetUserByUserId(service.CreatorID);
+            List<ReviewServiceReference.ReviewData> reviews = new List<ReviewServiceReference.ReviewData>();
+
+            var temp = reviewClient.GetReviewsByServiceId(service.Id).ToList();
+            if (temp.Count > 0)
+            {
+                reviews = temp;
+            }
 
             UserServiceObject detailedService = new UserServiceObject();
             detailedService.IncomingService = service;
             detailedService.IncomingUser = user;
+            detailedService.IncomingReview = reviews;
             return View(detailedService);
         }
 
