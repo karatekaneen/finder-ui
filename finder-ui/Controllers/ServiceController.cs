@@ -207,6 +207,12 @@ namespace finder_ui.Controllers
                 {
                     return View(service);
                 }
+
+                // TODO:
+                //else if (inloggad som admin){
+                //return View(service)
+                //}
+
                 else
                 {
                     return RedirectToAction("Error");
