@@ -34,7 +34,13 @@ namespace finder_ui.Controllers
         // GET: Service/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var service = client.GetServiceById(id);
+            var user = userClient.GetUserByUserId(service.CreatorID);
+
+            UserServiceObject detailedService = new UserServiceObject();
+            detailedService.IncomingService = service;
+            detailedService.IncomingUser = user;
+            return View(detailedService);
         }
 
         // GET: Service/Create
@@ -195,10 +201,15 @@ namespace finder_ui.Controllers
             {
                 int.TryParse(Session["UserId"].ToString(), out int userid);
                 var service = client.GetServiceById(id);
+                var user = userClient.GetUserByUserId(service.CreatorID);
 
-                if (service.CreatorID == userid)
+                UserServiceObject deleteService = new UserServiceObject();
+                deleteService.IncomingService = service;
+                deleteService.IncomingUser = user;
+
+                if (deleteService.IncomingService.CreatorID == userid)
                 {
-                    return View(service);
+                    return View(deleteService);
                 }
                 else
                 {
