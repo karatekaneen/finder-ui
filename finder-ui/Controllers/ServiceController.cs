@@ -117,6 +117,34 @@ namespace finder_ui.Controllers
             }
         }
 
+        [CustomAuthorization]
+        public ActionResult MyServices()
+        {
+            int.TryParse(Session["UserId"].ToString(), out int userid);
+
+            var indexService = client.AdvancedSearch(
+                new Group3ServiceReference.DateRange(),
+                new Group3ServiceReference.DateRange(),
+                new Group3ServiceReference.DateRange(),
+                userid,
+                null, // Titel
+                null,
+                new Group3ServiceReference.PriceRange(),
+                0,  // <--- Det här är status
+                new List<int>().ToArray(),
+                new List<int>().ToArray());
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in indexService)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                serviceList.Add(activeService);
+            }
+
+            return View(serviceList);
+        }
+
         // GET: Service/Edit/5
         [CustomAuthorization]
         public ActionResult Edit(int id)
