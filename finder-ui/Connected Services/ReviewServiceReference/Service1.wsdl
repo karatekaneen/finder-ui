@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="Service1" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://193.10.202.77/ReviewService/Service1.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://193.10.202.77/ReviewService/Service1.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://193.10.202.77/ReviewService/Service1.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfReview" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IService1_GetUnhandledReviews_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnhandledReviews" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetUnhandledReviews_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetUnhandledReviewsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ApproveReview_InputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveReview" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ApproveReview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ApproveReviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DenyReview_InputMessage">
+    <wsdl:part name="parameters" element="tns:DenyReview" />
+  </wsdl:message>
+  <wsdl:message name="IService1_DenyReview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:DenyReviewResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetReviewsByServiceId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReviewsByServiceId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetReviewsByServiceId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReviewsByServiceIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetReviewsByAboutUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReviewsByAboutUserId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetReviewsByAboutUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReviewsByAboutUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetReviewsByUserId_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetReviewsByUserId" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetReviewsByUserId_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetReviewsByUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveReview_InputMessage">
+    <wsdl:part name="parameters" element="tns:SaveReview" />
+  </wsdl:message>
+  <wsdl:message name="IService1_SaveReview_OutputMessage">
+    <wsdl:part name="parameters" element="tns:SaveReviewResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IService1">
+    <wsdl:operation name="GetUnhandledReviews">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetUnhandledReviews" message="tns:IService1_GetUnhandledReviews_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetUnhandledReviewsResponse" message="tns:IService1_GetUnhandledReviews_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ApproveReview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ApproveReview" message="tns:IService1_ApproveReview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ApproveReviewResponse" message="tns:IService1_ApproveReview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="DenyReview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/DenyReview" message="tns:IService1_DenyReview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/DenyReviewResponse" message="tns:IService1_DenyReview_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReviewsByServiceId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetReviewsByServiceId" message="tns:IService1_GetReviewsByServiceId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetReviewsByServiceIdResponse" message="tns:IService1_GetReviewsByServiceId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReviewsByAboutUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetReviewsByAboutUserId" message="tns:IService1_GetReviewsByAboutUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetReviewsByAboutUserIdResponse" message="tns:IService1_GetReviewsByAboutUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReviewsByUserId">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetReviewsByUserId" message="tns:IService1_GetReviewsByUserId_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetReviewsByUserIdResponse" message="tns:IService1_GetReviewsByUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="SaveReview">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/SaveReview" message="tns:IService1_SaveReview_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/SaveReviewResponse" message="tns:IService1_SaveReview_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetUnhandledReviews">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetUnhandledReviews" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ApproveReview">
+      <soap:operation soapAction="http://tempuri.org/IService1/ApproveReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DenyReview">
+      <soap:operation soapAction="http://tempuri.org/IService1/DenyReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReviewsByServiceId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetReviewsByServiceId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReviewsByAboutUserId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetReviewsByAboutUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReviewsByUserId">
+      <soap:operation soapAction="http://tempuri.org/IService1/GetReviewsByUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="SaveReview">
+      <soap:operation soapAction="http://tempuri.org/IService1/SaveReview" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Service1">
+    <wsdl:port name="BasicHttpBinding_IService1" binding="tns:BasicHttpBinding_IService1">
+      <soap:address location="http://193.10.202.77/ReviewService/Service1.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

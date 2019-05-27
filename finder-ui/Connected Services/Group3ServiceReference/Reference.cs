@@ -1028,10 +1028,10 @@ namespace finder_ui.Group3ServiceReference {
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateContract", ReplyAction="http://tempuri.org/IService1/CreateContractResponse")]
-        bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId);
+        bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateContract", ReplyAction="http://tempuri.org/IService1/CreateContractResponse")]
-        System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId);
+        System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangeContractStatus", ReplyAction="http://tempuri.org/IService1/ChangeContractStatusResponse")]
         bool ChangeContractStatus(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus);
@@ -1193,12 +1193,12 @@ namespace finder_ui.Group3ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId) {
-            return base.Channel.CreateContract(serviceId, counterpartId, serviceOwnerId, contractCreatorId);
+        public bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId) {
+            return base.Channel.CreateContract(serviceId, counterpartId, serviceOwnerId);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId) {
-            return base.Channel.CreateContractAsync(serviceId, counterpartId, serviceOwnerId, contractCreatorId);
+        public System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId) {
+            return base.Channel.CreateContractAsync(serviceId, counterpartId, serviceOwnerId);
         }
         
         public bool ChangeContractStatus(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus) {

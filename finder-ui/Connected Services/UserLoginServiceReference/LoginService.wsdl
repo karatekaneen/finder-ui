@@ -43,6 +43,18 @@
   <wsdl:message name="ILoginService_CheckUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckUserResponse" />
   </wsdl:message>
+  <wsdl:message name="ILoginService_CheckModerator_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckModerator" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CheckModerator_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckModeratorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_ModeratorLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModeratorLogin" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_ModeratorLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModeratorLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="ILoginService_GetUserId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserId" />
   </wsdl:message>
@@ -152,6 +164,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CheckUser" message="tns:ILoginService_CheckUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CheckUserResponse" message="tns:ILoginService_CheckUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CheckModerator">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CheckModerator" message="tns:ILoginService_CheckModerator_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CheckModeratorResponse" message="tns:ILoginService_CheckModerator_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModeratorLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/ModeratorLogin" message="tns:ILoginService_ModeratorLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/ModeratorLoginResponse" message="tns:ILoginService_ModeratorLogin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUserId">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/GetUserId" message="tns:ILoginService_GetUserId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/GetUserIdResponse" message="tns:ILoginService_GetUserId_OutputMessage" />
@@ -258,6 +278,24 @@
     </wsdl:operation>
     <wsdl:operation name="CheckUser">
       <soap:operation soapAction="http://tempuri.org/ILoginService/CheckUser" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CheckModerator">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/CheckModerator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModeratorLogin">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/ModeratorLogin" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

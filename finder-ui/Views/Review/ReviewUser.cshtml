@@ -1,0 +1,40 @@
+﻿@model finder_ui.ReviewServiceReference.Reviews
+
+<link href="~/Content/Review.css" rel="stylesheet" />
+@{
+
+    ViewBag.Title = "Index";
+
+}
+
+
+
+<h1>Recension</h1>
+<div class="form">
+    <form action="~/Review/SaveReview" method="post">
+        <div class="rubrik">ByUserId</div>
+        @Html.TextBoxFor(m => m.ByUserId, new { @class = "input", @required = "Du måste mata in detta fältet" })
+        <br /><br />
+        <div class="rubrik">Titel</div>
+        @Html.TextBoxFor(m => m.Title, new { @class = "input", @required = "Du måste mata in detta fältet", @maxlength = "50" })
+        <br /><br />
+        <div class="rubrik">Skriv recension</div>
+        @Html.TextAreaFor(m => m.Text, new { @class = "input textarea", @required = "Du måste mata in detta fältet", @maxlength = "300" })
+        <br /><br />
+        <div class="rubrik">Betygsätt</div>
+        <div class="starsDiv">
+            <fieldset class="rating">
+                @Html.RadioButtonFor(m => m.Rating, 5, new { @id = "star5", @required = "5" })<label class="full" for="star5" title="5 stjärnor"></label>
+                @Html.RadioButtonFor(m => m.Rating, 4, new { @id = "star4", @required = "4" })<label class="full" for="star4" title="4 stjärnor"></label>
+                @Html.RadioButtonFor(m => m.Rating, 3, new { @id = "star3", @required = "3" })<label class="full" for="star3" title="3 stjärnor"></label>
+                @Html.RadioButtonFor(m => m.Rating, 2, new { @id = "star2", @required = "2" })<label class="full" for="star2" title="2 stjärnor"></label>
+                @Html.RadioButtonFor(m => m.Rating, 1, new { @id = "star1", @required = "1" })<label class="full" for="star1" title="1 stjärnor"></label>
+            </fieldset>
+        </div>
+        <br /><br />
+        @Html.TextBoxFor(m => m.Status, new { @Value = "Unhandled", @type = "hidden" })
+        @Html.TextBoxFor(m => m.AboutUserId, new { @Value = @ViewBag.aboutUser, @type = "hidden" })
+        <br /><br />
+        <input type="submit" value="Skicka" />
+    </form>
+</div>
