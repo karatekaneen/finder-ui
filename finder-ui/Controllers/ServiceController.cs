@@ -13,6 +13,7 @@ namespace finder_ui.Controllers
     {
         Group3ServiceReference.Service1Client client = new Group3ServiceReference.Service1Client();
         UserProfileServiceReference.UserProfileServiceClient userClient = new UserProfileServiceReference.UserProfileServiceClient();
+        ReviewServiceReference.Service1Client reviewClient = new ReviewServiceReference.Service1Client();
 
         // GET: Service
         public ActionResult Index()
@@ -25,6 +26,7 @@ namespace finder_ui.Controllers
                 UserServiceObject activeService = new UserServiceObject();
                 activeService.IncomingService = item;
                 activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                activeService.IncomingReview = reviewClient.GetReviewsByAboutUserId(activeService.IncomingService.CreatorID).ToList();
                 serviceList.Add(activeService);
             }
             

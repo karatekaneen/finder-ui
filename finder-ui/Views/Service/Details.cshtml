@@ -77,6 +77,7 @@
                         <p>
                             Annonsör:
                             @Html.DisplayFor(modelItem => modelItem.IncomingUser.Username)
+                            @Html.DisplayFor(modelItem => modelItem.IncomingReview)
                             Skapad den @Html.FormatValue(Model.IncomingService.CreatedTime, "{0:dd MMMM}")
                             http://localhost:64521/Service/Details/7   kl: @Html.FormatValue(Model.IncomingService.CreatedTime, "{0:hh:mm}")
 
