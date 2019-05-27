@@ -13,6 +13,7 @@ namespace finder_ui.Controllers
     {
         Group3ServiceReference.Service1Client client = new Group3ServiceReference.Service1Client();
         UserProfileServiceReference.UserProfileServiceClient userClient = new UserProfileServiceReference.UserProfileServiceClient();
+        ReviewServiceReference.Service1Client reviewClient = new ReviewServiceReference.Service1Client();
 
         // GET: Service
         public ActionResult Index()
@@ -25,6 +26,7 @@ namespace finder_ui.Controllers
                 UserServiceObject activeService = new UserServiceObject();
                 activeService.IncomingService = item;
                 activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                activeService.IncomingReview = reviewClient.GetReviewsByAboutUserId(activeService.IncomingService.CreatorID).ToList();
                 serviceList.Add(activeService);
             }
             
@@ -34,7 +36,13 @@ namespace finder_ui.Controllers
         // GET: Service/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var service = client.GetServiceById(id);
+            var user = userClient.GetUserByUserId(service.CreatorID);
+
+            UserServiceObject detailedService = new UserServiceObject();
+            detailedService.IncomingService = service;
+            detailedService.IncomingUser = user;
+            return View(detailedService);
         }
 
         // GET: Service/Create
@@ -223,10 +231,15 @@ namespace finder_ui.Controllers
             {
                 int.TryParse(Session["UserId"].ToString(), out int userid);
                 var service = client.GetServiceById(id);
+                var user = userClient.GetUserByUserId(service.CreatorID);
 
-                if (service.CreatorID == userid)
+                UserServiceObject deleteService = new UserServiceObject();
+                deleteService.IncomingService = service;
+                deleteService.IncomingUser = user;
+
+                if (deleteService.IncomingService.CreatorID == userid)
                 {
-                    return View(service);
+                    return View(deleteService);
                 }
                 else
                 {

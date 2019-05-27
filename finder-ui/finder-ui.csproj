@@ -400,7 +400,7 @@
     <Content Include="Views\Review\ShowReviewsAboutUserId.cshtml" />
     <Content Include="Views\Review\ReviewService.cshtml" />
     <Content Include="Views\Review\ReviewUser.cshtml" />
-    <Content Include="Views\Service\MyServices.cshtml" />
+    <Content Include="Views\Service\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
