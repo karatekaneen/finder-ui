@@ -957,6 +957,18 @@ namespace finder_ui.UserLoginServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CheckUser", ReplyAction="http://tempuri.org/ILoginService/CheckUserResponse")]
         System.Threading.Tasks.Task<bool> CheckUserAsync(string Email, string Password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CheckModerator", ReplyAction="http://tempuri.org/ILoginService/CheckModeratorResponse")]
+        bool CheckModerator(string Email, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CheckModerator", ReplyAction="http://tempuri.org/ILoginService/CheckModeratorResponse")]
+        System.Threading.Tasks.Task<bool> CheckModeratorAsync(string Email, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/ModeratorLogin", ReplyAction="http://tempuri.org/ILoginService/ModeratorLoginResponse")]
+        bool ModeratorLogin(string Email, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/ModeratorLogin", ReplyAction="http://tempuri.org/ILoginService/ModeratorLoginResponse")]
+        System.Threading.Tasks.Task<bool> ModeratorLoginAsync(string Email, string Password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/GetUserId", ReplyAction="http://tempuri.org/ILoginService/GetUserIdResponse")]
         int GetUserId(string Email);
         
@@ -1115,6 +1127,22 @@ namespace finder_ui.UserLoginServiceReference {
         
         public System.Threading.Tasks.Task<bool> CheckUserAsync(string Email, string Password) {
             return base.Channel.CheckUserAsync(Email, Password);
+        }
+        
+        public bool CheckModerator(string Email, string Password) {
+            return base.Channel.CheckModerator(Email, Password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckModeratorAsync(string Email, string Password) {
+            return base.Channel.CheckModeratorAsync(Email, Password);
+        }
+        
+        public bool ModeratorLogin(string Email, string Password) {
+            return base.Channel.ModeratorLogin(Email, Password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModeratorLoginAsync(string Email, string Password) {
+            return base.Channel.ModeratorLoginAsync(Email, Password);
         }
         
         public int GetUserId(string Email) {
