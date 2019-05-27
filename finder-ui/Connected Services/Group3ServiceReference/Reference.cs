@@ -1158,6 +1158,12 @@ namespace finder_ui.Group3ServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/DeleteService", ReplyAction="http://tempuri.org/IService1/DeleteServiceResponse")]
         System.Threading.Tasks.Task<bool> DeleteServiceAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsAlive", ReplyAction="http://tempuri.org/IService1/IsAliveResponse")]
+        bool IsAlive();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/IsAlive", ReplyAction="http://tempuri.org/IService1/IsAliveResponse")]
+        System.Threading.Tasks.Task<bool> IsAliveAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1361,6 +1367,14 @@ namespace finder_ui.Group3ServiceReference {
         
         public System.Threading.Tasks.Task<bool> DeleteServiceAsync(int id) {
             return base.Channel.DeleteServiceAsync(id);
+        }
+        
+        public bool IsAlive() {
+            return base.Channel.IsAlive();
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsAliveAsync() {
+            return base.Channel.IsAliveAsync();
         }
     }
 }

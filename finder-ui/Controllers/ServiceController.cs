@@ -86,7 +86,9 @@ namespace finder_ui.Controllers
                     timeNeeded,
                     subCategoryId);
 
-                client.CreateService(
+                createServiceObject.ServiceStatusId = 2;
+
+                bool test = client.CreateService(
                     createServiceObject.Type,
                     createServiceObject.CreatorId,
                     createServiceObject.ServiceStatusId,
@@ -99,6 +101,14 @@ namespace finder_ui.Controllers
                     createServiceObject.TimeNeeded,
                     createServiceObject.SubCategoryId);
 
+                if (test)
+                {
+                    test = false;
+                }
+                else
+                {
+                    test = true;
+                }
                 return RedirectToAction("Index");
             }
             catch
