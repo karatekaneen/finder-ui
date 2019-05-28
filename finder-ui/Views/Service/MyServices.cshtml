@@ -9,10 +9,10 @@
 
 <div class="container-fluid service-list-wrapper">
 
-    <div class="row flex-wrap">
+    <div class="card-columns">
         @foreach (var item in Model)
         {
-            <div class="col-sm-12 col-md-4">
+            
                 <div class="card service-card">
                     <div class="service-card-image-wrapper">
                         <img src="@Html.DisplayFor(modelItem => item.IncomingService.Picture)"
@@ -108,8 +108,6 @@
                         }
                     </div>
                 </div>
-            </div>
-
         }
     </div>
-
+</div>
