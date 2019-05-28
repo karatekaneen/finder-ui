@@ -213,10 +213,21 @@ a {
     a:hover {
         color: green;
         text-decoration: none;
+        cursor: pointer;
     }
 
 .bold_green {
     color: limegreen;
     font-size: 17px;
     font-weight: 500;
+}
+
+.review-card-title { 
+    color: limegreen;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.stars-div span {
+    color: yellow;
 }
