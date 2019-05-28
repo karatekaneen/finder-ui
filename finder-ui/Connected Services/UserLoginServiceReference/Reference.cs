@@ -921,6 +921,30 @@ namespace finder_ui.UserLoginServiceReference {
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="UserLoginServiceReference.ILoginService")]
     public interface ILoginService {
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/IsAlive", ReplyAction="http://tempuri.org/ILoginService/IsAliveResponse")]
+        bool IsAlive();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/IsAlive", ReplyAction="http://tempuri.org/ILoginService/IsAliveResponse")]
+        System.Threading.Tasks.Task<bool> IsAliveAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CountActiveUsers", ReplyAction="http://tempuri.org/ILoginService/CountActiveUsersResponse")]
+        int CountActiveUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CountActiveUsers", ReplyAction="http://tempuri.org/ILoginService/CountActiveUsersResponse")]
+        System.Threading.Tasks.Task<int> CountActiveUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CountFlaggedUsers", ReplyAction="http://tempuri.org/ILoginService/CountFlaggedUsersResponse")]
+        int CountFlaggedUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CountFlaggedUsers", ReplyAction="http://tempuri.org/ILoginService/CountFlaggedUsersResponse")]
+        System.Threading.Tasks.Task<int> CountFlaggedUsersAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CountBlockedUsers", ReplyAction="http://tempuri.org/ILoginService/CountBlockedUsersResponse")]
+        int CountBlockedUsers();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CountBlockedUsers", ReplyAction="http://tempuri.org/ILoginService/CountBlockedUsersResponse")]
+        System.Threading.Tasks.Task<int> CountBlockedUsersAsync();
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CreateUser", ReplyAction="http://tempuri.org/ILoginService/CreateUserResponse")]
         finder_ui.UserLoginServiceReference.ReturnUser CreateUser(finder_ui.UserLoginServiceReference.NewUser NewUser);
         
@@ -957,11 +981,29 @@ namespace finder_ui.UserLoginServiceReference {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CheckUser", ReplyAction="http://tempuri.org/ILoginService/CheckUserResponse")]
         System.Threading.Tasks.Task<bool> CheckUserAsync(string Email, string Password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CheckModerator", ReplyAction="http://tempuri.org/ILoginService/CheckModeratorResponse")]
+        bool CheckModerator(string Email, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/CheckModerator", ReplyAction="http://tempuri.org/ILoginService/CheckModeratorResponse")]
+        System.Threading.Tasks.Task<bool> CheckModeratorAsync(string Email, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/ModeratorLogin", ReplyAction="http://tempuri.org/ILoginService/ModeratorLoginResponse")]
+        bool ModeratorLogin(string Email, string Password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/ModeratorLogin", ReplyAction="http://tempuri.org/ILoginService/ModeratorLoginResponse")]
+        System.Threading.Tasks.Task<bool> ModeratorLoginAsync(string Email, string Password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/GetUserId", ReplyAction="http://tempuri.org/ILoginService/GetUserIdResponse")]
         int GetUserId(string Email);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/GetUserId", ReplyAction="http://tempuri.org/ILoginService/GetUserIdResponse")]
         System.Threading.Tasks.Task<int> GetUserIdAsync(string Email);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/UpdateAccountInfo", ReplyAction="http://tempuri.org/ILoginService/UpdateAccountInfoResponse")]
+        bool UpdateAccountInfo(finder_ui.UserLoginServiceReference.ReturnUser UpdatedAccountInfo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/UpdateAccountInfo", ReplyAction="http://tempuri.org/ILoginService/UpdateAccountInfoResponse")]
+        System.Threading.Tasks.Task<bool> UpdateAccountInfoAsync(finder_ui.UserLoginServiceReference.ReturnUser UpdatedAccountInfo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/GetFlaggedUsers", ReplyAction="http://tempuri.org/ILoginService/GetFlaggedUsersResponse")]
         finder_ui.UserLoginServiceReference.InterfaceFlaggedUser[] GetFlaggedUsers();
@@ -1040,6 +1082,12 @@ namespace finder_ui.UserLoginServiceReference {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/GetAdminByUsername", ReplyAction="http://tempuri.org/ILoginService/GetAdminByUsernameResponse")]
         System.Threading.Tasks.Task<finder_ui.UserLoginServiceReference.InterfaceAdmin> GetAdminByUsernameAsync(string Username);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/GetAdminById", ReplyAction="http://tempuri.org/ILoginService/GetAdminByIdResponse")]
+        finder_ui.UserLoginServiceReference.InterfaceAdmin GetAdminById(int Id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/ILoginService/GetAdminById", ReplyAction="http://tempuri.org/ILoginService/GetAdminByIdResponse")]
+        System.Threading.Tasks.Task<finder_ui.UserLoginServiceReference.InterfaceAdmin> GetAdminByIdAsync(int Id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1067,6 +1115,38 @@ namespace finder_ui.UserLoginServiceReference {
         
         public LoginServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
+        }
+        
+        public bool IsAlive() {
+            return base.Channel.IsAlive();
+        }
+        
+        public System.Threading.Tasks.Task<bool> IsAliveAsync() {
+            return base.Channel.IsAliveAsync();
+        }
+        
+        public int CountActiveUsers() {
+            return base.Channel.CountActiveUsers();
+        }
+        
+        public System.Threading.Tasks.Task<int> CountActiveUsersAsync() {
+            return base.Channel.CountActiveUsersAsync();
+        }
+        
+        public int CountFlaggedUsers() {
+            return base.Channel.CountFlaggedUsers();
+        }
+        
+        public System.Threading.Tasks.Task<int> CountFlaggedUsersAsync() {
+            return base.Channel.CountFlaggedUsersAsync();
+        }
+        
+        public int CountBlockedUsers() {
+            return base.Channel.CountBlockedUsers();
+        }
+        
+        public System.Threading.Tasks.Task<int> CountBlockedUsersAsync() {
+            return base.Channel.CountBlockedUsersAsync();
         }
         
         public finder_ui.UserLoginServiceReference.ReturnUser CreateUser(finder_ui.UserLoginServiceReference.NewUser NewUser) {
@@ -1117,12 +1197,36 @@ namespace finder_ui.UserLoginServiceReference {
             return base.Channel.CheckUserAsync(Email, Password);
         }
         
+        public bool CheckModerator(string Email, string Password) {
+            return base.Channel.CheckModerator(Email, Password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> CheckModeratorAsync(string Email, string Password) {
+            return base.Channel.CheckModeratorAsync(Email, Password);
+        }
+        
+        public bool ModeratorLogin(string Email, string Password) {
+            return base.Channel.ModeratorLogin(Email, Password);
+        }
+        
+        public System.Threading.Tasks.Task<bool> ModeratorLoginAsync(string Email, string Password) {
+            return base.Channel.ModeratorLoginAsync(Email, Password);
+        }
+        
         public int GetUserId(string Email) {
             return base.Channel.GetUserId(Email);
         }
         
         public System.Threading.Tasks.Task<int> GetUserIdAsync(string Email) {
             return base.Channel.GetUserIdAsync(Email);
+        }
+        
+        public bool UpdateAccountInfo(finder_ui.UserLoginServiceReference.ReturnUser UpdatedAccountInfo) {
+            return base.Channel.UpdateAccountInfo(UpdatedAccountInfo);
+        }
+        
+        public System.Threading.Tasks.Task<bool> UpdateAccountInfoAsync(finder_ui.UserLoginServiceReference.ReturnUser UpdatedAccountInfo) {
+            return base.Channel.UpdateAccountInfoAsync(UpdatedAccountInfo);
         }
         
         public finder_ui.UserLoginServiceReference.InterfaceFlaggedUser[] GetFlaggedUsers() {
@@ -1227,6 +1331,14 @@ namespace finder_ui.UserLoginServiceReference {
         
         public System.Threading.Tasks.Task<finder_ui.UserLoginServiceReference.InterfaceAdmin> GetAdminByUsernameAsync(string Username) {
             return base.Channel.GetAdminByUsernameAsync(Username);
+        }
+        
+        public finder_ui.UserLoginServiceReference.InterfaceAdmin GetAdminById(int Id) {
+            return base.Channel.GetAdminById(Id);
+        }
+        
+        public System.Threading.Tasks.Task<finder_ui.UserLoginServiceReference.InterfaceAdmin> GetAdminByIdAsync(int Id) {
+            return base.Channel.GetAdminByIdAsync(Id);
         }
     }
 }

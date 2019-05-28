@@ -82,7 +82,7 @@
 .dropdown {
     position: relative;
     display: block;
-    float:right;
+    float: right;
 }
 
 .dropdown-content {
@@ -125,15 +125,16 @@
         margin-right: auto;
     }
 
-    /* CSS specifik för service-kort*/
-.service-list-wrapper{
+/* CSS specifik för service-kort*/
+.service-list-wrapper {
     padding-top: 30px;
 }
+
 .service-card {
     border-width: 4px;
     border-color: #aaaaaa;
-    margin-bottom: 10px;
 }
+
 .service-card-image {
     display: block;
     max-width: 100%;
@@ -142,11 +143,13 @@
     height: auto;
     margin: auto;
 }
+
 .service-card-image-wrapper {
     width: 100%;
     height: 100%;
     background-color: #aaaaaa;
 }
+
 .service-card-title {
     font-size: 1.17em;
     margin-top: 1.33em;
@@ -157,40 +160,74 @@
     /* TO implement */
 }
 
-    .service-card-description {
-        /* to implement */
-    }
+.service-card-description {
+    line-height: 20px;
+    font-size: 15px;
+}
 
-.service-categories{
+.service-card-description-title {
+    font-size: 14px;
+    font-style: italic;
+    font-weight: 700;
+}
+
+.service-card-description-text {
+}
+
+.service-categories {
     display: block;
     width: 100%;
 }
+
 .service-card-time-description {
-   font-size: 14px;
-   line-height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
-.footer .logo1
-{
+
+.footer .logo1 {
     display: block;
     margin-left: auto;
     margin-right: auto;
 }
 
 select {
-    padding: 8px;
+    padding: 5px;
     text-align: center;
     border-radius: 4px;
     cursor: pointer;
 }
 
-
+.help_btn {
+    color: black;
+    font-weight: 300;
+    font-size: 20px;
+}
 
 
 a {
     color: limegreen;
 }
 
-a:hover {
-    color: green;
-    text-decoration: none;
+    a:hover {
+        color: green;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+.bold_green {
+    color: limegreen;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.review-card-title { 
+    color: limegreen;
+    font-size: 16px;
+    margin-bottom: 0;
+}
+
+.stars-div span {
+    color: yellow;
 }

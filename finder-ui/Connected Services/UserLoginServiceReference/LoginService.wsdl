@@ -7,6 +7,30 @@
       <xsd:import schemaLocation="http://193.10.202.76/LoginProject/LoginProject/LoginService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/LoginProject.Interface" />
     </xsd:schema>
   </wsdl:types>
+  <wsdl:message name="ILoginService_IsAlive_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsAlive" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_IsAlive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsAliveResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CountActiveUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:CountActiveUsers" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CountActiveUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CountActiveUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CountFlaggedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:CountFlaggedUsers" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CountFlaggedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CountFlaggedUsersResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CountBlockedUsers_InputMessage">
+    <wsdl:part name="parameters" element="tns:CountBlockedUsers" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CountBlockedUsers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CountBlockedUsersResponse" />
+  </wsdl:message>
   <wsdl:message name="ILoginService_CreateUser_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateUser" />
   </wsdl:message>
@@ -43,11 +67,29 @@
   <wsdl:message name="ILoginService_CheckUser_OutputMessage">
     <wsdl:part name="parameters" element="tns:CheckUserResponse" />
   </wsdl:message>
+  <wsdl:message name="ILoginService_CheckModerator_InputMessage">
+    <wsdl:part name="parameters" element="tns:CheckModerator" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_CheckModerator_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CheckModeratorResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_ModeratorLogin_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModeratorLogin" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_ModeratorLogin_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModeratorLoginResponse" />
+  </wsdl:message>
   <wsdl:message name="ILoginService_GetUserId_InputMessage">
     <wsdl:part name="parameters" element="tns:GetUserId" />
   </wsdl:message>
   <wsdl:message name="ILoginService_GetUserId_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetUserIdResponse" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_UpdateAccountInfo_InputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccountInfo" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_UpdateAccountInfo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:UpdateAccountInfoResponse" />
   </wsdl:message>
   <wsdl:message name="ILoginService_GetFlaggedUsers_InputMessage">
     <wsdl:part name="parameters" element="tns:GetFlaggedUsers" />
@@ -127,7 +169,29 @@
   <wsdl:message name="ILoginService_GetAdminByUsername_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetAdminByUsernameResponse" />
   </wsdl:message>
+  <wsdl:message name="ILoginService_GetAdminById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminById" />
+  </wsdl:message>
+  <wsdl:message name="ILoginService_GetAdminById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAdminByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="ILoginService">
+    <wsdl:operation name="IsAlive">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/IsAlive" message="tns:ILoginService_IsAlive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/IsAliveResponse" message="tns:ILoginService_IsAlive_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CountActiveUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CountActiveUsers" message="tns:ILoginService_CountActiveUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CountActiveUsersResponse" message="tns:ILoginService_CountActiveUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CountFlaggedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CountFlaggedUsers" message="tns:ILoginService_CountFlaggedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CountFlaggedUsersResponse" message="tns:ILoginService_CountFlaggedUsers_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CountBlockedUsers">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CountBlockedUsers" message="tns:ILoginService_CountBlockedUsers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CountBlockedUsersResponse" message="tns:ILoginService_CountBlockedUsers_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="CreateUser">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CreateUser" message="tns:ILoginService_CreateUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CreateUserResponse" message="tns:ILoginService_CreateUser_OutputMessage" />
@@ -152,9 +216,21 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CheckUser" message="tns:ILoginService_CheckUser_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CheckUserResponse" message="tns:ILoginService_CheckUser_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="CheckModerator">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/CheckModerator" message="tns:ILoginService_CheckModerator_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/CheckModeratorResponse" message="tns:ILoginService_CheckModerator_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModeratorLogin">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/ModeratorLogin" message="tns:ILoginService_ModeratorLogin_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/ModeratorLoginResponse" message="tns:ILoginService_ModeratorLogin_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="GetUserId">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/GetUserId" message="tns:ILoginService_GetUserId_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/GetUserIdResponse" message="tns:ILoginService_GetUserId_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountInfo">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/UpdateAccountInfo" message="tns:ILoginService_UpdateAccountInfo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/UpdateAccountInfoResponse" message="tns:ILoginService_UpdateAccountInfo_OutputMessage" />
     </wsdl:operation>
     <wsdl:operation name="GetFlaggedUsers">
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/GetFlaggedUsers" message="tns:ILoginService_GetFlaggedUsers_InputMessage" />
@@ -208,9 +284,49 @@
       <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/GetAdminByUsername" message="tns:ILoginService_GetAdminByUsername_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/GetAdminByUsernameResponse" message="tns:ILoginService_GetAdminByUsername_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAdminById">
+      <wsdl:input wsaw:Action="http://tempuri.org/ILoginService/GetAdminById" message="tns:ILoginService_GetAdminById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/ILoginService/GetAdminByIdResponse" message="tns:ILoginService_GetAdminById_OutputMessage" />
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_ILoginService" type="tns:ILoginService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="IsAlive">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/IsAlive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountActiveUsers">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/CountActiveUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountFlaggedUsers">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/CountFlaggedUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CountBlockedUsers">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/CountBlockedUsers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="CreateUser">
       <soap:operation soapAction="http://tempuri.org/ILoginService/CreateUser" style="document" />
       <wsdl:input>
@@ -265,8 +381,35 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="CheckModerator">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/CheckModerator" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModeratorLogin">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/ModeratorLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="GetUserId">
       <soap:operation soapAction="http://tempuri.org/ILoginService/GetUserId" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UpdateAccountInfo">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/UpdateAccountInfo" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -384,6 +527,15 @@
     </wsdl:operation>
     <wsdl:operation name="GetAdminByUsername">
       <soap:operation soapAction="http://tempuri.org/ILoginService/GetAdminByUsername" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAdminById">
+      <soap:operation soapAction="http://tempuri.org/ILoginService/GetAdminById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

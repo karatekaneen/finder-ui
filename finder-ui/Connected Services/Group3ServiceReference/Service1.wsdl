@@ -129,12 +129,6 @@
   <wsdl:message name="IService1_GetServiceById_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetServiceByIdResponse" />
   </wsdl:message>
-  <wsdl:message name="IService1_GetAllContractData_InputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllContractData" />
-  </wsdl:message>
-  <wsdl:message name="IService1_GetAllContractData_OutputMessage">
-    <wsdl:part name="parameters" element="tns:GetAllContractDataResponse" />
-  </wsdl:message>
   <wsdl:message name="IService1_CreateService_InputMessage">
     <wsdl:part name="parameters" element="tns:CreateService" />
   </wsdl:message>
@@ -152,6 +146,12 @@
   </wsdl:message>
   <wsdl:message name="IService1_DeleteService_OutputMessage">
     <wsdl:part name="parameters" element="tns:DeleteServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsAlive_InputMessage">
+    <wsdl:part name="parameters" element="tns:IsAlive" />
+  </wsdl:message>
+  <wsdl:message name="IService1_IsAlive_OutputMessage">
+    <wsdl:part name="parameters" element="tns:IsAliveResponse" />
   </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="CreateContract">
@@ -230,10 +230,6 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetServiceById" message="tns:IService1_GetServiceById_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetServiceByIdResponse" message="tns:IService1_GetServiceById_OutputMessage" />
     </wsdl:operation>
-    <wsdl:operation name="GetAllContractData">
-      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllContractData" message="tns:IService1_GetAllContractData_InputMessage" />
-      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllContractDataResponse" message="tns:IService1_GetAllContractData_OutputMessage" />
-    </wsdl:operation>
     <wsdl:operation name="CreateService">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateService" message="tns:IService1_CreateService_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateServiceResponse" message="tns:IService1_CreateService_OutputMessage" />
@@ -245,6 +241,10 @@
     <wsdl:operation name="DeleteService">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/DeleteService" message="tns:IService1_DeleteService_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/DeleteServiceResponse" message="tns:IService1_DeleteService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="IsAlive">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/IsAlive" message="tns:IService1_IsAlive_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/IsAliveResponse" message="tns:IService1_IsAlive_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="WSHttpBinding_IService1" type="tns:IService1">
@@ -421,15 +421,6 @@
         <soap12:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="GetAllContractData">
-      <soap12:operation soapAction="http://tempuri.org/IService1/GetAllContractData" style="document" />
-      <wsdl:input>
-        <soap12:body use="literal" />
-      </wsdl:input>
-      <wsdl:output>
-        <soap12:body use="literal" />
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="CreateService">
       <soap12:operation soapAction="http://tempuri.org/IService1/CreateService" style="document" />
       <wsdl:input>
@@ -450,6 +441,15 @@
     </wsdl:operation>
     <wsdl:operation name="DeleteService">
       <soap12:operation soapAction="http://tempuri.org/IService1/DeleteService" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IsAlive">
+      <soap12:operation soapAction="http://tempuri.org/IService1/IsAlive" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

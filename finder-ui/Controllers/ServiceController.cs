@@ -13,6 +13,7 @@ namespace finder_ui.Controllers
     {
         Group3ServiceReference.Service1Client client = new Group3ServiceReference.Service1Client();
         UserProfileServiceReference.UserProfileServiceClient userClient = new UserProfileServiceReference.UserProfileServiceClient();
+        ReviewServiceReference.Service1Client reviewClient = new ReviewServiceReference.Service1Client();
 
         // GET: Service
         public ActionResult Index()
@@ -20,12 +21,24 @@ namespace finder_ui.Controllers
             var indexService = client.GetAllServiceData();
            // int.TryParse(Session["UserId"].ToString(), out int userid);
             List<UserServiceObject> serviceList = new List<UserServiceObject>();
+
+            
+
             foreach (var item in indexService)
             {
+                List<ReviewServiceReference.ReviewData> reviews = new List<ReviewServiceReference.ReviewData>();
+
+                var temp = reviewClient.GetReviewsByServiceId(item.Id).ToList();
+                if (temp.Count > 0)
+                {
+                    reviews = temp;
+                }
                 UserServiceObject activeService = new UserServiceObject();
                 activeService.IncomingService = item;
                 activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                activeService.IncomingReview = reviews;
                 serviceList.Add(activeService);
+                
             }
             
             return View(serviceList);
@@ -34,7 +47,33 @@ namespace finder_ui.Controllers
         // GET: Service/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            var service = client.GetServiceById(id);
+            var user = userClient.GetUserByUserId(service.CreatorID);
+
+            List<ReviewServiceObject> review = new List<ReviewServiceObject>();
+            List<ReviewServiceReference.ReviewData> tempReviews = reviewClient.GetReviewsByServiceId(service.Id).ToList();
+            if (tempReviews.Count > 0)
+            {
+                foreach (var item in tempReviews)
+                {
+                    var reviewWriter = userClient.GetUserByUserId(item.ByUserId);
+                    ReviewServiceObject reviewServiceObject = new ReviewServiceObject();
+                    reviewServiceObject.IncomingReview = item;
+                    reviewServiceObject.IncomingReviewUser = reviewWriter;
+
+                    review.Add(reviewServiceObject);
+                }
+            }
+
+
+            
+
+            UserServiceObject detailedService = new UserServiceObject();
+            detailedService.IncomingService = service;
+            detailedService.IncomingUser = user;
+            detailedService.IncomingReviewWithUser = review;
+            return View(detailedService);
         }
 
         // GET: Service/Create
@@ -72,7 +111,12 @@ namespace finder_ui.Controllers
 
                 int.TryParse(Session["UserId"].ToString(), out int userid);
  
-
+                if (picture == "")
+                {
+                    picture = "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image10.jpg";
+                }
+                    
+                
                 CreateServiceObject createServiceObject = new CreateServiceObject(
                     type,
                     userid,
@@ -86,7 +130,9 @@ namespace finder_ui.Controllers
                     timeNeeded,
                     subCategoryId);
 
-                client.CreateService(
+                createServiceObject.ServiceStatusId = 2;
+
+                bool test = client.CreateService(
                     createServiceObject.Type,
                     createServiceObject.CreatorId,
                     createServiceObject.ServiceStatusId,
@@ -99,12 +145,50 @@ namespace finder_ui.Controllers
                     createServiceObject.TimeNeeded,
                     createServiceObject.SubCategoryId);
 
+                if (test)
+                {
+                    test = false;
+                }
+                else
+                {
+                    test = true;
+                }
+                
+          
                 return RedirectToAction("Index");
             }
             catch
             {
               return RedirectToAction("Error");
             }
+        }
+
+        [CustomAuthorization]
+        public ActionResult MyServices()
+        {
+            int.TryParse(Session["UserId"].ToString(), out int userid);
+
+            var indexService = client.AdvancedSearch(
+                new Group3ServiceReference.DateRange(),
+                new Group3ServiceReference.DateRange(),
+                new Group3ServiceReference.DateRange(),
+                userid,
+                null, // Titel
+                null,
+                new Group3ServiceReference.PriceRange(),
+                0,  // <--- Det här är status
+                new List<int>().ToArray(),
+                new List<int>().ToArray());
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in indexService)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                serviceList.Add(activeService);
+            }
+
+            return View(serviceList);
         }
 
         // GET: Service/Edit/5
@@ -115,7 +199,8 @@ namespace finder_ui.Controllers
             List<Group3ServiceReference.ServiceStatusType> statuses = client.GetServiceStatusTypes().ToList();
             List<Group3ServiceReference.SubCategory> subCategories = client.GetSubCategories().ToList();
             List<Group3ServiceReference.ServiceType> serviceTypes = client.GetTypes().ToList();
-    
+            List<Group3ServiceReference.Category> categories = client.GetCategories().ToList();
+
             EditServiceObject editService = new EditServiceObject(
                 service.Id,
                 service.ServiceType.Id,
@@ -130,6 +215,7 @@ namespace finder_ui.Controllers
                 service.SubCategory.Id,
                 statuses,
                 subCategories,
+                categories,
                 serviceTypes
                 );
 
@@ -183,11 +269,22 @@ namespace finder_ui.Controllers
             {
                 int.TryParse(Session["UserId"].ToString(), out int userid);
                 var service = client.GetServiceById(id);
+                var user = userClient.GetUserByUserId(service.CreatorID);
 
-                if (service.CreatorID == userid)
+                UserServiceObject deleteService = new UserServiceObject();
+                deleteService.IncomingService = service;
+                deleteService.IncomingUser = user;
+
+                if (deleteService.IncomingService.CreatorID == userid)
                 {
-                    return View(service);
+                    return View(deleteService);
                 }
+
+                // TODO:
+                //else if (inloggad som admin){
+                //return View(service)
+                //}
+
                 else
                 {
                     return RedirectToAction("Error");
@@ -221,6 +318,21 @@ namespace finder_ui.Controllers
         public ActionResult Error()
         {
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Search(string searchString)
+        {
+            var services = client.Search(searchString);
+            List<UserServiceObject> serviceList = new List<UserServiceObject>();
+            foreach (var item in services)
+            {
+                UserServiceObject activeService = new UserServiceObject();
+                activeService.IncomingService = item;
+                activeService.IncomingUser = userClient.GetUserByUserId(activeService.IncomingService.CreatorID);
+                serviceList.Add(activeService);
+            }
+            return View(serviceList);
         }
 
 

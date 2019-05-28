@@ -1,0 +1,113 @@
+﻿@model IEnumerable<finder_ui.Models.UserServiceObject>
+
+@{
+    ViewBag.Title = "Mina annonser";
+}
+
+<h2>Mina annonser</h2>
+
+
+<div class="container-fluid service-list-wrapper">
+
+    <div class="card-columns">
+        @foreach (var item in Model)
+        {
+            
+                <div class="card service-card">
+                    <div class="service-card-image-wrapper">
+                        <img src="@Html.DisplayFor(modelItem => item.IncomingService.Picture)"
+                             class="card-img-top service-card-image"
+                             alt="Service description image">
+                    </div>
+
+                    <div class="card-header">
+
+                        <span class="service-card-title">
+                            @Html.ActionLink(item.IncomingService.Title, "Details", new { id = item.IncomingService.Id })
+
+                        </span>
+                        <span class="service-card-title service-card-price">
+                            @Html.DisplayFor(modelItem => item.IncomingService.Price)kr
+                        </span>
+                        @if (item.IncomingService.ServiceType.Name == "Erbjuden")
+                        {
+                            <span class="badge badge-primary">Erbjuden</span>
+                        }
+                        @if (item.IncomingService.ServiceType.Name == "Önskad")
+                        {
+                            <span class="badge badge-success">Önskad</span>
+                        }
+                        <div class="service-categories">
+                            <span class="breadcrumb-item active" aria-current="page">
+                                @Html.DisplayFor(modelItem => item.IncomingService.SubCategory.ParentCategory.Titel)
+                            </span>
+                            <span class="breadcrumb-item active" aria-current="page">
+                                @Html.DisplayFor(modelItem => item.IncomingService.SubCategory.Titel)
+                            </span>
+
+                        </div>
+
+                    </div>
+                    <div class="card-body">
+                        <div>
+                            @if (item.IncomingService.ServiceStatus.Id == 1)
+    {
+                        <span class="badge badge-primary">Öppen</span>
+}
+                            @if (item.IncomingService.ServiceStatus.Id == 2)
+    {
+                        <span class="badge badge-warning">Behandlas</span>
+}
+                            @if (item.IncomingService.ServiceStatus.Id == 3)
+    {
+                        <span class="badge badge-danger">Stängd</span>
+}
+                        </div>
+                        <div class="service-card-description">
+                            <div class="service-card-description-title">
+                                Beskrivning
+                            </div>
+                            <div class="service-card-description-text">
+                                @Html.DisplayFor(modelItem => item.IncomingService.Description)
+                            </div>
+                        </div>
+                        @if (item.IncomingService.TimeNeeded)
+                        {
+                            <div class="service-card-time-description">
+                                <div class="service-card-time-unit">
+                                    <b>Från</b>: @Html.FormatValue(item.IncomingService.StartDate, "{0:dd MMMM}")
+                                    kl: @Html.FormatValue(item.IncomingService.StartDate, "{0:hh:mm}")
+                                </div>
+                                <div class="service-card-time-unit">
+                                    <b>Till</b>: @Html.FormatValue(item.IncomingService.EndDate, "{0:dd MMMM}")
+                                    kl: @Html.FormatValue(item.IncomingService.EndDate, "{0:hh:mm}")
+                                </div>
+                            </div>
+                        }
+                        <div class="service-card-creator-wrapper">
+                            <span class="service-card-description-title">Av: </span>
+                            <span>@Html.DisplayFor(modelItem => item.IncomingUser.Username)</span> <!-- TODO Gör den här till en länk till användarprofil. -->
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <p>
+                            Skapad den @Html.FormatValue(item.IncomingService.CreatedTime, "{0:dd MMMM}")
+                            kl: @Html.FormatValue(item.IncomingService.CreatedTime, "{0:hh:mm}")
+                        </p>
+                        @if (@Session["UserId"] != null)
+                        {
+                            <text>
+                                @if (@Session["UserId"].ToString() == item.IncomingUser.Id.ToString())
+                                {
+                                    <p>
+                                        @Html.ActionLink("Redigera", "Edit", new { id = item.IncomingService.Id }) |
+                                        @Html.ActionLink("Radera", "Delete", new { id = item.IncomingService.Id })
+                                    </p>
+                                }
+                            </text>
+                        }
+                    </div>
+                </div>
+        }
+    </div>
+</div>
