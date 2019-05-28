@@ -25,6 +25,7 @@
                 <div class="form-group">
                     <label for="userName">Användarnamn</label>
                     @Html.TextBoxFor(vm => vm.username, new { @class = "form-control text-center", @placeholder = "Användarnamn" })
+                    @ViewBag.message
 
                 </div>
                 <div class="form-group">

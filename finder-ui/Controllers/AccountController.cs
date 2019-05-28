@@ -150,8 +150,20 @@ namespace finder_ui.Controllers
                 };
 
                 var user = client.UpdateUser(updateUser);
+
             }
 
+            using (var client = new UserLoginServiceReference.LoginServiceClient())
+            {
+                if (client.UsernameExist(vm.username))
+                {
+                    ViewBag.Message = "Det valda Användarnamnet finns redan";
+                }
+                else
+                {
+                    return RedirectToAction("Index", "UserProfile");
+                }
+            }
             return View();
 
         }
