@@ -10,9 +10,13 @@ namespace finder_ui.Models
     {
         [Required(ErrorMessage ="Du måste fylla i ett namn!")]
         public string firstname { get; set; }
+        [Required(ErrorMessage ="Du måste fylla i ett namn!")]
         public string surname { get; set; }
+        [Required(ErrorMessage ="Du måste fylla i en E-post adress!")]
         public string email { get; set; }
+        [Required(ErrorMessage ="Du måste fylla i ett användarnamn!")]
         public string username { get; set; }
+        [Required(ErrorMessage ="Du måste fylla i ett lösenord!")]
         public string password { get; set; }
         public int id { get; set; }
        

@@ -3,6 +3,10 @@
 <div class="container">
     <div class="row">
         <div class="col align-self-center">
+            <div class="text-center">
+                <h1>Uppdatera profil information</h1>
+            </div>
+            <hr />
             @using (Html.BeginForm("EditProfile", "UserProfile", FormMethod.Post))
             {
                 <div class="form-group">
@@ -21,12 +25,13 @@
                 </div>
                 <div class="form-group">
                     <label for="userZipCode">Postnummer</label>
-                    @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "ÅÅMMDDXXX" })
-
+                    @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "Postnummer" })
+                    @Html.ValidationMessageFor(vm => vm.UserZipCode)
                 </div>
                 <div class="form-group">
                     <label for="userPhoneNumber">Telefonnummer</label>
                     @Html.TextBoxFor(vm => vm.UserPhoneNumber, new { @class = "form-control text-center", @placeholder = "Telefonnummer" })
+                    @Html.ValidationMessageFor(vm => vm.UserPhoneNumber)
 
                 </div>
                 <div class="form-group">

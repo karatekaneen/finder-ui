@@ -90,8 +90,14 @@ namespace finder_ui.Controllers
                 var user = client.UpdateUser(updateUser);
 
             }
-            return RedirectToAction("Index");
-
+            
+            if(!ModelState.IsValid){
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index");
+            }
 
         }
 

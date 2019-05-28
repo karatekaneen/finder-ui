@@ -24,6 +24,14 @@
         <td>@Html.DisplayFor(m => Model.surname)</td>
     </tr>
     <tr>
+        <th>Telefonnummer</th>
+        <td>@Html.DisplayFor(m => Model.userPhoneNumber)</td>
+    </tr>
+    <tr>
+        <th>Postnummer</th>
+        <td>@Html.DisplayFor(m => Model.userZipCode)</td>
+    </tr>
+    <tr>
         <th>Personnummer</th>
         <td>@Html.DisplayFor(m => Model.personalnumber)</td>
     </tr>
@@ -45,4 +53,6 @@
     </tr>
 </table>
 
-<button class="button" onclick="location.href='@Url.Action("Index", "UserProfile")';return false;">Mina Annonser</button>
+<button class="button" onclick="location.href='@Url.Action("MyServices", "Service")';return false;">Mina Annonser</button>
+<button class="button" onclick="location.href='@Url.Action("ShowReviewsByUserId", "Review", new { id = Session["UserId"] })'">Visa recensioner skrivna av mig</button>
+<button class="button" onclick="location.href='@Url.Action("ShowReviewsAboutUserId", "Review", new { id = Session["UserId"] })'">Visa recensioner skrivna till mig</button>

@@ -5,6 +5,11 @@
         <div class="col align-self-center">
             @using (Html.BeginForm("UpdateUserProfile", "Account", FormMethod.Post))
             {
+             <div class="text-center">
+                 <h1>Profil information</h1>
+                 <h3>Detta är inte obligatoriskt</h3>
+             </div>
+            <hr/>
                 <div class="form-group">
                     <label for="userFirstName">Personnummer, Ej de fyra sista</label>
                     @Html.HiddenFor(vm => vm.id)
