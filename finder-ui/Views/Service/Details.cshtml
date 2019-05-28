@@ -69,23 +69,27 @@
                         }
 
                         <h4>Omdömen</h4>
-                        
-                        @foreach (var item in Model.IncomingReview)
+                        <!--OBS man måste vara inloggad INNAN man gör en review för att det ska fungera!--> 
+                        <p>
+                            @Html.ActionLink("Skriv omdöme", "ReviewService", "Review", new { id = Model.IncomingService.Id }, null)
+                        </p>
+                       
+                        @foreach (var item in Model.IncomingReviewWithUser)
                         {
                             <div class="card">
                                 <div class="card-header">
-                                    <p class="review-card-title">@Html.DisplayFor(modelItem => item.Title)</p>
-                                    @Html.DisplayFor(modelItem => item.ByUserId)
-                                  
+                                    <p class="review-card-title">@Html.DisplayFor(modelItem => item.IncomingReview.Title)</p>
+                                    @Html.DisplayFor(modelItem => item.IncomingReviewUser.Username)
+
                                 </div>
                                 <div class="card-body">
-                                    @Html.DisplayFor(modelItem => item.Text)<br />
+                                    @Html.DisplayFor(modelItem => item.IncomingReview.Text)<br />
                                     <div class="stars-div">
-                                        @for (int i = 0; i < item.Rating; i++)
+                                        @for (int i = 0; i < item.IncomingReview.Rating; i++)
                                         {
                                             <span>&#9733</span>
                                         }
-                                        @for (int i = 0; i < (5 - item.Rating); i++)
+                                        @for (int i = 0; i < (5 - item.IncomingReview.Rating); i++)
                                         {
                                             <span>&#9734</span>
                                         }
