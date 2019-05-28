@@ -1,15 +1,22 @@
 ﻿@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 .reviews {
+    background-color: lightgreen;
     max-width: 600px;
     margin: auto;
-    background: limegreen;
+    border: 3px;
+    border-style: solid;
+    border-color: limegreen;
 }
 
 .block {
+    font-style: italic;
     background-color: whitesmoke;
     margin: 15px;
     padding: 15px;
+    border: 3px;
+    border-style: solid;
+    border-color: black;
 }
 
 .form {
@@ -36,11 +43,12 @@
     }
 
     .form textarea {
-        width: 600px !important;
+        width: 100% !important;
         height: 270px;
         text-align: left;
         background: #f2f2f2;
         resize: none;
+        margin:auto;
     }
 
 input[type="submit"] {
@@ -122,11 +130,14 @@ h1 {
 .starsDiv {
     float: left;
     position: relative;
-    left: 38%;
+    left: 36%;
 }
 
 .rubrik {
     color: #d6f5d6;
     font-size: 20px;
     text-shadow: inherit;
+}
+.checked{
+    color:#FFD700;
 }
