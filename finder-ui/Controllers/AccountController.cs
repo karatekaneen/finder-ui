@@ -38,35 +38,54 @@ namespace finder_ui.Controllers
 
         public ActionResult CreateAccount(CreateAccountViewModel vm)
         {
+            bool UsernameExist = true;
             using (var client = new UserProfileServiceReference.UserProfileServiceClient())
             {
-                var newUser = new UserProfileServiceReference.NewUser()
+                using (var validation = new UserLoginServiceReference.LoginServiceClient())
                 {
-                    Email = vm.email,
-                    FirstName = vm.firstname,
-                    Surname = vm.surname,
-                    Password = vm.password,
-                    Username = vm.username,
-                };
-
-                var user = client.CreateUser(newUser);
-               // user.ToString();
-                if (user != null)
-                {
-                    Session["AuthorizedAsUser"] = "true";
-                    Session["UserId"] = client.GetUserByUserNameOrEmail(vm.username).Id;
+                    UsernameExist = validation.UsernameExist(vm.username);
                 }
-            }
+                if (!UsernameExist)
+                {
+                    var newUser = new UserProfileServiceReference.NewUser()
+                    {
+                        Email = vm.email,
+                        FirstName = vm.firstname,
+                        Surname = vm.surname,
+                        Password = vm.password,
+                        Username = vm.username,
+                    };
+                    var user = client.CreateUser(newUser);
 
-            if (Session["AuthorizedAsUser"] == "true")
-            {
-                return View("UpdateUserProfile");
-            }
-            else
-            {
-                return View("Index");
-            }
 
+                    if (user != null)
+                    {
+                        Session["AuthorizedAsUser"] = "true";
+                        Session["UserId"] = client.GetUserByUserNameOrEmail(vm.username).Id;
+                    }
+                    else
+                    {
+                        return View("Index");
+                    }
+                
+
+                if (Session["AuthorizedAsUser"] == "true")
+                {
+                    return View("UpdateUserProfile");
+                }
+                else
+                {
+                    return View("Index");
+                }
+                }
+                else
+                {
+                    ViewBag.Message= "Användarnamnet finns redan";
+                    return View("Index");
+                }
+
+            }
+          
         }
 
         //inloggnings saker
@@ -96,6 +115,7 @@ namespace finder_ui.Controllers
         public ActionResult LogOut()
         {
             Session["AuthorizedAsUser"] = null;
+            Session["UserId"] = null;
             return RedirectToAction("Index", "Home");
         }
 
@@ -150,8 +170,20 @@ namespace finder_ui.Controllers
                 };
 
                 var user = client.UpdateUser(updateUser);
+
             }
 
+            using (var client = new UserLoginServiceReference.LoginServiceClient())
+            {
+                if (client.UsernameExist(vm.username))
+                {
+                    ViewBag.Message = "Det valda Användarnamnet finns redan";
+                }
+                else
+                {
+                    return RedirectToAction("Index", "UserProfile");
+                }
+            }
             return View();
 
         }

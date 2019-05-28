@@ -5,38 +5,43 @@
         <div class="col align-self-center">
             @using (Html.BeginForm("UpdateUserProfile", "Account", FormMethod.Post))
             {
-            <div class="form-group">
-                <label for="userFirstName">Personnummer</label>
-                @Html.HiddenFor(vm => vm.id)
-                @Html.TextBoxFor(vm => vm.personalnumber, new { @class = "form-control text-center", @placeholder = "ÅÅMMDDXXX" })
-            </div>
-            <div class="form-group">
-                <label for="userCity">Stad</label>
-                @Html.TextBoxFor(vm => vm.userCity, new { @class = "form-control text-center", @placeholder = "Stad" })
+             <div class="text-center">
+                 <h1>Profil information</h1>
+                 <h3>Detta är inte obligatoriskt</h3>
+             </div>
+            <hr/>
+                <div class="form-group">
+                    <label for="userFirstName">Personnummer, Ej de fyra sista</label>
+                    @Html.HiddenFor(vm => vm.id)
+                    @Html.TextBoxFor(vm => vm.personalnumber, new { @class = "form-control text-center", @placeholder = "ÅÅMMDD" })
+                </div>
+                <div class="form-group">
+                    <label for="userCity">Stad</label>
+                    @Html.TextBoxFor(vm => vm.userCity, new { @class = "form-control text-center", @placeholder = "Stad" })
 
-            </div>
-            <div class="form-group">
-                <label for="userAddress">Adress</label>
-                @Html.TextBoxFor(vm => vm.userAddress, new { @class = "form-control text-center", @placeholder = "Adress" })
+                </div>
+                <div class="form-group">
+                    <label for="userAddress">Adress</label>
+                    @Html.TextBoxFor(vm => vm.userAddress, new { @class = "form-control text-center", @placeholder = "Adress" })
 
-            </div>
-            <div class="form-group">
-                <label for="userZipCode">Postnummer</label>
-                @Html.TextBoxFor(vm => vm.userZipCode, new { @class = "form-control text-center", @placeholder = "ÅÅMMDDXXX" })
+                </div>
+                <div class="form-group">
+                    <label for="userZipCode">Postnummer</label>
+                    @Html.TextBoxFor(vm => vm.userZipCode, new { @class = "form-control text-center", @placeholder = "ÅÅMMDDXXX" })
 
-            </div>
-            <div class="form-group">
-                <label for="userPhoneNumber">Telefonnummer</label>
-                @Html.TextBoxFor(vm => vm.userPhoneNumber, new { @class = "form-control text-center", @placeholder = "Telefonnummer" })
+                </div>
+                <div class="form-group">
+                    <label for="userPhoneNumber">Telefonnummer</label>
+                    @Html.TextBoxFor(vm => vm.userPhoneNumber, new { @class = "form-control text-center", @placeholder = "Telefonnummer" })
 
-            </div>
-            <div class="form-group">
-                <label for="userProfilePicture">Profilbild</label>
-                @Html.TextBoxFor(vm => vm.userProfilePicture, new { @class = "form-control text-center", @placeholder = "Profilbild", @type = "file" })
+                </div>
+                <div class="form-group">
+                    <label for="userProfilePicture">Profilbild</label>
+                    @Html.TextBoxFor(vm => vm.userProfilePicture, new { @class = "form-control text-center", @placeholder = "Profilbild", @type = "file" })
 
-            </div>
+                </div>
 
-            <button type="submit" class="btn btn-primary">Spara</button>
+                <button type="submit" class="btn btn-primary">Spara</button>
             }
         </div>
     </div>

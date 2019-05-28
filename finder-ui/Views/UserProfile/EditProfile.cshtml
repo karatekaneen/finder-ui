@@ -3,16 +3,19 @@
 <div class="container">
     <div class="row">
         <div class="col align-self-center">
-            @using (Html.BeginForm("EditProfileInformation", "UserProfile", FormMethod.Post))
+            <div class="text-center">
+                <h1>Uppdatera profil information</h1>
+            </div>
+            <hr />
+            @using (Html.BeginForm("EditProfile", "UserProfile", FormMethod.Post))
             {
                 <div class="form-group">
-                    <label for="userEmail">Email</label>
                     @Html.HiddenFor(vm => vm.UserId)
-                    @Html.TextBoxFor(vm => vm.UserEmail, new { @class = "form-control text-center", @placeholder = "Asdasd@hotmail.com" })
+                    @Html.HiddenFor(vm => vm.PersonalCodeNumber)
                 </div>
                 <div class="form-group">
                     <label for="userCity">Stad</label>
-                    @Html.TextBoxFor(vm => vm.UserCity, new { @class = "form-control text-center", @placeholder = "Stad" })
+                    @Html.TextBoxFor(vm => vm.UserCity, new { @class = "form-control text-center" })
 
                 </div>
                 <div class="form-group">
@@ -22,12 +25,13 @@
                 </div>
                 <div class="form-group">
                     <label for="userZipCode">Postnummer</label>
-                    @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "12345" })
-
+                    @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "Postnummer" })
+                    @Html.ValidationMessageFor(vm => vm.UserZipCode)
                 </div>
                 <div class="form-group">
                     <label for="userPhoneNumber">Telefonnummer</label>
                     @Html.TextBoxFor(vm => vm.UserPhoneNumber, new { @class = "form-control text-center", @placeholder = "Telefonnummer" })
+                    @Html.ValidationMessageFor(vm => vm.UserPhoneNumber)
 
                 </div>
                 <div class="form-group">
@@ -36,8 +40,7 @@
 
                 </div>
 
-                <button type="submit">Spara</button>
-                <button onclick="location.href='@Url.Action("Index", "UserProfile")';return false;">Avbryt</button>
+                <button type="submit" class="btn btn-primary">Spara</button>
             }
         </div>
     </div>
