@@ -171,21 +171,6 @@
             </a>
             <label class="bold_green">Kategori</label>
             <div class="col-md-10">
-                @Html.DropDownListFor(x => Model.CategoryList, new SelectList(Model.CategoryList, "Id", "Titel"), new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryList, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <a href="#"
-               data-toggle="popover"
-               data-trigger="hover"
-               class="help_btn"
-               data-content="Välj den underkategori som bäst passar din annons">
-                <span class="glyphicon glyphicon-question-sign">?</span>
-            </a>
-            <label class="bold_green">Underkategori</label>
-            <div class="col-md-10">
                 @Html.DropDownListFor(x => Model.SubCategoryId, new SelectList(Model.SubCategoryList, "Id", "Titel"), new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.SubCategoryId, "", new { @class = "text-danger" })
             </div>
