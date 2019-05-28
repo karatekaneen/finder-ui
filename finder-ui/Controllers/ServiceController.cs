@@ -47,23 +47,32 @@ namespace finder_ui.Controllers
         // GET: Service/Details/5
         public ActionResult Details(int id)
         {
-               
 
             var service = client.GetServiceById(id);
             var user = userClient.GetUserByUserId(service.CreatorID);
-            
-            List<ReviewServiceReference.ReviewData> reviews = new List<ReviewServiceReference.ReviewData>();
-            var temp = reviewClient.GetReviewsByServiceId(service.Id).ToList();
-            if (temp.Count > 0)
-            {               
-                reviews = temp;
+
+            List<ReviewServiceObject> review = new List<ReviewServiceObject>();
+            List<ReviewServiceReference.ReviewData> tempReviews = reviewClient.GetReviewsByServiceId(service.Id).ToList();
+            if (tempReviews.Count > 0)
+            {
+                foreach (var item in tempReviews)
+                {
+                    var reviewWriter = userClient.GetUserByUserId(item.ByUserId);
+                    ReviewServiceObject reviewServiceObject = new ReviewServiceObject();
+                    reviewServiceObject.IncomingReview = item;
+                    reviewServiceObject.IncomingReviewUser = reviewWriter;
+
+                    review.Add(reviewServiceObject);
+                }
             }
+
+
             
 
             UserServiceObject detailedService = new UserServiceObject();
             detailedService.IncomingService = service;
             detailedService.IncomingUser = user;
-            detailedService.IncomingReview = reviews;
+            detailedService.IncomingReviewWithUser = review;
             return View(detailedService);
         }
 
