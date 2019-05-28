@@ -8,9 +8,9 @@
 }
 
 
-<h1>Recension</h1>
+<center><h1>Recension</h1></center>
 <div class="form">
-    <form action="~/Review/SaveReview" method="post">        
+    <form action="~/Review/SaveReview" method="post">
         <div class="rubrik">Titel</div>
         @Html.TextBoxFor(m => m.Title, new { @class = "input", @required = "Du måste mata in detta fältet", @maxlength = "50" })
         <br /><br />
