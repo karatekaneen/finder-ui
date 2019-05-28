@@ -9,12 +9,9 @@
 
 
 
-<h1>Recension</h1>
+<center><h1>Recension</h1></center>
 <div class="form">
     <form action="~/Review/SaveReview" method="post">
-        <div class="rubrik">ByUserId</div>
-        @Html.TextBoxFor(m => m.ByUserId, new { @class = "input", @required = "Du måste mata in detta fältet" })
-        <br /><br />
         <div class="rubrik">Titel</div>
         @Html.TextBoxFor(m => m.Title, new { @class = "input", @required = "Du måste mata in detta fältet", @maxlength = "50" })
         <br /><br />
@@ -34,6 +31,7 @@
         <br /><br />
         @Html.TextBoxFor(m => m.Status, new { @Value = "Unhandled", @type = "hidden" })
         @Html.TextBoxFor(m => m.AboutUserId, new { @Value = @ViewBag.aboutUser, @type = "hidden" })
+        @Html.TextBoxFor(m => m.ByUserId, new { @Value = @ViewBag.usId, @type = "hidden" })
         <br /><br />
         <input type="submit" value="Skicka" />
     </form>
