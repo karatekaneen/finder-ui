@@ -11,14 +11,27 @@ namespace finder_ui.Controllers
     public class ReviewController : Controller
     {
         ReviewServiceReference.Service1Client client = new ReviewServiceReference.Service1Client();
+        UserProfileServiceReference.UserProfileServiceClient clien2 = new UserProfileServiceReference.UserProfileServiceClient();
+        Group3ServiceReference.Service1Client client3 = new Group3ServiceReference.Service1Client();
 
         [HttpGet]
         public ActionResult ShowReviewsByServiceId(int id)
-        {
-            //hej
-            ViewBag.serviceid = id;
+        {                       
 
             List<ReviewServiceReference.ReviewData> reviewList = client.GetReviewsByServiceId(id).ToList();
+
+            Group3ServiceReference.Service obj = new Group3ServiceReference.Service();
+
+                obj = client3.GetServiceById(id);
+
+                if(obj == null)
+                {
+                ViewBag.serviceid = id;
+                }
+                else
+                {
+                ViewBag.serviceid = obj.Title;
+                }               
 
             return View(reviewList);
         }
@@ -26,7 +39,19 @@ namespace finder_ui.Controllers
         [HttpGet]
         public ActionResult ShowReviewsByUserId(int id)
         {
-            ViewBag.byuser = id;
+
+            UserProfileServiceReference.User obj = new UserProfileServiceReference.User();
+
+            obj = clien2.GetUserByUserId(id);
+
+            if (obj == null)
+            {
+                ViewBag.userId = id;
+            }
+            else
+            {
+                ViewBag.userId = obj.Username;
+            }
 
             List<ReviewServiceReference.ReviewData> reviewList = client.GetReviewsByUserId(id).ToList();
 
@@ -36,7 +61,18 @@ namespace finder_ui.Controllers
         [HttpGet]
         public ActionResult ShowReviewsAboutUserId(int id)
         {
-            ViewBag.aboutuser = id;
+            UserProfileServiceReference.User obj = new UserProfileServiceReference.User();
+
+            obj = clien2.GetUserByUserId(id);
+
+            if (obj == null)
+            {
+                ViewBag.aboutuser = id;
+            }
+            else
+            {
+                ViewBag.aboutuser = obj.Username;
+            }
 
             List<ReviewServiceReference.ReviewData> reviewList = client.GetReviewsByAboutUserId(id).ToList();
 

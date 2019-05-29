@@ -1,4 +1,4 @@
-﻿@model finder_ui.Models.EditProfileViewModel
+﻿@model finder_ui.Models.UpdateProfileViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -7,41 +7,52 @@
 
 <h2>Min Profil</h2>
 
-<button onclick="location.href='@Url.Action("EditProfile", "UserProfile")';return false;">Redigera Profil</button>
+<button class="button" onclick="location.href='@Url.Action("EditProfile", "UserProfile")';return false;">Redigera Profil</button>
 
 <table class="table">
     <tr>
+        @Html.HiddenFor(vm => vm.personalnumber)
         <th>Användarnamn</th>
-        <td>@Html.DisplayFor(m => Model.UserName) Användarnamn</td>
+        <td>@Html.DisplayFor(m => Model.username)</td>
     <tr>
     <tr>
         <th>Förnamn</th>
-        <td>@Html.DisplayFor(m => Model.UserFirstName) asd</td>
+        <td>@Html.DisplayFor(m => Model.firstname)</td>
     </tr>
     <tr>
         <th>Efternamn</th>
-        <td>@Html.DisplayFor(m => Model.UserSurname) asd</td>
+        <td>@Html.DisplayFor(m => Model.surname)</td>
+    </tr>
+    <tr>
+        <th>Telefonnummer</th>
+        <td>@Html.DisplayFor(m => Model.userPhoneNumber)</td>
+    </tr>
+    <tr>
+        <th>Postnummer</th>
+        <td>@Html.DisplayFor(m => Model.userZipCode)</td>
     </tr>
     <tr>
         <th>Personnummer</th>
-        <td>@Html.DisplayFor(m => Model.UserPersonalCodeNumber) asd</td>
+        <td>@Html.DisplayFor(m => Model.personalnumber)</td>
     </tr>
     <tr>
         <th>Adress</th>
-        <td>@Html.DisplayFor(m => Model.UserAddress) asd</td>
+        <td>@Html.DisplayFor(m => Model.userAddress)</td>
     </tr>
     <tr>
         <th>Stad</th>
-        <td>@Html.DisplayFor(m => Model.UserCity) asd</td>
+        <td>@Html.DisplayFor(m => Model.userCity)</td>
     </tr>
     <tr>
         <th>Email</th>
-        <td>@Html.DisplayFor(m => Model.UserEmail) asd</td>
+        <td>@Html.DisplayFor(m => Model.email)</td>
     </tr>
     <tr>
         <th>Bild</th>
-        <td>@Html.DisplayFor(m => Model.UserProfilePicture) asd</td>
+        <td>@Html.DisplayFor(m => Model.userProfilePicture)</td>
     </tr>
 </table>
 
-<button onclick="location.href='@Url.Action("Index", "UserProfile")';return false;">Mina Annonser</button>
+<button class="button" onclick="location.href='@Url.Action("MyServices", "Service")';return false;">Mina Annonser</button>
+<button class="button" onclick="location.href='@Url.Action("ShowReviewsByUserId", "Review", new { id = Session["UserId"] })'">Visa recensioner skrivna av mig</button>
+<button class="button" onclick="location.href='@Url.Action("ShowReviewsAboutUserId", "Review", new { id = Session["UserId"] })'">Visa recensioner skrivna till mig</button>

@@ -5,33 +5,42 @@
         <div class="col align-self-center">
             @using (Html.BeginForm("CreateAccount", "Account", FormMethod.Post))
             {
+                <div class="text-center">
+                    <h1>Skapa Konto</h1>
+                </div>
+                <hr />
             <div class="form-group">
-
                 <label for="userFirstName">Förnamn</label>
                 @Html.HiddenFor(vm => vm.id)
+                @Html.TextBoxFor(vm => vm.firstname, new { @class = "form-control text-center", @placeholder = "Förnamn", @Required = "required" })
                 @Html.ValidationMessageFor(vm => vm.firstname)
-                @Html.TextBoxFor(vm => vm.firstname, new { @class = "form-control text-center", @placeholder = "Förnamn" })
             </div>
-                <div class="form-group">
-                    <label for="userLastName">Efternamn</label>
-                   
-                    @Html.TextBoxFor(vm => vm.surname, new { @class = "form-control text-center", @placeholder = "Efternamn" })
-                </div>
-                <div class="form-group">
-                    <label for="userEmail">E-Post adress</label>
-                    @Html.TextBoxFor(vm => vm.email, new { @class = "form-control text-center", @placeholder = "Epost" })
+            <div class="form-group">
+                <label for="userLastName">Efternamn</label>
 
-                </div>
-                <div class="form-group">
-                    <label for="userName">Användarnamn</label>
-                    @Html.TextBoxFor(vm => vm.username, new { @class = "form-control text-center", @placeholder = "Användarnamn" })
+                @Html.TextBoxFor(vm => vm.surname, new { @class = "form-control text-center", @placeholder = "Efternamn", @Required = "required" })
+                @Html.ValidationMessageFor(vm => vm.surname)
+            </div>
+            <div class="form-group">
+                <label for="userEmail">E-Post adress</label>
+                @Html.TextBoxFor(vm => vm.email, new { @class = "form-control text-center", @placeholder = "Epost", @Required = "required" })
+                @Html.ValidationMessageFor(vm => vm.email)
 
-                </div>
-                <div class="form-group">
-                    <label for="userPassword">Lösenord</label>
-                    @Html.TextBoxFor(vm => vm.password, new { @class = "form-control text-center", @placeholder = "Lösenord" })
+            </div>
+            <div class="form-group">
+                <label for="userName">Användarnamn</label>
+                @Html.TextBoxFor(vm => vm.username, new { @class = "form-control text-center", @placeholder = "Användarnamn", @Required = "required" })
+                @Html.ValidationMessageFor(vm => vm.username)
+                @ViewBag.Message
 
-                </div>
+            </div>
+            <div class="form-group">
+                <label for="userPassword">Lösenord</label>
+                @Html.PasswordFor(vm => vm.password, new { @class = "form-control text-center", @placeholder = "Lösenord", @Required = "required" })
+                @Html.ValidationMessageFor(vm => vm.password)
+
+
+            </div>
                 <button type="submit" class="btn btn-primary">Skapa Konto</button>
             }
         </div>

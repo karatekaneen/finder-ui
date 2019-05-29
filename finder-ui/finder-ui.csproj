@@ -377,10 +377,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\UpdateUserProfile.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
-    <Content Include="Views\UserProfile\EditProfile.cshtml" />
-    <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\Service\Create.cshtml" />
     <Content Include="Views\Service\Delete.cshtml" />
     <Content Include="Views\Service\Edit.cshtml" />
@@ -403,6 +400,9 @@
     <Content Include="Views\Review\ReviewUser.cshtml" />
     <Content Include="Views\Service\Search.cshtml" />
     <Content Include="Views\Service\MyServices.cshtml" />
+    <Content Include="Views\UserProfile\Index.cshtml" />
+    <Content Include="Views\Account\UpdateUserProfile.cshtml" />
+    <Content Include="Views\UserProfile\EditProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
