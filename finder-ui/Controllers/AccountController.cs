@@ -11,9 +11,6 @@ namespace finder_ui.Controllers
 {
     public class AccountController : Controller
     {
-
-
-
         // GET: CreateAccount
         public ActionResult Index()
         {
@@ -24,16 +21,8 @@ namespace finder_ui.Controllers
         public ActionResult UpdateProfile(UpdateProfileViewModel vm)
         {
             var UpdateProfile = new UpdateProfileViewModel();
-
-
-
             return View(UpdateProfile);
-
-
-
         }
-
-
 
 
         public ActionResult CreateAccount(CreateAccountViewModel vm)
@@ -57,7 +46,6 @@ namespace finder_ui.Controllers
                     };
                     var user = client.CreateUser(newUser);
 
-
                     if (user != null)
                     {
                         Session["AuthorizedAsUser"] = "true";
@@ -67,49 +55,34 @@ namespace finder_ui.Controllers
                     {
                         return View("Index");
                     }
-                
 
-                if (Session["AuthorizedAsUser"] == "true")
-                {
-                    return View("UpdateUserProfile");
+
+                    if (Session["AuthorizedAsUser"].ToString() == "true")
+                    {
+                        return View("UpdateUserProfile");
+                    }
+                    else
+                    {
+                        return View("Index");
+                    }
                 }
                 else
                 {
-                    return View("Index");
-                }
-                }
-                else
-                {
-                    ViewBag.Message= "Användarnamnet finns redan";
+                    ViewBag.Message = "Användarnamnet finns redan";
                     return View("Index");
                 }
 
             }
-          
+
         }
 
         //inloggnings saker
-        [HttpGet]
-        public ActionResult Login()
+        [CustomAuthorization]
+        public ActionResult LogIn()
         {
-            var controller = TempData["ReturnToController"].ToString();
-            var action = TempData["ReturnToAction"].ToString();
-
-            var viewModel = new LoginViewModel
-            {
-                Controller = controller,
-                Action = action,
-            };
-            return View(viewModel);
+            return RedirectToAction("MyServices", "Service");
         }
 
-        [HttpPost]
-        public ActionResult Login(LoginViewModel viewModel)
-        {
-            // TODO: Här st man egentligen anropa inloggningstjänsten
-            Session["AuthorizedAsUser"] = "true";
-            return RedirectToAction(viewModel.Action, viewModel.Controller);
-        }
 
         [HttpGet]
         public ActionResult LogOut()
@@ -150,7 +123,7 @@ namespace finder_ui.Controllers
             using (var client = new UserProfileServiceReference.UserProfileServiceClient())
             {
 
-                
+
                 int.TryParse(Session["UserId"].ToString(), out int userid);
 
                 var Userinfo = client.GetUserByUserId(userid);
@@ -185,7 +158,20 @@ namespace finder_ui.Controllers
                 }
             }
             return View();
+        }
 
+        public PartialViewResult NavbarPartial()
+        {
+            int.TryParse(Session["UserId"]?.ToString() ?? "", out int userid);
+            var viewModel = new NavbarPartialViewModel
+            {
+                LoggedIn = (Session["AuthorizedAsUser"]?.ToString() ?? "") == "true",
+                UserId = userid,
+                Username = "Assa2",
+                DemoData = "Data from AccountPartialView",
+                UserPicture = "/Content/Images/fnd-user2.png",
+            };
+            return PartialView(viewModel);
         }
 
     }

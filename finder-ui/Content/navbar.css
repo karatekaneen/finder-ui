@@ -1,0 +1,137 @@
+﻿.findernav {
+    overflow: visible;
+    background-color: white;
+    padding: 20px;
+}
+
+
+/*------------------------------------------------------------------------------------------ 
+  Upper part of navbar (logo, searchbar and user-dropdown-menu)
+  ------------------------------------------------------------------------------------------*/
+
+.findernav-logo {
+    max-width: 8em;
+    max-height: 5em;
+    cursor: pointer;
+}
+
+.findernav-search-input {
+    border-radius: 14px 0px 0px 14px;
+    font-size: 18px;
+}
+
+.findernav-search-button {
+    border-radius: 0px 14px 14px 0px;
+    background-color: limegreen;
+    color: white;
+    font-weight: bold;
+}
+
+.findernav-login-button {
+    display:inline-block;
+    padding: 5px 15px;
+    font-size: 14px;
+    margin: 2px 2px;
+    width: 8em;
+}
+
+
+.findernav-userwidget {
+    text-align: right;
+}
+
+.findernav-dropdown-button {
+    outline-style: none;
+    background-color: white;
+    border: solid medium white;
+    color: black;
+}
+
+    .findernav-dropdown-button button:focus {
+        outline-style: none;
+        color: dimgray;
+    }
+
+
+.findernav-dropdown-picture {
+    width: 30px;
+    margin: 0px;
+    clip-path: circle(15px at center);
+}
+
+/*.findernav-dropdown-content {
+    display: block;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 40px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    height: 80px;
+}*/
+
+
+
+/*------------------------------------------------------------------------------------------ 
+  Lower part of navbar (navigation menu) 
+  ------------------------------------------------------------------------------------------*/
+
+.findernav-line {
+    height: 2px;
+    background-color: dimgray;
+    overflow: hidden;
+}
+
+.findernav-navigationmenu {
+    text-align: center;
+    padding: 12px;
+}
+
+    .findernav-navigationmenu a {
+        /*float: left;*/
+        margin: 12px;
+        color: black;
+        text-align: center;
+        text-decoration: none;
+        font-size: 18px;
+        line-height: 25px;
+        border-radius: 0px;
+        border-bottom: thick;
+        border-bottom: solid thick;
+        border-bottom-color: white;
+    }
+
+        .findernav-navigationmenu a:hover {
+            border-bottom: solid thick;
+            border-bottom-color: limegreen;
+        }
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+/*@media screen and (max-width: 500px) {
+    .findernav a {
+        float: none;
+        display: block;
+        text-align: left;
+    }
+
+    .findernav-right {
+        float: none;
+    }
+}*/
+
+
+/*------------------------------------------------------------------------------------------ 
+  Just for debugging
+  ------------------------------------------------------------------------------------------*/
+
+.a-red {
+    background-color: #ffaaaa;
+}
+
+.a-green {
+    background-color: #aaffaa;
+}
+
+.a-blue {
+    background-color: #aaaaff;
+}
