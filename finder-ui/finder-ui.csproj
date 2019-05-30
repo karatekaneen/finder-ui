@@ -292,7 +292,6 @@
     <Content Include="Content\Images\finder-logo.png" />
     <Content Include="Content\Images\fnd-user.png" />
     <Content Include="Content\Images\fnd-user2.png" />
-    <Content Include="Content\Images\jumbotron-images-print.png" />
     <Content Include="Content\Images\jumbotron-images-web.png" />
     <Content Include="Content\Images\logo_360.png" />
     <Content Include="Content\Images\logo_360_black.png" />
