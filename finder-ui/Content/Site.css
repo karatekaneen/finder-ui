@@ -70,9 +70,12 @@
 .footer {
     background-color: black;
     height: 90px;
-    width: auto;
+    width: 100%;
     overflow: auto;
-    min-height: 100vh;
+    bottom:0;
+    
+    
+
 }
 
     .footer .logo1 {
