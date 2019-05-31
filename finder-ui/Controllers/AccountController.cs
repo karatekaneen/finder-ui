@@ -160,19 +160,5 @@ namespace finder_ui.Controllers
             return View();
         }
 
-        public PartialViewResult NavbarPartial()
-        {
-            int.TryParse(Session["UserId"]?.ToString() ?? "", out int userid);
-            var viewModel = new NavbarPartialViewModel
-            {
-                LoggedIn = (Session["AuthorizedAsUser"]?.ToString() ?? "") == "true",
-                UserId = userid,
-                Username = "Assa2",
-                DemoData = "Data from AccountPartialView",
-                UserPicture = "/Content/Images/fnd-user2.png",
-            };
-            return PartialView(viewModel);
-        }
-
     }
 }

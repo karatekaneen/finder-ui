@@ -11,6 +11,5 @@ namespace finder_ui.Models
         public string Username { get; set; }
         public int UserId { get; set; }
         public string UserPicture { get; set; }
-        public string DemoData { get; set; }
     }
 }

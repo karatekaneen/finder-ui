@@ -166,6 +166,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\NavbarController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -411,7 +412,8 @@
     <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\Account\UpdateUserProfile.cshtml" />
     <Content Include="Views\UserProfile\EditProfile.cshtml" />
-    <Content Include="Views\Account\NavbarPartial.cshtml" />
+    <Content Include="Views\Navbar\NavbarPartial.cshtml" />
+    <Content Include="Views\Account\Views-Account-Index - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
