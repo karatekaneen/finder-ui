@@ -19,6 +19,7 @@ namespace finder_ui.Controllers
         [HttpGet]
         public ActionResult MessageIndex(int id) //id = serviceID
         {
+            try { 
             var serv = adClient.GetServiceById(id); //hämtar serviceobjekt via serviceID
             var creatorId = serv.CreatorID;
             var servID = serv.Id;
@@ -39,11 +40,16 @@ namespace finder_ui.Controllers
             MessageServiceReference.AddMessage nyttMsg = new MessageServiceReference.AddMessage();
             nyttMsg.ServiceId = id;
             return View(nyttMsg);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Service");
+            }
         }
         [HttpPost]
         public ActionResult MessageIndex(MessageServiceReference.AddMessage nyttMsg/*int id, int servId, string titel*/)
         {
-            
+            try {
             var serv = adClient.GetServiceById(nyttMsg.ServiceId); //hämtar serviceobjekt via serviceID
             var creatorId = serv.CreatorID;
             var servID = serv.Id;
@@ -60,11 +66,16 @@ namespace finder_ui.Controllers
             ViewBag.Lista = messageList.Where(x => x.SendingUserId == sessId && x.RecievingUserId == creatorId && x.ServiceId == servID);// visar lista på endast egna meddelanden
 
             return RedirectToAction("MessageIndex", "Message");
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Service");
+            }
         }
         
         public ActionResult Kontrakt(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId)
         {
-            
+            try { 
             adClient.CreateContract(serviceId, counterpartId, serviceOwnerId, contractCreatorId); //Skapa kontrakt
             var kontraktinfo = adClient.GetContract(serviceId, counterpartId, serviceOwnerId);//Hämta kontraktet
             var serviceInfo = adClient.GetServiceById(serviceId);//Hämta serviceinfo
@@ -80,6 +91,11 @@ namespace finder_ui.Controllers
             
 
             return View(serviceInfo);
+            }
+            catch
+            {
+                return RedirectToAction("Error", "Service");
+            }
         }
     }
 }
