@@ -1,0 +1,93 @@
+﻿@model finder_ui.Models.NavbarPartialViewModel
+
+@*  ------------------------------------------------------------------------------------------
+       Upper part of navbar (logo, searchbar and user-dropdown-menu)
+    ------------------------------------------------------------------------------------------
+*@
+<div class="findernav row">
+    <div class="col-md-2 col-sm-12">
+        <img alt="Finder" src="~/Content/Images/logo_360.png" class="findernav-logo" onclick="window.location = '/'" />
+    </div>
+
+    <div class="col-md-5 col-sm-12">
+        @using (Html.BeginForm("Search", "Service", FormMethod.Post, new { id = "searchForm" }))
+        {
+            <div class="input-group ml-1">
+                <input type="text" class="form-control findernav-search-input" id="searchString" name="searchString" placeholder="Sök annons" aria-label="" aria-describedby="basic-addon1">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-secondary findernav-search-button" onclick="submitSearch()" type="button">Sök</button>
+                </div>
+            </div>
+        }
+    </div>
+
+    @{
+        if (Model.LoggedIn)
+        {
+    <div class="col-md-5 col-sm-12 dropdown show findernav-userwidget">
+        <button class="dropdown-toggle findernav-dropdown-button" 
+                role="button" id="dropdownMenuButton" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="true">
+            <img src="@Model.UserPicture" class="findernav-dropdown-picture">
+            @Model.Username
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <span>@Html.ActionLink("Logga ut", "LogOut", "Account", null, new { @class = "dropdown-item" })</span>
+            <span>@Html.ActionLink("Mina annonser", "MyServices", "Service", null, new { @class = "dropdown-item" })</span>
+            <span>@Html.ActionLink("Recensioner jag har skrivit", "ShowReviewsByUserId", "Review", new { id = Model.UserId }, new { @class = "dropdown-item" })</span>
+            <span>@Html.ActionLink("Recensioner om mig", "ShowReviewsAboutUserId", "Review", new { id = Model.UserId }, new { @class = "dropdown-item" })</span>
+            <span>@Html.ActionLink("Min profil", "Index", "UserProfile", null, new { @class = "dropdown-item" })</span>
+        </div>
+    </div>
+        }
+        else
+        {
+            <div class="col-md-5 col-sm-12 findernav-userwidget">
+                <div>
+                    <span>@Html.ActionLink("Skapa konto", "Index", "Account")</span>
+                    <span>@Html.ActionLink("Logga in", "LogIn", "Account", null, new { @class = "button findernav-login-button" })</span>
+                </div>
+            </div>
+
+        }
+    }
+
+</div>
+
+
+@*  ------------------------------------------------------------------------------------------
+       Lower part of navbar (navigation menu)
+    ------------------------------------------------------------------------------------------
+*@
+<div class="findernav row">
+    <div class="col">
+        <div class="findernav-line"> </div>
+        <div class="findernav-navigationmenu">
+            @{
+                if (Model.LoggedIn)
+                {
+                    @Html.ActionLink("Annonser", "Index", "Service")
+                    @Html.ActionLink("Skapa Annons", "Create", "Service")
+                    @Html.ActionLink("Meddelanden", "", "/")
+                    @Html.ActionLink("Min profil", "Index", "UserProfile")
+                    @Html.ActionLink("Om Finder", "About", "Home")
+                }
+                else
+                {
+                    @Html.ActionLink("Annonser", "Index", "Service")
+                    @Html.ActionLink("Om Finder", "About", "Home")
+                }
+            }
+        </div>
+        <div class="findernav-line"> </div>
+    </div>
+</div>
+
+@*<div class="col-6">
+        <a class="button btn-block" href="~/Service/Create">Ny annons</a>
+    </div>*@
+@*<p>
+        lkajsdfh lkajsdfh kladsh flkhas dflkh asdlkfh askldf lkashd flkhads
+        flkjashdlifh aewiphf pwuihf pvuidzilvk naoisdhvpawiohdsv paiwosd pvin
+        apsidvn oaizsnd ovian zsiodvn apozsdnv coiazns dvion azsoinvc puix
+    </p>*@

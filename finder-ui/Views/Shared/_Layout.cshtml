@@ -5,9 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Include jQuery-->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
-    <link href="@Url.Content("~/Content/Finder.css")" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-
     <script>
         const submitSearch = () => {
             const form = document.getElementById('searchForm');
@@ -18,91 +16,35 @@
         }
     </script>
 
-
-    <!-- Include Date Picker -->
-    
-
-    <title>@ViewBag.Title - Finder</title>
-    <LINK REL="SHORTCUT ICON"
-          HREF="~/Content/Images/findericon.png">
-    @Styles.Render("~/Content/css")
+    <!-- Note: The "Styles.Render" commands calls the files included in that particular bundle,
+        which is declared inside the BundleConfig class in the App_Start folder. -->
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
+
+    <link rel="SHORTCUT ICON" href="~/Content/Images/findericon.png">
+    <title>@ViewBag.Title - Finder</title>
 </head>
+
 <body>
+    @*
+        Navbar partial view:
+        - View is located in NavbarPartial.cshtml
+        - Viewmodel for NavbarPartial is located in NavbarPartialViewModel.cs
+        - Actionmethod for populating NavbarPartialViewModel is located in AccountController.NavbarPartial
+    *@
     <div class="container-fluid">
-        <div class="row">
-
-
-            <div class="col-12">
-                <div class="header row">
-                    <div class="col-md-9 col-sm-12">
-                        <img alt="Finder" src="//i.imgur.com/YHlSO2T.png" style="max-width: 100% ;
-         min-height: 53px ; cursor:pointer" onclick="window.location = '/';" />
-                    </div>
-                    <div class="col-md-3 col-sm-12 dropdown-wrapper">
-                        <div class="row">
-                            <div class="col-6">
-                                <a class="button btn-block" href="~/Service/Create">Ny annons</a>
-                            </div>
-                            <div class="col-6 dropdown">
-
-                                <img src="~/Content/Images/User.png" height="30">
-                                Username
-                                <div class="dropdown-content">
-
-                                    <button class="button sign-out">Sign out</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-
-                </div>
-                <div class="col-sm-12 ">
-                    <div class="input-group mb-3">
-                    @using (Html.BeginForm("Search", "Service", FormMethod.Post, new { id="searchForm" }))
-                    {
-                        <input type="text" class="form-control" id="searchString" name="searchString" placeholder=" Search.." aria-label="" aria-describedby="basic-addon1">
-                    }                    
-                <div class="input-group-append">         
-                   <button class="btn btn-outline-secondary" onclick="submitSearch()" type="button">Button</button>
-                </div>
-
-                </div>
-                </div>
-
-            </div>
-            <div class="col-12">
-                <div class="line"> </div>
-                <div class="header-bottom">
-                    @Html.ActionLink("Home", "Index", "Service")
-                    @Html.ActionLink("Profile", "Index", "UserProfile")
-                    @Html.ActionLink("Help", "//", "//")
-
-                </div>
-                <div class="line"> </div>
-            </div>
-        </div>
+        @{Html.RenderAction("NavbarPartial", "Account");}
     </div>
-
 
     <div class="container body-content">
         @RenderBody()
-        <hr />
-
-
-
     </div>
+
     <div class="footer">
-
-
-
-        <img class="logo1" src="~/Content/Images/finderlogo.png" height="90">
-
-
-
+        <img class="logo1" src="~/Content/Images/logo_360_black.png" height="50">
     </div>
+
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
