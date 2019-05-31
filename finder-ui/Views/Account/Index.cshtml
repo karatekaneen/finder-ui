@@ -19,27 +19,36 @@
                 <label for="userLastName">Efternamn</label>
 
                 @Html.TextBoxFor(vm => vm.surname, new { @class = "form-control text-center", @placeholder = "Efternamn", @Required = "required" })
-                @Html.ValidationMessageFor(vm => vm.surname)
+                <div style="color:red">
+                    @Html.ValidationMessageFor(vm => vm.surname)
+                </div>
             </div>
             <div class="form-group">
-                <label for="userEmail">E-Post adress</label>
-                @Html.TextBoxFor(vm => vm.email, new { @class = "form-control text-center", @placeholder = "Epost", @Required = "required" })
-                @Html.ValidationMessageFor(vm => vm.email)
+                <label for="userEmail">E-postadress</label>
+                @Html.TextBoxFor(vm => vm.email, new { @class = "form-control text-center", @placeholder = "E-postadress", @Required = "required" })
+                <div style="color:red">
+                    @Html.ValidationMessageFor(vm => vm.email)
+                </div>
 
             </div>
             <div class="form-group">
                 <label for="userName">Användarnamn</label>
                 @Html.TextBoxFor(vm => vm.username, new { @class = "form-control text-center", @placeholder = "Användarnamn", @Required = "required" })
-                @Html.ValidationMessageFor(vm => vm.username)
-                @ViewBag.Message
+                <div style="color:red">
+                    @Html.ValidationMessageFor(vm => vm.username)
+                </div>
+                
 
             </div>
             <div class="form-group">
                 <label for="userPassword">Lösenord</label>
                 @Html.PasswordFor(vm => vm.password, new { @class = "form-control text-center", @placeholder = "Lösenord", @Required = "required" })
-                @Html.ValidationMessageFor(vm => vm.password)
-
-
+                <div style="color:red">
+                    @Html.ValidationMessageFor(vm => vm.password)
+                </div>
+            </div>
+            <div>
+                <h5 style="color:red">@ViewBag.Message</h5>
             </div>
                 <button type="submit" class="btn btn-primary">Skapa Konto</button>
             }

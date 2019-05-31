@@ -57,6 +57,9 @@ namespace finder_ui.Controllers
                     UserAddress = Userinfo.Address,
                     UserZipCode = Userinfo.ZipCode,
                     UserProfilePicture = Userinfo.Picture,
+                    UserFirstName = Userinfo.Name,
+                    UserName = Userinfo.Username,
+                    UserSurname = Userinfo.Surname,
                 };
                 return View(viewModel);
             }
@@ -66,9 +69,14 @@ namespace finder_ui.Controllers
         [HttpPost]
         public ActionResult EditProfile(EditProfileViewModel vm)
         {
+
+            if (!ModelState.IsValid)
+            {
+                return View(vm);
+            }
+
             using (var client = new UserProfileServiceReference.UserProfileServiceClient())
             {
-
                 int.TryParse(Session["UserId"].ToString(), out int userid);
                 var Userinfo = client.GetUserByUserId(userid);
 
@@ -81,23 +89,41 @@ namespace finder_ui.Controllers
                     Picture = vm.UserProfilePicture,
                     ZipCode = vm.UserZipCode,
                     Id = userid,
-                    Email = Userinfo.Email,
-                    Name = Userinfo.Name,
-                    Surname = Userinfo.Surname,
-                    Username = Userinfo.Username,
+                    Email = vm.UserEmail,
+                    Name = vm.UserFirstName,
+                    Surname = vm.UserSurname,
+                    Username = vm.UserName,
                 };
-
+                using (var validation = new UserLoginServiceReference.LoginServiceClient())
+                {
+                    if (vm.UserName != Userinfo.Username)
+                    {
+                        if (validation.UsernameExist(updateUser.Username))
+                        {
+                            ModelState.AddModelError("Username", "Användarnamnet finns redan");
+                        }
+                    }
+                    if (vm.UserEmail != Userinfo.Email)
+                    {
+                        if (validation.EmailExist(updateUser.Email))
+                        {
+                            ModelState.AddModelError("Email", "E-postadressen finns redan");
+                        }
+                    }
+                }
+                if (!ModelState.IsValid)
+                {
+                    return View(vm);
+                }
                 var user = client.UpdateUser(updateUser);
 
             }
-            
-            if(!ModelState.IsValid){
-                return View();
-            }
-            else
+
+            if (!ModelState.IsValid)
             {
-                return RedirectToAction("Index");
+                return View(vm);
             }
+                return RedirectToAction("Index");
 
         }
 
