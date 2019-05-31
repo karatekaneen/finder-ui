@@ -73,6 +73,10 @@
                         <p>
                             @Html.ActionLink("Skriv omdöme", "ReviewService", "Review", new { id = Model.IncomingService.Id }, null)
                         </p>
+                        <p>
+
+                            @Html.ActionLink("Kontakta annonsör", "MessageIndex", "Message", new { id = Model.IncomingService.Id }, null)
+                        </p>
                        
                         @foreach (var item in Model.IncomingReviewWithUser)
                         {

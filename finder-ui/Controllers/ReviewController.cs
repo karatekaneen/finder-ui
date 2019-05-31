@@ -13,7 +13,7 @@ namespace finder_ui.Controllers
         ReviewServiceReference.Service1Client client = new ReviewServiceReference.Service1Client();
         UserProfileServiceReference.UserProfileServiceClient clien2 = new UserProfileServiceReference.UserProfileServiceClient();
         Group3ServiceReference.Service1Client client3 = new Group3ServiceReference.Service1Client();
-
+   
         [HttpGet]
         public ActionResult ShowReviewsByServiceId(int id)
         {                       
