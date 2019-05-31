@@ -1,4 +1,41 @@
-﻿.header {
+﻿.answerbox {
+    background-color: white;
+    border-color: #d1d9d9;
+    width: 84%;
+    margin-left: 0%;
+    resize: none;
+    position: relative;
+    max-width: 600px;
+    max-height: 500px;
+}
+#ContractTable {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+    #ContractTable td, #ContractTable th {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+
+    #ContractTable tr:nth-child(even) {
+        background-color: #f2f2f2;
+    }
+
+    #ContractTable tr:hover {
+        background-color: #ddd;
+    }
+
+    #ContractTable th {
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: limegreen;
+        color: white;
+    }
+
+.header {
     overflow: hidden;
     background-color: white;
     padding: 20px;

@@ -140,6 +140,67 @@ namespace finder_ui.Group3ServiceReference {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="ContractStatus", Namespace="http://schemas.datacontract.org/2004/07/AnnonsService")]
+    [System.SerializableAttribute()]
+    public partial class ContractStatus : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string NameField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Name {
+            get {
+                return this.NameField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.NameField, value) != true)) {
+                    this.NameField = value;
+                    this.RaisePropertyChanged("Name");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="ServiceType", Namespace="http://schemas.datacontract.org/2004/07/AnnonsService")]
     [System.SerializableAttribute()]
     public partial class ServiceType : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1028,10 +1089,22 @@ namespace finder_ui.Group3ServiceReference {
     public interface IService1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateContract", ReplyAction="http://tempuri.org/IService1/CreateContractResponse")]
-        bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId);
+        bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/CreateContract", ReplyAction="http://tempuri.org/IService1/CreateContractResponse")]
-        System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId);
+        System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllContract", ReplyAction="http://tempuri.org/IService1/GetAllContractResponse")]
+        finder_ui.Group3ServiceReference.Contract[] GetAllContract();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetAllContract", ReplyAction="http://tempuri.org/IService1/GetAllContractResponse")]
+        System.Threading.Tasks.Task<finder_ui.Group3ServiceReference.Contract[]> GetAllContractAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetContractStatusType", ReplyAction="http://tempuri.org/IService1/GetContractStatusTypeResponse")]
+        finder_ui.Group3ServiceReference.ContractStatus[] GetContractStatusType();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetContractStatusType", ReplyAction="http://tempuri.org/IService1/GetContractStatusTypeResponse")]
+        System.Threading.Tasks.Task<finder_ui.Group3ServiceReference.ContractStatus[]> GetContractStatusTypeAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ChangeContractStatus", ReplyAction="http://tempuri.org/IService1/ChangeContractStatusResponse")]
         bool ChangeContractStatus(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus);
@@ -1193,12 +1266,28 @@ namespace finder_ui.Group3ServiceReference {
                 base(binding, remoteAddress) {
         }
         
-        public bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId) {
-            return base.Channel.CreateContract(serviceId, counterpartId, serviceOwnerId);
+        public bool CreateContract(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId) {
+            return base.Channel.CreateContract(serviceId, counterpartId, serviceOwnerId, contractCreatorId);
         }
         
-        public System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId) {
-            return base.Channel.CreateContractAsync(serviceId, counterpartId, serviceOwnerId);
+        public System.Threading.Tasks.Task<bool> CreateContractAsync(int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId) {
+            return base.Channel.CreateContractAsync(serviceId, counterpartId, serviceOwnerId, contractCreatorId);
+        }
+        
+        public finder_ui.Group3ServiceReference.Contract[] GetAllContract() {
+            return base.Channel.GetAllContract();
+        }
+        
+        public System.Threading.Tasks.Task<finder_ui.Group3ServiceReference.Contract[]> GetAllContractAsync() {
+            return base.Channel.GetAllContractAsync();
+        }
+        
+        public finder_ui.Group3ServiceReference.ContractStatus[] GetContractStatusType() {
+            return base.Channel.GetContractStatusType();
+        }
+        
+        public System.Threading.Tasks.Task<finder_ui.Group3ServiceReference.ContractStatus[]> GetContractStatusTypeAsync() {
+            return base.Channel.GetContractStatusTypeAsync();
         }
         
         public bool ChangeContractStatus(int serviceId, int counterpartId, int serviceOwnerId, System.Nullable<int> serviceOwnerStatus, System.Nullable<int> counterpartStatus) {

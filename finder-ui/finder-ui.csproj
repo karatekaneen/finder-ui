@@ -151,6 +151,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Connected Services\MessageServiceReference\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Connected Services\ReviewServiceReference\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,6 +174,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MessageController.cs" />
     <Compile Include="Controllers\ReviewController.cs" />
     <Compile Include="Controllers\UserProfileController.cs" />
     <Compile Include="Models\CreateAccountViewModel.cs" />
@@ -187,9 +193,32 @@
     <Compile Include="SessionHandler\CustomAuthorization.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connected Services\MessageServiceReference\finder_ui.MessageServiceReference.Messageinfo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Connected Services\Group3ServiceReference\finder_ui.Group3ServiceReference.ContractStatus.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <None Include="Connected Services\MessageServiceReference\service1.disco" />
+    <None Include="Connected Services\MessageServiceReference\configuration91.svcinfo" />
+    <None Include="Connected Services\MessageServiceReference\configuration.svcinfo" />
+    <None Include="Connected Services\MessageServiceReference\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
     <Content Include="Connected Services\ReviewServiceReference\finder_ui.ReviewServiceReference.ReviewData.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <None Include="Connected Services\MessageServiceReference\Service1.wsdl" />
+    <None Include="Connected Services\MessageServiceReference\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MessageServiceReference\service11.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\MessageServiceReference\service12.xsd">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="Connected Services\ReviewServiceReference\Service1.disco" />
     <None Include="Connected Services\ReviewServiceReference\configuration91.svcinfo" />
     <None Include="Connected Services\ReviewServiceReference\configuration.svcinfo" />
@@ -286,6 +315,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\finderlogo.png" />
+    <Content Include="Content\Images\User.png" />
     <Content Include="Content\Review.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -403,6 +434,8 @@
     <Content Include="Views\UserProfile\Index.cshtml" />
     <Content Include="Views\Account\UpdateUserProfile.cshtml" />
     <Content Include="Views\UserProfile\EditProfile.cshtml" />
+    <Content Include="Views\Message\MessageIndex.cshtml" />
+    <Content Include="Views\Message\Kontrakt.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -414,6 +447,7 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\MessageServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\ReviewServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\UserLoginServiceReference\" />
     <WCFMetadataStorage Include="Connected Services\UserProfileServiceReference\" />

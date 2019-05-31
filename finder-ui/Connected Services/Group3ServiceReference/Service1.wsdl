@@ -21,6 +21,18 @@
   <wsdl:message name="IService1_CreateContract_OutputMessage">
     <wsdl:part name="parameters" element="tns:CreateContractResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_GetAllContract_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllContract" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetAllContract_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllContractResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetContractStatusType_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractStatusType" />
+  </wsdl:message>
+  <wsdl:message name="IService1_GetContractStatusType_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetContractStatusTypeResponse" />
+  </wsdl:message>
   <wsdl:message name="IService1_ChangeContractStatus_InputMessage">
     <wsdl:part name="parameters" element="tns:ChangeContractStatus" />
   </wsdl:message>
@@ -158,6 +170,14 @@
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/CreateContract" message="tns:IService1_CreateContract_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/CreateContractResponse" message="tns:IService1_CreateContract_OutputMessage" />
     </wsdl:operation>
+    <wsdl:operation name="GetAllContract">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetAllContract" message="tns:IService1_GetAllContract_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetAllContractResponse" message="tns:IService1_GetAllContract_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetContractStatusType">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetContractStatusType" message="tns:IService1_GetContractStatusType_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/GetContractStatusTypeResponse" message="tns:IService1_GetContractStatusType_OutputMessage" />
+    </wsdl:operation>
     <wsdl:operation name="ChangeContractStatus">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/ChangeContractStatus" message="tns:IService1_ChangeContractStatus_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/ChangeContractStatusResponse" message="tns:IService1_ChangeContractStatus_OutputMessage" />
@@ -252,6 +272,24 @@
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="CreateContract">
       <soap12:operation soapAction="http://tempuri.org/IService1/CreateContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllContract">
+      <soap12:operation soapAction="http://tempuri.org/IService1/GetAllContract" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetContractStatusType">
+      <soap12:operation soapAction="http://tempuri.org/IService1/GetContractStatusType" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

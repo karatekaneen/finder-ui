@@ -1,0 +1,23 @@
+﻿@model finder_ui.Group3ServiceReference.Service
+@{
+    ViewBag.Title = "Kontrakt";
+}
+
+<h2>Föreslaget kontrakt!</h2>
+<table id="ContractTable">
+    <tr>
+        <th>Tjänsttitel</th>
+        <th>Pris</th>
+        <th>Startdatum</th>
+        <th>Slutdatum</th>
+        <th>Kontraktstatus</th>
+    </tr>
+    <tr>
+        <td><strong>@Html.DisplayFor(Model => Model.Title)</strong></td>
+        <td>@Html.DisplayFor(Model => Model.Price)Sek</td>
+        <td>@Html.DisplayFor(Model => Model.StartDate)</td>
+        <td>@Html.DisplayFor(Model => Model.EndDate)</td>
+        <td>Proposed</td>
+    </tr>
+
+</table>
