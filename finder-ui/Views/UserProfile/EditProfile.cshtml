@@ -11,12 +11,45 @@
             {
                 <div class="form-group">
                     @Html.HiddenFor(vm => vm.UserId)
-                    @Html.HiddenFor(vm => vm.PersonalCodeNumber)
+                </div>
+                <div class="form-group">
+                    <label for="userFirstname">Förnamn</label>
+                    @Html.TextBoxFor(vm => vm.UserFirstName, new { @class = "form-control text-center" })
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(vm => vm.UserFirstName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="userSurname">Efternamn</label>
+                    @Html.TextBoxFor(vm => vm.UserSurname, new { @class = "form-control text-center" })
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(vm => vm.UserSurname)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="UserEmail">E-postaddress</label>
+                    @Html.TextBoxFor(vm => vm.UserEmail, new { @class = "form-control text-center" })
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(vm => vm.UserEmail)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="UserName">Användarnamn</label>
+                    @Html.TextBoxFor(vm => vm.UserName, new { @class = "form-control text-center" })
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(vm => vm.UserName)
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="PersonalCodeNumber">Födelsedatum (ÅÅÅÅMMDD)</label>
+                    @Html.TextBoxFor(vm => vm.PersonalCodeNumber, new { @class = "form-control text-center", @type = "number", @placeholder="ÅÅÅÅMMDD"})
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(vm => vm.PersonalCodeNumber)
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="userCity">Stad</label>
                     @Html.TextBoxFor(vm => vm.UserCity, new { @class = "form-control text-center" })
-
                 </div>
                 <div class="form-group">
                     <label for="userAddress">Adress</label>
@@ -25,13 +58,17 @@
                 </div>
                 <div class="form-group">
                     <label for="userZipCode">Postnummer</label>
-                    @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "Postnummer" })
-                    @Html.ValidationMessageFor(vm => vm.UserZipCode)
+                    @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "Postnummer", @type="number"})
+                    <div style="color: red">
+                        @Html.ValidationMessageFor(vm => vm.UserZipCode)
+                    </div>
                 </div>
                 <div class="form-group">
                     <label for="userPhoneNumber">Telefonnummer</label>
                     @Html.TextBoxFor(vm => vm.UserPhoneNumber, new { @class = "form-control text-center", @placeholder = "Telefonnummer" })
-                    @Html.ValidationMessageFor(vm => vm.UserPhoneNumber)
+                    <div style="color:red">
+                        @Html.ValidationMessageFor(vm => vm.UserPhoneNumber)
+                    </div>
 
                 </div>
                 <div class="form-group">

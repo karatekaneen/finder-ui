@@ -239,6 +239,11 @@ namespace finder_ui.Controllers
         {
             try
             {
+                if (picture == "")
+                {
+                    picture = "http://hdimages.org/wp-content/uploads/2017/03/placeholder-image10.jpg";
+                }
+
                 var x = subCategoryId;
                 bool editOk = 
                 client.EditService(
