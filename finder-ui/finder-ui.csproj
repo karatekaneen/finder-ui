@@ -317,6 +317,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\findericon.png" />
     <Content Include="Content\Images\finderlogo.png" />
     <Content Include="Content\Images\User.png" />
     <Content Include="Content\navbar.css" />
@@ -446,9 +447,7 @@
     <Content Include="Views\Navbar\NavbarPartial.cshtml" />
     <Content Include="Views\Account\Views-Account-Index - Copy.cshtml" />
     <Content Include="Views\Message\Kontrakt.cshtml" />
-    <Content Include="Views\Message\Index.cshtml" />
-    <Content Include="Views\Message\Message.cshtml" />
-    <Content Include="Views\Message\Searching.cshtml" />
+    <Content Include="Views\Message\MessageIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
