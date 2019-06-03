@@ -6,12 +6,12 @@
             @using (Html.BeginForm("UpdateUserProfile", "Account", FormMethod.Post))
             {
              <div class="text-center">
-                 <h1>Profil information</h1>
-                 <h3>Detta är inte obligatoriskt</h3>
+                 <h1>Profilinformation</h1>
+                 <h3>(Detta är inte obligatoriskt)</h3>
              </div>
             <hr/>
             <div class="form-group">
-                <label for="userFirstName">Födelsedatum, Ej de fyra sista</label>
+                <label for="userFirstName">Födelsedatum (ÅÅÅÅMMDD)</label>
                 @Html.HiddenFor(vm => vm.id)
                 @Html.TextBoxFor(vm => vm.personalnumber, new { @class = "form-control text-center", @placeholder = "ÅÅMMDD" })
                 <div style="color:red">
@@ -29,8 +29,8 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="userZipCode">Postnummer</label>
-                    @Html.TextBoxFor(vm => vm.userZipCode, new { @class = "form-control text-center", @placeholder = "ÅÅMMDDXXX" })
+                    <label for="userZipCode">Postnummer (5 siffror)</label>
+                    @Html.TextBoxFor(vm => vm.userZipCode, new { @class = "form-control text-center", @placeholder = "Postnummer" })
 
                 </div>
                 <div class="form-group">

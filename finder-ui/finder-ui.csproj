@@ -445,6 +445,10 @@
     <Content Include="Views\UserProfile\EditProfile.cshtml" />
     <Content Include="Views\Navbar\NavbarPartial.cshtml" />
     <Content Include="Views\Account\Views-Account-Index - Copy.cshtml" />
+    <Content Include="Views\Message\Kontrakt.cshtml" />
+    <Content Include="Views\Message\Index.cshtml" />
+    <Content Include="Views\Message\Message.cshtml" />
+    <Content Include="Views\Message\Searching.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

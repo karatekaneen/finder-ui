@@ -1,0 +1,117 @@
+﻿@model finder_ui.MessageServiceReference.AddMessage
+
+@{ IEnumerable<finder_ui.MessageServiceReference.Messageinfo> Lista = ViewBag.Lista; //ger lista av alla meddelanden
+}
+@{IEnumerable<finder_ui.Group3ServiceReference.Service> annonsklient = ViewBag.annonsClient; //här är model till när man tar emot från advanced search funkar ej för tillfället
+}
+@{
+    IEnumerable<finder_ui.MessageServiceReference.Messageinfo> userMedd = ViewBag.userMedd; //visar upp anvnändarens meddelanden
+
+}
+
+
+@{
+    finder_ui.Group3ServiceReference.Service svar = ViewBag.annonsMessage; //ger service från endast den user man skickar in i hårdkodad controller för tillfället
+}
+@{
+    IEnumerable<finder_ui.UserLoginServiceReference.InterfaceUser> returnUsers = ViewBag.getUsers; //försök till dropdownlist för att få fram recievinguserid
+}
+@{
+    IEnumerable<finder_ui.UserLoginServiceReference.InterfaceUser> test = ViewBag.test; //ger info från specifik user (försökt ill recievinguserId)
+}
+@{
+    finder_ui.Group3ServiceReference.Service knapp = ViewBag.skapaKontrakt; //skapa kontrakt
+}
+
+
+
+@foreach (var item in test)
+{
+    <p>
+        @Html.DisplayFor(m => item.ID)
+        @Html.DisplayFor(m => item.Username)
+    </p>
+}
+@*Searchtest*@
+@Html.ActionLink("Till meddelanden", "Message", "Message", new { id = 10 }, new { })
+
+@Html.ActionLink("Searching", "Searching", "Message", new { a = "katt" }, new { })
+    <div class="outercontainer">
+
+
+
+        <div class="activemessagebanner">
+            <h3 style="display:inline-block; margin-left:1%;">username</h3>
+            @*<input type="button" style="margin-left:50%; background-color:orangered;
+             font-weight:bold; color:white; border-radius: 12px;"
+            value="Skapa kontrakt"
+            onclick="location.href='@Url.Action("Action", "Message")'" />*@
+
+
+            @*{int serviceId, int counterpartId, int serviceOwnerId, int contractCreatorId*
+            {
+            serviceId= knapp.id
+            serviceOwner = knapp.´CreatorID
+            if (knapp.CreatorID != Session.id)
+            {
+            counterPartId = Session.id
+            } else if (knapp.CreatorID == Session.id)
+            {
+            counterPArtId = DetAndraId:t
+            }
+            contractCreatorId = Session.Id
+            }*@
+            @*@{
+                int sessId = Convert.ToInt32(Session["UserId"]);
+                int counterpartId = 0;
+
+                if (knapp.CreatorID != sessId)
+                {
+                    counterpartId = sessId;
+
+                    @Html.ActionLink("Skapa Kontrakt", "Index", "Message", new { serviceId = knapp.Id, counterpartId, serviceOwnerId = knapp.CreatorID, contractCreatorId = sessId })
+                }
+                else
+                {
+                    knapp.CreatorID = sessId;
+                    @Html.ActionLink("Skapa Kontrakt", "Index", "Message", new { serviceId = knapp.Id, counterpartId=userMedd, serviceOwnerId = knapp.CreatorID, conractCreatorId = sessId })
+
+                }
+
+
+
+
+
+                @Html.ActionLink("Skapa Kontrakt", "Index", "Message", new { serviceId = knapp.Id, creatorId = knapp })
+
+
+            }*@
+
+        </div>
+
+
+
+        @foreach (var item in Lista)
+        {
+
+            <label>Till: </label>
+            <p>@Html.DisplayFor(m => item.RecievingUserId)</p>
+            <h5>@Html.DisplayFor(m => item.ServiceTitle)</h5>
+            <p>@Html.DisplayFor(m => item.Message)</p>
+            <label>sendinguserId ta bort sen</label>
+            <p>@Html.DisplayFor(m => item.SendingUserId)</p>
+            <a href="@Url.Action("Message", "Message", new { id = item.RecievingUserId,servId = 100, title =  "hej"  })"> Skicka Meddelande</a>
+            <a href="@Url.Action("Message", "Message", new { servId = 1})"> Skicka Meddelande 100</a>
+
+
+            <hr width="90%">
+
+        }
+
+
+
+
+
+    </div>
+
+

@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col align-self-center">
             <div class="text-center">
-                <h1>Uppdatera profil information</h1>
+                <h1>Uppdatera profilinformation</h1>
             </div>
             <hr />
             @using (Html.BeginForm("EditProfile", "UserProfile", FormMethod.Post))
@@ -57,7 +57,7 @@
 
                 </div>
                 <div class="form-group">
-                    <label for="userZipCode">Postnummer</label>
+                    <label for="userZipCode">Postnummer (5 siffror)</label>
                     @Html.TextBoxFor(vm => vm.UserZipCode, new { @class = "form-control text-center", @placeholder = "Postnummer", @type="number"})
                     <div style="color: red">
                         @Html.ValidationMessageFor(vm => vm.UserZipCode)
