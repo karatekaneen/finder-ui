@@ -34,6 +34,7 @@
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <span>@Html.ActionLink("Logga ut", "LogOut", "Account", null, new { @class = "dropdown-item" })</span>
             <span>@Html.ActionLink("Mina annonser", "MyServices", "Service", null, new { @class = "dropdown-item" })</span>
+            <span>@Html.ActionLink("Mina meddelanden", "Index", "Message", null, new { @class = "dropdown-item" })</span>
             <span>@Html.ActionLink("Recensioner jag har skrivit", "ShowReviewsByUserId", "Review", new { id = Model.UserId }, new { @class = "dropdown-item" })</span>
             <span>@Html.ActionLink("Recensioner om mig", "ShowReviewsAboutUserId", "Review", new { id = Model.UserId }, new { @class = "dropdown-item" })</span>
             <span>@Html.ActionLink("Min profil", "Index", "UserProfile", null, new { @class = "dropdown-item" })</span>
@@ -69,6 +70,7 @@
                     @Html.ActionLink("Annonser", "Index", "Service")
                     @Html.ActionLink("Skapa Annons", "Create", "Service")
 
+                    @Html.ActionLink("Mina meddelanden", "Index", "Message")
                     @Html.ActionLink("Min profil", "Index", "UserProfile")
                     @Html.ActionLink("Om Finder", "About", "Home")
                 }

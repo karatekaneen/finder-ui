@@ -1,0 +1,47 @@
+﻿@model finder_ui.Group3ServiceReference.Service
+@{
+    IEnumerable<finder_ui.Group3ServiceReference.Service> search = ViewBag.search;
+}
+
+
+<h2>Search</h2>
+<table class="table">
+    <tr>
+        <th>Titel</th>
+        <th>Skapad av</th>
+        <th>Beskrivning</th>
+        <th>Pris</th>
+        <th>Startdatum</th>
+        <th>Slutdatum</th>
+
+    </tr>
+
+
+    @foreach (var item in search)
+    {
+
+        <tr>
+            <td>@Html.DisplayFor(m => item.Title)</td>
+            <td>
+                @Html.DisplayFor(m => item.CreatorID)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.Description)
+            </td>
+            <td>
+                <p>@Html.DisplayFor(m => item.Price) :-</p>
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.StartDate)
+            </td>
+            <td>
+                @Html.DisplayFor(m => item.EndDate)
+            </td>
+            <td>
+                <a class="" href="@Url.Action("Message", "Message", new { id = item.CreatorID, serviceId = item.Id, title = item.Title})"> Skicka Meddelande</a>
+
+            </td>
+
+        </tr>
+    }
+</table>

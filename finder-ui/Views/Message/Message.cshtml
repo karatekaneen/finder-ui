@@ -1,0 +1,118 @@
+﻿@model finder_ui.MessageServiceReference.AddMessage
+@{
+    IEnumerable<finder_ui.MessageServiceReference.Messageinfo> Lista = ViewBag.Lista;
+}
+@*@{
+        finder_ui.MessageServiceReference.Messageinfo recUserMedd = ViewBag.recUserMedd;
+    }*@
+@{
+    finder_ui.Group3ServiceReference.Service knapp = ViewBag.skapaKontrakt; //skapa kontrakt
+}
+
+@*@{
+    finder_ui.UserProfileServiceReference.User username = ViewBag.userName;
+}*@
+
+
+
+
+<div class="activemessagebanner">
+    <h3 style="display:inline-block; margin-left:1%;">username</h3>
+
+</div>
+@ViewBag.test;
+
+
+@foreach (var item in Lista)
+{
+
+
+    <label>Till :</label>
+    <p>@Html.DisplayFor(m => item.RecievingUserId)</p>
+    @*<p>@Html.DisplayFor(m => username.Username)</p>*@
+
+
+
+
+    <h5>@Html.DisplayFor(m => item.ServiceTitle)</h5>
+
+    <p style="float:left;">@Html.DisplayFor(m => item.Message)</p><br />
+
+    <label>Från :</label>
+    <p>@Html.DisplayFor(m => item.SendingUserId)</p>
+
+    <hr width="90%">
+
+}
+<div>
+
+    @using (Html.BeginForm())
+    {
+
+
+        @*@Html.LabelFor(model => model.RecievingUserId)<br />
+            @Html.EditorFor(model => model.RecievingUserId)<br />*@
+
+
+        @Html.HiddenFor(model=>Model.ServiceId)
+        @Html.LabelFor(model => model.Message)<br />
+        @Html.EditorFor(model => model.Message)<br />
+
+        @*@Html.LabelFor(model => model.ServiceId)<br />
+        @Html.EditorFor(model => model.ServiceId)<br />
+
+        @Html.LabelFor(model => model.ServiceTitle)<br />
+        @Html.EditorFor(model => model.ServiceTitle)<br />*@
+
+
+
+
+        <input type="submit" value="Skicka meddelande" />
+    }
+
+
+</div>
+
+@{
+
+    //int recieving = 0;
+    int sessId = Convert.ToInt32(Session["UserId"]);
+    
+    @Html.ActionLink("Skapa Kontrakt", "Kontrakt", "Message", new { serviceId = 101, serviceOwnerId = 57, counterpartId = sessId, conractCreatorId = sessId })
+    }
+
+    @*<input type="button" style="margin-left:50%; background-color:orangered;
+                     font-weight:bold; color:white; border-radius: 12px;"
+        value="Skapa kontrakt"
+        onclick="location.href='@Url.Action("Action", "Message")'" />*@
+
+
+    @*@{
+
+            //int recieving = 0;
+            int sessId = Convert.ToInt32(Session["UserId"]);
+            int counterpartId = 0;
+
+
+
+
+            if (knapp.CreatorID != sessId)
+            {
+                counterpartId = sessId;
+
+                @Html.ActionLink("Skapa Kontrakt", "Kontrakt", "Message", new { serviceId = knapp.Id, serviceOwnerId = knapp.CreatorID, counterpartId, contractCreatorId = sessId })
+            }
+            else
+            {
+
+                @Html.ActionLink("Skapa Kontrakt", "Kontrakt", "Message", new { serviceId = Model.Id, serviceOwnerId = sessId, counterpartId = knapp.CreatorID, conractCreatorId = sessId })
+
+            }
+        }*@
+
+
+
+
+
+
+

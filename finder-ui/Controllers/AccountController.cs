@@ -27,16 +27,24 @@ namespace finder_ui.Controllers
 
         public ActionResult CreateAccount(CreateAccountViewModel vm)
         {
-            bool UsernameExist = true;
-            bool EmailExist = true;
+            bool usernameExist = true;
+            bool emailExist = true;
             using (var client = new UserProfileServiceReference.UserProfileServiceClient())
             {
                 using (var validation = new UserLoginServiceReference.LoginServiceClient())
                 {
-                    UsernameExist = validation.UsernameExist(vm.username);
-                    EmailExist = validation.EmailExist(vm.email);
+                    usernameExist = validation.UsernameExist(vm.username);
+                    if (usernameExist)
+                    {
+                        ModelState.AddModelError("username", "Det angivna användarnamnet är tyvärr upptaget");
+                    }
+                    emailExist = validation.EmailExist(vm.email);
+                    if (emailExist)
+                    {
+                        ModelState.AddModelError("email", "Den angivna eposten är tyvärr upptagen");
+                    }
                 }
-                if (!UsernameExist && !EmailExist)
+                if (!usernameExist && !emailExist)
                 {
                     var newUser = new UserProfileServiceReference.NewUser()
                     {
@@ -70,7 +78,6 @@ namespace finder_ui.Controllers
                 }
                 else
                 {
-                    ViewBag.Message = "Det angivna användarnamnet eller eposten finns redan registrerat";
                     return View("Index");
                 }
 
